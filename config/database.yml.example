@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: root
+  password:
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: dasha_taxpayer_development
+
+test:
+  <<: *default
+  database: dasha_taxpayer_test
+
+production:
+  <<: *default
+  database: dasha_taxpayer_production
+  username: dasha_taxpayer
+  password: <%= ENV['TEST_PG_DATABASE_PASSWORD'] %>
