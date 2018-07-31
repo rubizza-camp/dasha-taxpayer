@@ -10,7 +10,7 @@ development:
   <<: *default
   database: dasha_taxpayer_development
 
-test:
+test: &test
   <<: *default
   database: dasha_taxpayer_test
 
@@ -19,3 +19,6 @@ production:
   database: dasha_taxpayer_production
   username: dasha_taxpayer
   password: <%= ENV['TEST_PG_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
