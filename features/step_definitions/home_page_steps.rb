@@ -11,6 +11,6 @@ Then(/^I can see Singin and Login links$/) do
   expect(page).to have_link("Signin")
 end
 
-Then(/^I can see text (\w+)$/) do |text|
+Then(/^I can see text \"([a-zA-Zа-яА-Я]+)\"$/) do |text|
   expect(page).to have_content(text)
 end
