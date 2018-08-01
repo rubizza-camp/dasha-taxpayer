@@ -4,10 +4,10 @@ Feature: Home Page
 
     Scenario: Singin and Login links
       Given I have no user
-      When I visit home page
+      When I go to the home page
       Then I can see Singin and Login links
 
     Scenario: Moto
       Given I have no user
-      When I visit home page
+      When I go to the home page
       Then I can see text "Налоги - это весело"
