@@ -1,5 +1,5 @@
-When(/^I click Login/) do
-  click_on('Login')
+When(/^I click (\w+)/) do |link|
+  click_on(link)
 end
 
 Then(/^I see form for login/) do
@@ -16,7 +16,6 @@ end
 When(/^I see a successful sign in message/) do
   expect(page).to have_content 'Signed in successfully'
 end
-
 
 When(/^I sign in with unregistered email/) do
   fill_in 'Email Address', with: 'unregistered@mail.ru'

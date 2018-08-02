@@ -11,9 +11,8 @@ Feature: Sign in
       Then I see an invalid email or password message
 
     Scenario: User signs in successfully
-      Given a user exists with email: "test@mail.ru", password: "password"
+      Given a user exists with email: "test@mail.ru", password: "password", password_confirmation: "password"
       When I click Login
       Then I see form for login
       When I sign in with valid credentials
       Then I see a successful sign in message
-      
