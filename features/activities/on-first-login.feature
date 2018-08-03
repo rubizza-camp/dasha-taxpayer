@@ -1,3 +1,4 @@
+@wip
 Feature: On First Login
   On first login user should be asked about his activities
 
