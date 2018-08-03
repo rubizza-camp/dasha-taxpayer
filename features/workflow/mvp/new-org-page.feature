@@ -2,19 +2,11 @@ Feature: Новая организация
   Добавление пользователем новой организации
   После логина
 
-    Scenario: Добавление пользователем новой организации
+    Scenario: Переход на страницу создания новой организации
       Given I signed up as user
-      And I see the label "Organization"
-      And I see the "Taxes" button
+      And I see the link "Organization"
+      And I see the link "Taxes"
       And I see the "Create new organization" button
-      When Я имею 0 организаций
-      Then Я вижу надпись "Здесь будут отображены добавленные вами организации."
-
-      When Я имею 1 или более организаций
-      Then I should see a list of my organization
-      And I should see the "Edit" button to the right of each line
-      And I should see the "Delete" button to the right of the "Edit" button
-
       When I click "Create new organization" button
       Then Я перехожу на страницу создания новой организации
       And I should see selectbox "Type" with the following fields
@@ -23,6 +15,14 @@ Feature: Новая организация
         | Частное предприятие             |
         | OOO                             |
 
+    Scenario: Добавление пользователем новой организации "Физическое лицо (самозанятость)"
+       Given I signed up as user
+       And Я нахожусь на странице создания новой организации
+       And I see selectbox "Organization_info" with the following fields
+        | Физическое лицо (самозанятость) |
+        | Индивидуальный Предприниматель  |
+        | Частное предприятие             |
+        | OOO                             |
       When I select "Физическое лицо (самозанятость)"
       Then Я должен увидеть поля которые зависят от выбора пользователя "Физическое лицо (самозанятость)"
         | ФИО   |
@@ -30,6 +30,14 @@ Feature: Новая организация
         | Адрес |
       And Я должен увидеть кнопка "Далее"
 
+    Scenario: Добавление пользователем новой организации "Индивидуальный Предприниматель"
+       Given I signed up as user
+       And Я нахожусь на странице создания новой организации
+       And I see selectbox "Organization_info" with the following fields
+        | Физическое лицо (самозанятость) |
+        | Индивидуальный Предприниматель  |
+        | Частное предприятие             |
+        | OOO                             |
       When I select "Индивидуальный Предприниматель"
       Then Я должен увидеть поля которые зависят от выбора пользователя "Индивидуальный Предприниматель"
         | ФИО                           |
@@ -41,6 +49,14 @@ Feature: Новая организация
         | Количество наемных работников |
       And Я должен увидеть кнопка "Далее"
 
+    Scenario: Добавление пользователем новой организации "Частное предприятие"
+       Given I signed up as user
+       And Я нахожусь на странице создания новой организации
+       And I see selectbox "Organization_info" with the following fields
+        | Физическое лицо (самозанятость) |
+        | Индивидуальный Предприниматель  |
+        | Частное предприятие             |
+        | OOO                             |
       When I select "Частное предприятие"
       Then Я должен увидеть поля которые зависят от выбора пользователя "Частное предприятие"
         | Найменование                  |
