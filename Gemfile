@@ -49,7 +49,6 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.7'
   gem 'pry'
-  gem "factory_bot_rails"
 end
 
 group :development do
@@ -70,6 +69,8 @@ group :test do
   gem 'chromedriver-helper'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'faker'
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
