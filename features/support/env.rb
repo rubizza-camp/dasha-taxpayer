@@ -56,3 +56,10 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+ActionMailer::Base.delivery_method = :test
+ActionMailer::Base.perform_deliveries = true
+
+Before do
+  ActionMailer::Base.deliveries.clear
+end
+
