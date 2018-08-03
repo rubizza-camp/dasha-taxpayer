@@ -1,0 +1,16 @@
+language: ruby
+services:
+  - postgresql
+rvm:
+  - 2.5.1
+cache:
+  bundler: true
+before_install:
+  - gem install bundler -v 1.16.2
+  - cp config/database.yml.travis config/database.yml
+  - bundle install
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+script:
+  - "bundle exec rake"
