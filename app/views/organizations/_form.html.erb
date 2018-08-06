@@ -15,7 +15,10 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
+    <div class="field">
+      <%= form.label :organization_form %>
+      <%= form.collection_select :organization_form_id, OrganizationForm.all, :id, :name %>
+    </div>
   <div class="actions">
     <%= form.submit %>
   </div>
