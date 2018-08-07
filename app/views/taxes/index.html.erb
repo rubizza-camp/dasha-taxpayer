@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Taxes</h1>
+
+<table border="3" cellspacing="0" cellpadding="10">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Rate</th>
+      <th>Organization</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @taxes.each do |tax| %>
+      <tr>
+        <td><%= tax.date %></td>
+        <td><%= link_to tax.name, tax %></td>
+        <td><%= tax.rate %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
