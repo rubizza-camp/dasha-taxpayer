@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+OrganizationForm.create(name: 'Физическое лицо (самозанятость)')
+OrganizationForm.create(name: 'Индивидуальный Предприниматель')
+OrganizationForm.create(name: 'Частное предприятие')
+OrganizationForm.create(name: 'OOO')
