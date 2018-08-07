@@ -1,4 +1,4 @@
-When(/^I click (\w+)/) do |link|
+When(/^I click ([\w ]+)/) do |link|
   click_on(link)
 end
 

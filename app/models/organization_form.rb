@@ -1,3 +1,3 @@
 class OrganizationForm < ApplicationRecord
-  has_many :organizations
+  has_many :organization
 end
