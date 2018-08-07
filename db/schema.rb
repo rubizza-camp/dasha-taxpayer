@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_08_06_060429) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "user_id"
@@ -50,5 +50,6 @@ ActiveRecord::Schema.define(version: 2018_08_06_060429) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "users", "organizations", "organization_forms"
+  add_foreign_key "organizations", "organization_forms"
+  add_foreign_key "organizations", "users"
 end
