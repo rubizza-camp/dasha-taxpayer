@@ -8,6 +8,7 @@ cache:
 before_install:
   - gem install bundler -v 1.16.2
   - cp config/database.yml.travis config/database.yml
+  - cp config/secrets.yml.example config/secrets.yml
   - bundle install
   - bundle exec rake db:create
   - bundle exec rake db:migrate
