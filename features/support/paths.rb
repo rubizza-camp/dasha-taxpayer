@@ -4,7 +4,6 @@
 # rubocop:disable Style/HashSyntax
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/AbcSize
 
 module NavigationHelpers
   # Maps a name to a path. Used by the
@@ -59,6 +58,5 @@ end
 # rubocop:enable Style/HashSyntax
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/AbcSize
 
 World(NavigationHelpers)
