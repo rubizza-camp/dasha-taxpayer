@@ -1,3 +1,11 @@
+# frozen_string_literal: true
+
+# rubocop:disable Style/PerlBackrefs
+# rubocop:disable Style/HashSyntax
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/AbcSize
+
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -31,17 +39,26 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
+    # rubocop:disable Lint/UselessAssignment
+    # rubocop:disable Style/RedundantSelf
     else
       begin
         page_name =~ /the (.*) page/
         path_components = $1.split(/\s+/)
         self.send(path_components.push('path').join('_').to_sym)
       rescue Object => e
-        raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+        raise "Can't find mapping from \"#{page_name}\" to a path.\n" \
           "Now, go and add a mapping in #{__FILE__}"
       end
     end
+    # rubocop:enable Lint/UselessAssignment
+    # rubocop:enable Style/RedundantSelf
   end
 end
+# rubocop:enable Style/PerlBackrefs
+# rubocop:enable Style/HashSyntax
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/AbcSize
 
 World(NavigationHelpers)

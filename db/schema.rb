@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_060429) do
+ActiveRecord::Schema.define(version: 2018_08_06_124011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "high_scores", force: :cascade do |t|
+    t.string "game"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organisations", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_organisations_on_user_id"
+  end
 
   create_table "organization_forms", force: :cascade do |t|
     t.string "name", null: false
@@ -29,6 +44,14 @@ ActiveRecord::Schema.define(version: 2018_08_06_060429) do
     t.bigint "organization_form_id"
     t.index ["organization_form_id"], name: "index_organizations_on_organization_form_id"
     t.index ["user_id"], name: "index_organizations_on_user_id"
+  end
+
+  create_table "taxes", force: :cascade do |t|
+    t.string "date"
+    t.string "name"
+    t.string "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,6 +73,7 @@ ActiveRecord::Schema.define(version: 2018_08_06_060429) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "organisations", "users"
   add_foreign_key "organizations", "organization_forms"
   add_foreign_key "organizations", "users"
 end
