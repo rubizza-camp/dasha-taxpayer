@@ -12,7 +12,7 @@ Given (/^I login as user/) do
 end
 
 Given (/^I have organization/) do
-  FactoryBot.create(:organization, user: @current_user)
+  @organization = FactoryBot.create(:organization, user: @current_user)
 end
 
 Then(/^I should see "([\w\s]+)"/) do |text|
@@ -20,7 +20,7 @@ Then(/^I should see "([\w\s]+)"/) do |text|
 end
 
 Then(/^I should see info about my organization/) do
-  expect(page).to have_content 'TestOrg'
+  expect(page).to have_content @organization.name
 end
 
 Then(/^I should see organization control buttons/) do
