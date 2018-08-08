@@ -10,3 +10,6 @@ OrganizationForm.create(name: 'Физическое лицо (самозанят
 OrganizationForm.create(name: 'Индивидуальный Предприниматель')
 OrganizationForm.create(name: 'Частное предприятие')
 OrganizationForm.create(name: 'OOO')
+
+TaxationForm.create(name: 'Единый налог', description: '')
+TaxationForm.create(name: 'УСН')

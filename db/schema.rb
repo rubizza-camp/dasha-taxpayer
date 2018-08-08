@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_060429) do
+ActiveRecord::Schema.define(version: 2018_08_08_060717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,20 @@ ActiveRecord::Schema.define(version: 2018_08_06_060429) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organization_form_id"
+    t.bigint "taxation_form_id"
     t.index ["organization_form_id"], name: "index_organizations_on_organization_form_id"
+    t.index ["taxation_form_id"], name: "index_organizations_on_taxation_form_id"
     t.index ["user_id"], name: "index_organizations_on_user_id"
+  end
+
+  create_table "taxation_forms", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.bigint "organization_form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "deadline"
+    t.index ["organization_form_id"], name: "index_taxation_forms_on_organization_form_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,5 +63,7 @@ ActiveRecord::Schema.define(version: 2018_08_06_060429) do
   end
 
   add_foreign_key "organizations", "organization_forms"
+  add_foreign_key "organizations", "taxation_forms"
   add_foreign_key "organizations", "users"
+  add_foreign_key "taxation_forms", "organization_forms"
 end
