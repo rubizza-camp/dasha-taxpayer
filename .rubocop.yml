@@ -21,11 +21,16 @@ Metrics/ClassLength:
 Metrics/AbcSize:
   Max: 20
 
+CollectionMethods:
+  Enabled: false
+
 AllCops:
   Exclude:
     - 'app/views/organizations/show.json.jbuilder'
     - 'app/views/organizations/index.json.jbuilder'
     - 'app/views/organizations/_organization.json.jbuilder'
+    - 'Rakefile'
+    - 'config.ru'
 
 # No space makes the method definition shorter and differentiates
 # from a regular assignment.
