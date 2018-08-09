@@ -13,8 +13,7 @@ before_install:
   - cp config/database.yml.travis config/database.yml
   - cp config/secrets.yml.example config/secrets.yml
   - bundle install
-  # - bundle exec rake db:create
-  - psql -c 'create database dasha_taxpayer_test;' -U postgres
+  - bundle exec rake db:create
   - bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
 script:
