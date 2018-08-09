@@ -1,2 +1,4 @@
-class FixedRate < TaxationObligation
+module TaxationObligations
+  class FixedRate < TaxationObligation
+  end
 end

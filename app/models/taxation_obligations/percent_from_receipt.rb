@@ -1,2 +1,4 @@
-class PercentFromReceipt < TaxationObligation
+module TaxationObligations
+  class PercentFromReceipt < TaxationObligation
+  end
 end
