@@ -1,6 +1,6 @@
-class CreateTaxationObligations < ActiveRecord::Migration[5.2]
+class CreateCalculationForms < ActiveRecord::Migration[5.2]
   def change
-    create_table :taxation_obligations do |t|
+    create_table :calculation_forms do |t|
       t.string :type, null: false
       t.float :rate
       t.references :taxation_form, foreign_key: true

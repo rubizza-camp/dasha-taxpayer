@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_09_064120) do
+ActiveRecord::Schema.define(version: 2018_08_09_153549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 2018_08_09_064120) do
   create_table "activity_types_organization_forms", id: false, force: :cascade do |t|
     t.bigint "activity_type_id", null: false
     t.bigint "organization_form_id", null: false
+  end
+
+  create_table "calculation_forms", force: :cascade do |t|
+    t.string "type", null: false
+    t.float "rate"
+    t.bigint "taxation_form_id"
+    t.bigint "activity_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_type_id"], name: "index_calculation_forms_on_activity_type_id"
+    t.index ["taxation_form_id"], name: "index_calculation_forms_on_taxation_form_id"
   end
 
   create_table "organization_forms", force: :cascade do |t|
@@ -56,17 +67,6 @@ ActiveRecord::Schema.define(version: 2018_08_09_064120) do
     t.index ["organization_form_id"], name: "index_taxation_forms_on_organization_form_id"
   end
 
-  create_table "taxation_obligations", force: :cascade do |t|
-    t.string "type", null: false
-    t.float "rate"
-    t.bigint "taxation_form_id"
-    t.bigint "activity_type_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["activity_type_id"], name: "index_taxation_obligations_on_activity_type_id"
-    t.index ["taxation_form_id"], name: "index_taxation_obligations_on_taxation_form_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -87,10 +87,10 @@ ActiveRecord::Schema.define(version: 2018_08_09_064120) do
   end
 
   add_foreign_key "activity_types", "organization_forms"
+  add_foreign_key "calculation_forms", "activity_types"
+  add_foreign_key "calculation_forms", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
   add_foreign_key "organizations", "taxation_forms"
   add_foreign_key "organizations", "users"
   add_foreign_key "taxation_forms", "organization_forms"
-  add_foreign_key "taxation_obligations", "activity_types"
-  add_foreign_key "taxation_obligations", "taxation_forms"
 end
