@@ -98,11 +98,11 @@ Rails:
 
 #################### Style ###############################
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
   Enabled: false
 
-Style/TrailingCommaInArrayLiteral:
-  Enabled: true
+Style/TrailingCommaInHashLiteral: 
+  Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes
