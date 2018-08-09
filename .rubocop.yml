@@ -6,6 +6,7 @@ AllCops:
     - 'app/views/organizations/*.json.jbuilder'
     - 'Rakefile'
     - 'config.ru'
+    - 'vendor'
 
 #################### Bundler ###############################
 # Gems within groups in the Gemfile should be alphabetically sorted.
