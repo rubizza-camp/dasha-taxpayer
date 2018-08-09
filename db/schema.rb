@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_08_09_064120) do
 
   create_table "taxation_obligations", force: :cascade do |t|
     t.string "type", null: false
-    t.integer "rate"
+    t.float "rate"
     t.bigint "taxation_form_id"
     t.bigint "activity_type_id"
     t.datetime "created_at", null: false
