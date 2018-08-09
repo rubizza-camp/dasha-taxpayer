@@ -8,6 +8,7 @@ AllCops:
     - 'config.ru'
     - 'bin/spring'
     - 'vendor/**/*'
+    - 'db/schema.rb'
 
 #################### Bundler ###############################
 # Gems within groups in the Gemfile should be alphabetically sorted.
@@ -166,4 +167,9 @@ Style/Documentation:
 
 # Style preference
 Style/MethodDefParentheses:
+  Enabled: false
+
+# At the moment we do not have places, where we can use has_many through
+# because all join tables do not hold additional information about relation
+Rails/HasAndBelongsToMany:
   Enabled: false
