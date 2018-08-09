@@ -1,5 +1,7 @@
 <%= simple_form_for(@organization) do |f| %>
   <%= f.error_notification %>
   <%= f.input :name %>
+  <%= f.collection_select :organization_form_id, OrganizationForm.all, :id, :name %>
+  <%= f.collection_select :taxation_form_id, TaxationForm.all, :id, :name %>
   <%= f.button :submit %>
 <% end %>
