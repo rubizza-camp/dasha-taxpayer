@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_08_060717) do
+ActiveRecord::Schema.define(version: 2018_08_09_064642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,8 @@ ActiveRecord::Schema.define(version: 2018_08_08_060717) do
     t.bigint "organization_form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "deadline"
+    t.integer "declaration_period_in_days"
+    t.string "period_type"
     t.index ["organization_form_id"], name: "index_taxation_forms_on_organization_form_id"
   end
 
