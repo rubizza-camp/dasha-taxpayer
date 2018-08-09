@@ -6,7 +6,7 @@ AllCops:
     - 'app/views/organizations/*.json.jbuilder'
     - 'Rakefile'
     - 'config.ru'
-    - 'vendor/**/.*'
+    - 'vendor/bundle/ruby/2.5.0/gems/public_suffix-3.0.2/.rubocop_defaults.yml'
 
 #################### Bundler ###############################
 # Gems within groups in the Gemfile should be alphabetically sorted.
