@@ -2,6 +2,7 @@
 
 require 'test_helper'
 
+# sample comment for reek
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
 end

@@ -12,6 +12,8 @@ module NavigationHelpers
   #
   # step definition in web_steps.rb
   #
+  # This method smells of :reek:UncommunicativeVariableName
+  # This method smells of :reek:TooManyStatements
   def path_to(page_name)
     case page_name
 

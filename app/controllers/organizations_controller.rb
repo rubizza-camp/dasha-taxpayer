@@ -28,6 +28,7 @@ class OrganizationsController < ApplicationController
 
   # POST /organizations
   # POST /organizations.json
+  # This method smells of :reek:DuplicateMethodCall
   def create
     @organization = Organization.new(organization_params.merge(user_id: current_user.id))
 
@@ -44,6 +45,7 @@ class OrganizationsController < ApplicationController
 
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
+  # This method smells of :reek:DuplicateMethodCall
   def update
     respond_to do |format|
       if @organization.update(organization_params.merge(user_id: current_user.id))
