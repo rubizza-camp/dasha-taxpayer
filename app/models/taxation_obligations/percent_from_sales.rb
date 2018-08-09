@@ -1,0 +1,2 @@
+class PercentFromSales < TaxationObligation
+end

@@ -1,0 +1,2 @@
+class PercentFromReceipt < TaxationObligation
+end

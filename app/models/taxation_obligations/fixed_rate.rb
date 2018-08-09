@@ -1,0 +1,2 @@
+class FixedRate < TaxationObligation
+end
