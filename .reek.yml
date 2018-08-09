@@ -1,3 +1,7 @@
+detectors:
+  IrresponsibleModule:
+    enabled: false
+
 directories:
   "app/controllers":
     IrresponsibleModule:
@@ -8,6 +12,8 @@ directories:
       enabled: false
     InstanceVariableAssumption:
       enabled: false
+    TooManyStatements:
+      enabled: false
   "app/helpers":
     IrresponsibleModule:
       enabled: false
@@ -16,3 +22,10 @@ directories:
   "app/mailers":
     InstanceVariableAssumption:
       enabled: false
+  "app/models/":
+    DuplicateMethodCall:
+      enabled: false
+
+exclude_paths:
+  - db/migrate
+  - vendor
