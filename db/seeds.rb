@@ -15,10 +15,16 @@ OrganizationForm.create(name: 'Индивидуальный Предприним
 OrganizationForm.create(name: 'Частное предприятие')
 OrganizationForm.create(name: 'OOO')
 
-TaxationForm.create(name: 'Единый налог', organization_form: OrganizationForm.first)
-TaxationForm.create(name: 'УСН', organization_form: OrganizationForm.second)
+TaxationForm.create(name:                       'Единый налог',
+                    organization_form:          OrganizationForm.first,
+                    period_type:                'month',
+                    declaration_period_in_days: 1)
+TaxationForm.create(name:                       'УСН',
+                    organization_form:          OrganizationForm.second,
+                    period_type:                'quarter',
+                    declaration_period_in_days: 22)
 
-Organization.create(name: 'Название Организации',
-                    user: User.first,
+Organization.create(name:              'Название Организации',
+                    user:              User.first,
                     organization_form: OrganizationForm.first,
-                    taxation_form: TaxationForm.first)
+                    taxation_form:     TaxationForm.first)
