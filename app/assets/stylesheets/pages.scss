@@ -1,3 +1,25 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#div-new-organization { padding: 10px 0; }
+#form-organization
+ {
+   padding:10px;
+   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+ }
+#organization-show-main
+  {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+#organization-show-name
+  {
+    background-image:linear-gradient(to bottom, #428bca 0%, #2d6ca2 100%)
+  }
+ 
+.bg-organization-attr
+  {
+    background-image:linear-gradient(to bottom, #5cb85c 0%, #419641 100%);
+    padding:10px 0;
+    color:white
+  }
