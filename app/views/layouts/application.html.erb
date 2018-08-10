@@ -12,10 +12,26 @@
   </head>
 
   <body>
-    <%= render 'layouts/menu/login_form' %>
-    <%= render 'layouts/menu/user_form' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+           <%= render 'layouts/menu/user_form' %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <%= render 'layouts/menu/login_form' %>
+         </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <% if notice %>
+          <p class="alert alert-success alert-dismissible show"><%= notice %></p>
+      <% end%>
+      <% if alert %>
+          <p class="alert alert-warning alert-dismissible show"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

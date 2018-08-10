@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(version: 2018_08_09_153549) do
     t.index ["organization_form_id"], name: "index_taxation_forms_on_organization_form_id"
   end
 
+  create_table "taxes", force: :cascade do |t|
+    t.string "date"
+    t.string "name"
+    t.string "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
