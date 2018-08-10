@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# rubocop:disable Style/ExpandPathArguments
 begin
   load File.expand_path('../spring', __FILE__)
 rescue LoadError => e
@@ -7,3 +10,4 @@ end
 require_relative '../config/boot'
 require 'rake'
 Rake.application.run
+# rubocop:enable Style/ExpandPathArguments

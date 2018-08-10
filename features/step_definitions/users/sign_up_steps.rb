@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # When(/^I click Login/) do
 #   click_on('Login')
 # end
@@ -41,7 +43,7 @@ When(/^I sign up without short password/) do
 end
 
 Then(/^I should see password length message/) do
-  expect(page).to have_content "Password is too short"
+  expect(page).to have_content 'Password is too short'
 end
 
 When(/^I sign up without a confirm password/) do

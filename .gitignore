@@ -33,3 +33,7 @@
 
 # Ignore secret info
 /config/secrets.yml
+
+# Prevent from commiting files after 'bundle package'
+vendor/cache/*
+vendor/bundle/*

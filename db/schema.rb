@@ -63,7 +63,8 @@ ActiveRecord::Schema.define(version: 2018_08_09_153549) do
     t.bigint "organization_form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "deadline"
+    t.integer "declaration_period_in_days"
+    t.string "period_type"
     t.index ["organization_form_id"], name: "index_taxation_forms_on_organization_form_id"
   end
 

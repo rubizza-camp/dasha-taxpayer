@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :set_organization, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   # GET /organizations
@@ -8,6 +10,7 @@ class OrganizationsController < ApplicationController
     @organizations = current_user.organizations
   end
 
+  # rubocop:disable Style/EmptyMethod
   # GET /organizations/1
   # GET /organizations/1.json
   def show
@@ -21,9 +24,11 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1/edit
   def edit
   end
+  # rubocop:enable Style/EmptyMethod
 
   # POST /organizations
   # POST /organizations.json
+  # This method smells of :reek:DuplicateMethodCall
   def create
     @organization = Organization.new(organization_params.merge(user_id: current_user.id))
 
@@ -40,6 +45,7 @@ class OrganizationsController < ApplicationController
 
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
+  # This method smells of :reek:DuplicateMethodCall
   def update
     respond_to do |format|
       if @organization.update(organization_params.merge(user_id: current_user.id))
@@ -63,13 +69,14 @@ class OrganizationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_organization
-      @organization = Organization.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def organization_params
-      params.require(:organization).permit(:name, :organization_form_id, :taxation_form_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_organization
+    @organization = Organization.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def organization_params
+    params.require(:organization).permit(:name, :organization_form_id, :taxation_form_id)
+  end
 end
