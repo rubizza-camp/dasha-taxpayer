@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Organization Form</th>
+      <th>Taxation Form</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <tr>
         <td><%= organization.name %></td>
         <td><%= organization.organization_form.name %></td>
+        <td><%= organization.taxation_form.name %></td>
         <td><%= link_to 'Show', organization %></td>
         <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
         <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
