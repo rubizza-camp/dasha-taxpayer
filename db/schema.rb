@@ -17,10 +17,8 @@ ActiveRecord::Schema.define(version: 2018_08_09_064642) do
 
   create_table "activity_types", force: :cascade do |t|
     t.string "name"
-    t.bigint "organization_form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["organization_form_id"], name: "index_activity_types_on_organization_form_id"
   end
 
   create_table "activity_types_organization_forms", id: false, force: :cascade do |t|
@@ -76,7 +74,6 @@ ActiveRecord::Schema.define(version: 2018_08_09_064642) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "activity_types", "organization_forms"
   add_foreign_key "organizations", "organization_forms"
   add_foreign_key "organizations", "taxation_forms"
   add_foreign_key "organizations", "users"
