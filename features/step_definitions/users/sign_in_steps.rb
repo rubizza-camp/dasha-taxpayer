@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 When(/^I click ([\w ]+)/) do |link|
   click_on(link)
 end

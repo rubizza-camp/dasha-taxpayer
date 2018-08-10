@@ -1,8 +1,10 @@
-Given (/^test user/) do
+# frozen_string_literal: true
+
+Given(/^test user/) do
   @current_user = FactoryBot.create(:user)
 end
 
-Given (/^I login as user/) do
+Given(/^I login as user/) do
   visit '/users/sign_in'
 
   fill_in 'Email Address', with: @current_user.email
@@ -11,7 +13,7 @@ Given (/^I login as user/) do
   click_on('Log in')
 end
 
-Given (/^I have organization/) do
+Given(/^I have organization/) do
   @organization = FactoryBot.create(:organization, user: @current_user)
 end
 
