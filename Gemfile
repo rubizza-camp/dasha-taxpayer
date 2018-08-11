@@ -42,6 +42,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cucumber'
 gem 'devise'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
+gem 'recurrence'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
