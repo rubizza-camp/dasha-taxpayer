@@ -9,13 +9,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # User.create(email: 'test@mail.ru', password: '123456', password_confirmation: '123456')
-User.create(email: 'yourname@yourcompany.com', password: '111111', password_confirmation: '111111')
-User.create(email: 'user2@mail2.com', password: '111111', password_confirmation: '111111')
 
-OrganizationForm.create(name: 'Физическое лицо (самозанятость)')
-OrganizationForm.create(name: 'Индивидуальный Предприниматель')
-OrganizationForm.create(name: 'Частное предприятие')
-OrganizationForm.create(name: 'OOO')
+users = [User.create(email: 'yourname@yourcompany.com', password: '111111', password_confirmation: '111111'),
+         User.create(email: 'user2@mail2.com', password: '111111', password_confirmation: '111111')]
+
+organization_forms = [OrganizationForm.create(name: 'Физическое лицо (самозанятость)'),
+                      OrganizationForm.create(name: 'Индивидуальный Предприниматель'),
+                      OrganizationForm.create(name: 'Частное предприятие'),
+                      OrganizationForm.create(name: 'OOO')]
 
 TaxationForm.create(name:                       'Единый налог',
                     organization_form:          OrganizationForm.first,
@@ -26,14 +27,9 @@ TaxationForm.create(name:                       'УСН',
                     period_type:                'quarter',
                     declaration_period_in_days: 22)
 
-# Organization.create(name:              'Rubizza',
-#                     user:              User.first,
-#                     organization_form: OrganizationForm.first,
-#                     taxation_form:     TaxationForm.first)
-
-Organization.create(name: 'Rubizza', user_id: 1, organization_form_id: 3, taxation_form_id: 2)
-Organization.create(name: 'Organization1', user_id: 2, organization_form_id: 4, taxation_form_id: 2)
-Organization.create(name: 'Ivanov Ivan Ivanovich', user_id: 2, organization_form_id: 2, taxation_form_id: 1)
+Organization.create(name: 'Rubizza',               user: users.first, organization_form: organization_forms[2], taxation_form_id: 2)
+Organization.create(name: 'Organization1',         user: users.last,  organization_form: organization_forms[3], taxation_form_id: 2)
+Organization.create(name: 'Ivanov Ivan Ivanovich', user: users.last,  organization_form: organization_forms[1], taxation_form_id: 1)
 
 ActivityType.create(name: 'Деятельность1')
 ActivityType.create(name: 'Деятельность2')
