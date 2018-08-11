@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1 class="text-center">Taxes</h1>
+  </div>
+
+  <table class="table bg-success table-striped">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Name</th>
+        <th>Rate</th>
+        <th>Organization</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @taxes.each do |tax| %>
+        <tr>
+          <td class="col-md-3"><%= "c #{tax.period_event.first.to_formatted_s(:rfc822)} по #{tax.period_event.last.to_formatted_s(:rfc822)}" %></td>
+          <td class="col-md-3"><%= tax.name %></td>
+          <td class="col-md-3"><%= tax.rate %></td>
+          <td class="col-md-3"><%= tax.organization %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
