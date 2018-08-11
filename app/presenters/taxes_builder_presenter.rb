@@ -40,15 +40,15 @@ class TaxesBuilderPresenter < BasePresenter
   private
 
   def closest_declaration_year_for_month
-    current_date.year + closest_declaration_month_for_month / 12
+    current_year + closest_declaration_month_for_month / 12
   end
 
   def closest_declaration_month_for_month
-    current_date.month + 1
+    current_month + 1
   end
 
   def closest_declaration_year_for_year
-    current_date.year + 1
+    current_year + 1
   end
 
   def closest_declaration_month_for_year
@@ -56,14 +56,17 @@ class TaxesBuilderPresenter < BasePresenter
   end
 
   def closest_declaration_year_for_quarter
-    current_date.year + closest_declaration_month_for_quarter / 12
+    current_year + closest_declaration_month_for_quarter / 12
   end
 
   def closest_declaration_month_for_quarter
-    current_date.month + (3 - current_date.month % 3) + 1
+    current_month + (3 - current_month % 3) + 1
   end
 
+  delegate :year,  to: :current_date, prefix: :current
+  delegate :month, to: :current_date, prefix: :current
+
   def current_date
-    Time.zone.today
+    @_date ||= Time.zone.today
   end
 end
