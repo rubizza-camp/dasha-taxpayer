@@ -67,6 +67,6 @@ class TaxesBuilderPresenter < BasePresenter
   delegate :month, to: :current_date, prefix: :current
 
   def current_date
-    @_date ||= Time.zone.today
+    @current_date ||= Time.zone.today
   end
 end
