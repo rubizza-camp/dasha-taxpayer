@@ -16,3 +16,48 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
+
+$('#calendar').fullCalendar({
+      events:  [
+        {
+            title  : 'event1',
+            start  : '2018-08-15'
+        },
+        {
+            title  : 'event2',
+            start  : '2018-08-03',
+            end    : '2018-08-05'
+        },
+        {  title  : 'event3',
+            start  : '2018-08-03',
+            end    : '2018-08-05'
+        },
+        {  title  : 'event4',
+            start  : '2018-08-03',
+            end    : '2018-08-05'
+        },
+        {  title  : 'event5',
+            start  : '2018-08-03',
+            end    : '2018-08-05'
+        },
+        {  title  : 'event6',
+            start  : '2018-08-03',
+            end    : '2018-08-05'
+        },
+        {  title  : 'event6',
+            start  : '2018-08-03',
+            end    : '2018-08-05'
+        },
+        {  title  : 'event6',
+            start  : '2018-08-03',
+            end    : '2018-08-05'
+        },
+        {  title  : 'event6',
+            start  : '2018-08-03',
+            end    : '2018-08-05'
+        }
+    ]
+});
