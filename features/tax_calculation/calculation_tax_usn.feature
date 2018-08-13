@@ -1,4 +1,4 @@
-@WIP
+@wip
 Feature: Рассчет налога усн
 
   Background:
