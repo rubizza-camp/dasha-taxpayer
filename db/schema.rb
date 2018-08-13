@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_12_160144) do
+ActiveRecord::Schema.define(version: 2018_08_12_210504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activity_types", force: :cascade do |t|
     t.string "name"
+    t.bigint "organization_form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["organization_form_id"], name: "index_activity_types_on_organization_form_id"
   end
 
   create_table "activity_types_organization_forms", id: false, force: :cascade do |t|
@@ -73,7 +75,19 @@ ActiveRecord::Schema.define(version: 2018_08_12_160144) do
     t.datetime "updated_at", null: false
     t.integer "declaration_period_in_days"
     t.string "period_type"
+    t.bigint "declaration_event_id"
+    t.bigint "payment_event_id"
+    t.index ["declaration_event_id"], name: "index_taxation_forms_on_declaration_event_id"
     t.index ["organization_form_id"], name: "index_taxation_forms_on_organization_form_id"
+    t.index ["payment_event_id"], name: "index_taxation_forms_on_payment_event_id"
+  end
+
+  create_table "taxes", force: :cascade do |t|
+    t.string "date"
+    t.string "name"
+    t.string "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,10 +109,13 @@ ActiveRecord::Schema.define(version: 2018_08_12_160144) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activity_types", "organization_forms"
   add_foreign_key "calculation_forms", "activity_types"
   add_foreign_key "calculation_forms", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
   add_foreign_key "organizations", "taxation_forms"
   add_foreign_key "organizations", "users"
   add_foreign_key "taxation_forms", "organization_forms"
+  add_foreign_key "taxation_forms", "recurrence_events", column: "declaration_event_id"
+  add_foreign_key "taxation_forms", "recurrence_events", column: "payment_event_id"
 end
