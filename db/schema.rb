@@ -17,10 +17,8 @@ ActiveRecord::Schema.define(version: 2018_08_09_153549) do
 
   create_table "activity_types", force: :cascade do |t|
     t.string "name"
-    t.bigint "organization_form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["organization_form_id"], name: "index_activity_types_on_organization_form_id"
   end
 
   create_table "activity_types_organization_forms", id: false, force: :cascade do |t|
@@ -68,14 +66,6 @@ ActiveRecord::Schema.define(version: 2018_08_09_153549) do
     t.index ["organization_form_id"], name: "index_taxation_forms_on_organization_form_id"
   end
 
-  create_table "taxes", force: :cascade do |t|
-    t.string "date"
-    t.string "name"
-    t.string "rate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -95,7 +85,6 @@ ActiveRecord::Schema.define(version: 2018_08_09_153549) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "activity_types", "organization_forms"
   add_foreign_key "calculation_forms", "activity_types"
   add_foreign_key "calculation_forms", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
