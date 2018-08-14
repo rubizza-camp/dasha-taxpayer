@@ -7,7 +7,7 @@
 # files.
 
 # rubocop:disable Layout/IndentationConsistency
-unless ARGV.any? {|a| a =~ /^gems/ } # Don't load anything when running the gems:* tasks
+unless ARGV.any? { |a| a =~ /^gems/ } # Don't load anything when running the gems:* tasks
 
   # rubocop:disable Rails/FilePath
   vendored_cucumber_bin = Dir["#{Rails.root}/vendor/{gems,plugins}/cucumber*/bin/cucumber"].first
@@ -51,7 +51,7 @@ begin
       Rails.application.configure do
         if config.respond_to?(:annotations)
           config.annotations.directories << 'features'
-          config.annotations.register_extensions('feature') {|tag| /#\s*(#{tag}):?\s*(.*)$/ }
+          config.annotations.register_extensions('feature') { |tag| /#\s*(#{tag}):?\s*(.*)$/ }
         end
       end
     end

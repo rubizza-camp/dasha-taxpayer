@@ -14,7 +14,7 @@ Given(/^I login as user/) do
 end
 
 Given(/^I have organization/) do
-  @organization = FactoryBot.create(:organization, user: @current_user)
+  @organization = FactoryBot.create(:organization, :global_dominator, user: @current_user)
 end
 
 Then(/^I should see "([\w\s]+)"/) do |text|

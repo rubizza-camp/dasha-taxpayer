@@ -2,7 +2,12 @@
 
 FactoryBot.define do
   factory :organization do
-    name Faker::Company.name
-    organization_form FactoryBot.create(:organization_form)
+    name { Faker::Company.name }
+    association :organization_form
+
+    trait :global_dominator do
+      name 'Global Dominator, Inc.'
+      association :organization_form, :worldwide_corparation
+    end
   end
 end

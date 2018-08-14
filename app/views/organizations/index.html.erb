@@ -1,31 +1,42 @@
-<h1>Organizations</h1>
-
-<% if @organizations.present? %>
-    <table>
+<div class="container">
+  <div class="col-md-12">
+    <h1 class="text-center">Organizations</h1>
+  </div>
+  <div class="col-md-12 text-center" id="div-new-organization">
+    <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
+  </div>
+  <% if @organizations.present? %>
+    <table class="table bg-success table-striped">
       <thead>
-      <tr>
-        <th>Name</th>
-        <th>Organization Form</th>
-        <th colspan="3"></th>
-      </tr>
+        <tr>
+          <th>Name</th>
+          <th>Organization Form</th>
+          <th>Taxation Form</th>
+          <th colspan="3"></th>
+        </tr>
       </thead>
-
       <tbody>
-      <% @organizations.each do |organization| %>
+        <% @organizations.each do |organization| %>
           <tr>
-            <td><%= organization.name %></td>
-            <td><%= organization.organization_form.name %></td>
-            <td><%= link_to 'Show', organization %></td>
-            <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-            <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td class="col-md-3"><%= organization.name %></td>
+            <td class="col-md-3"><%= organization.organization_form.name %></td>
+            <td class="col-md-3"><%= organization.taxation_form.name %></td>
+            <td class="col-md-1">
+              <%= link_to 'Show', organization, class: 'btn btn-sm btn-success' %>
+            </td>
+            <td class="col-md-1">
+              <%= link_to 'Edit', edit_organization_path(organization), class: 'btn btn-sm btn-info' %>
+            </td>
+            <td class="col-md-1">
+              <%= link_to 'Destroy', organization, method: :delete,
+                                                   data: { confirm: 'Are you sure?' },
+                                                   class: 'btn btn-sm btn-danger' %>
+            </td>
           </tr>
-      <% end %>
+        <% end %>
       </tbody>
     </table>
-<% else %>
-    <p>Here you will see the organizations you added</p>
-<% end %>
-
-<br>
-
-<%= link_to 'New Organization', new_organization_path %>
+  <% else %>
+    <div class="col-md-12 text-center">Here you will see the organizations you added</div>
+  <% end %>
+</div>
