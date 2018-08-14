@@ -7,9 +7,6 @@ FactoryBot.define do
 
     trait :monthly_fixed_price do
       name 'fixed_price'
-      period_type 'month'
-      declaration_period_in_days 21
-
       declaration_event { create(:monthly) }
       payment_event { create(:monthly) }
 
