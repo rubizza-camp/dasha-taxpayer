@@ -6,7 +6,8 @@
   <table class="table bg-success table-striped">
     <thead>
       <tr>
-        <th>Period</th>
+        <th>Payment period</th>
+        <th>Declaration period</th>
         <th>Name</th>
         <th>Rate</th>
         <th>Organization</th>
@@ -16,7 +17,8 @@
     <tbody>
       <% @taxes.each do |tax| %>
         <tr>
-          <td class="col-md-3"><%= "c #{tax.period_event.first.to_formatted_s(:rfc822)} по #{tax.period_event.last.to_formatted_s(:rfc822)}" %></td>
+          <td class="col-md-3"><%= "c #{tax.next_payment_event.first.to_formatted_s(:rfc822)} по #{tax.next_payment_event.last.to_formatted_s(:rfc822)}" %></td>
+          <td class="col-md-3"><%= "c #{tax.next_declaration_event.first.to_formatted_s(:rfc822)} по #{tax.next_declaration_event.last.to_formatted_s(:rfc822)}" %></td>
           <td class="col-md-3"><%= tax.tax_name %></td>
           <td class="col-md-3"><%= tax.rate %></td>
           <td class="col-md-3"><%= tax.organization_name %></td>
