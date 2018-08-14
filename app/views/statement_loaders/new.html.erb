@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1><%= @organization.name %> </h1>
+      <h2><%= @organization.taxation_form.name %> </h2>
+      <form action=<%= extract_tax_path %>  method="post" enctype="multipart/form-data">
+        <input type="file" name="my_file">
+        <input type="submit" value="Upload">
+      </form>
+    </div>
+  </div>
+</div>

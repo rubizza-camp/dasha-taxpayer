@@ -1,0 +1,17 @@
+<table class="table">
+  <tr>
+    <td>Выручка в BYN </td>
+    <td>Курсовая разница </td>
+    <td>Валовая выручка</td>
+    <td>Сумма налога к оплате(5%): </td>
+    <td>Сумма налога к оплате(Фиксированная): </td>
+  </tr>
+
+  <tr>
+    <td><%= @data.receipts %> </td>
+    <td><%= @data.exchange_difference %></td>
+    <td><%= @data.gross_revenue %></td>
+    <td><%= @data.sum_tax_for_usn %> </td>
+    <td><%= @data.sum_tax_for_single %> </td>
+  </tr>
+</table>
