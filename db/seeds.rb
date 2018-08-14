@@ -39,9 +39,9 @@ TaxationForm.create(name:              'УСН',
                     declaration_event: RecurrenceEvents::Quarterly.first,
                     payment_event:     RecurrenceEvents::Quarterly.second)
 
-Organization.create(name: 'Rubizza',               user: users.first, organization_form: organization_forms[2], taxation_form_id: 2)
-Organization.create(name: 'Organization1',         user: users.last,  organization_form: organization_forms[3], taxation_form_id: 2)
-Organization.create(name: 'Ivanov Ivan Ivanovich', user: users.last,  organization_form: organization_forms[1], taxation_form_id: 1)
+Organization.create(name: 'Rubizza',               user: users.first, organization_form: organization_forms[3], taxation_form_id: 2)
+Organization.create(name: 'Organization1',         user: users.last,  organization_form: organization_forms[4], taxation_form_id: 2)
+Organization.create(name: 'Ivanov Ivan Ivanovich', user: users.last,  organization_form: organization_forms[2], taxation_form_id: 1)
 
 Taxes::CalculationForms::FixedRate.create(rate: 109.22, taxation_form_id: 1, activity_type_id: 1)
 Taxes::CalculationForms::FixedRate.create(rate: 155.00, taxation_form_id: 1, activity_type_id: 1)
