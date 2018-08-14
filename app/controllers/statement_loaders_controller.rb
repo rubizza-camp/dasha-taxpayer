@@ -1,46 +1,61 @@
-class StatementLoadersController  < ApplicationController
-  
+# frozen_string_literal: true
+
+class StatementLoadersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def new
     @organization = Organization.find(params[:id])
   end
 
-  def show
-  end
+  def show; end
 
   def extract_tax
-    if params[:my_file] != nil
-      tmp = params[:my_file].tempfile
-      csv_text = File.read(tmp)
-      csv = CSV.parse(csv_text, :headers => true)
-      array_obj = ParserCsv.new(csv).fetch
-      @data = HandlingData.new(array_obj)
-      render :show, data: @data
+    raise 'Exception Upload CSV' if params[:my_file].blank?
+    tmp = params[:my_file].tempfile
+    csv_text = File.read(tmp)
+    csv = CSV.parse(csv_text, headers: true)
+    array_obj = CsvParser.new(csv).fetch
+    @data_statement = select_type_tax(params[:id]).new(array_obj)
+    render :show, data: @data_statement
+  end
+
+  def redirect_taxes
+    redirect_to taxes_path
+  end
+
+  private
+
+  def select_type_tax(organization_id)
+    @organization = Organization.find(organization_id)
+    case @organization.taxation_form.name
+    when 'УСН'
+      CalculateExtractForUsn
+    when 'Единый налог'
+      CalculateExtractForSingle
     end
   end
 end
 
-class ParserCsv
+class CsvParser
   attr_reader :csv
   def initialize(csv)
     @csv = csv
   end
 
   def fetch
-    data_csv = []
-    csv.each do |row|
-      if row["Документ - Дата"] != nil
-        statement_data = StatementData.new
-        statement_data.document_data = row["Документ - Дата"]
-        statement_data.nominal_debit = row["Номинал - Дебет"].to_f
-        statement_data.equivalent_debit = row["Эквивалент - Дебет"].to_f
-        statement_data.equivalent_debit_byn_nbrb = HandlingData.rate_byn(row["Документ - Дата"], row["Номинал - Дебет"], row["Корреспондент - Валюта"])
-        statement_data.correspondent_currency = row["Корреспондент - Валюта"]
-        data_csv.push(statement_data)
-      end
+    data_csv = csv.map do |row|
+      document_data = row['Документ - Дата']
+      next if document_data.blank?
+      statement_data = StatementData.new
+      statement_data.document_data = document_data
+      statement_data.nominal_debit = row['Номинал - Дебет'].to_f
+      statement_data.equivalent_debit = row['Эквивалент - Дебет'].to_f
+      statement_data.correspondent_currency = row['Корреспондент - Валюта']
+      statement_data.equivalent_debit_byn_nbrb = CalculateExtract.rate_byn(statement_data.document_data,
+                                                                           statement_data.nominal_debit, statement_data.correspondent_currency)
+      statement_data
     end
-    data_csv
+    data_csv.reject(&:blank?)
   end
 end
 
@@ -49,30 +64,28 @@ class StatementData
                 :equivalent_debit_byn_nbrb, :correspondent_currency
 end
 
-class HandlingData
-  RATE_FIXED_TAX = 119.35
-  RATE_USN       = 0.05
-  attr_reader :data
-  def initialize(data)
-    @data = data
+class CalculateExtract
+  attr_reader :objects_statement_data
+  def initialize(objects_statement_data)
+    @objects_statement_data = objects_statement_data
   end
 
-  def self.rate_byn(date, amount, currency)
-    tmp = currency_for_date(date, currency)
+  def self.rate_byn(date_select, amount, currency_rate)
+    tmp = currency_for_date(date_select, currency_rate)
     amount = amount.to_f
-    amount > 0 ? (tmp * amount).round(2) : 0
+    amount.positive? ? (tmp * amount).round(2) : 0
   end
 
-  def self.currency_for_date(date, currency)
+  def self.currency_for_date(_date_select, _currency_rate)
     2.0
   end
 
   def receipts
-    data.sum(&:equivalent_debit_byn_nbrb).round(2)
+    objects_statement_data.sum(&:equivalent_debit_byn_nbrb).round(2)
   end
 
   def receipts_equivalent
-    data.sum(&:equivalent_debit).round(2)
+    objects_statement_data.sum(&:equivalent_debit).round(2)
   end
 
   def exchange_difference
@@ -83,11 +96,19 @@ class HandlingData
     (receipts + exchange_difference).round(2)
   end
 
-  def sum_tax_for_usn
+  def sum_tax; end
+end
+
+class CalculateExtractForUsn < CalculateExtract
+  RATE_USN = 0.05
+  def sum_tax
     (gross_revenue * RATE_USN).round(2)
   end
+end
 
-  def sum_tax_for_single
+class CalculateExtractForSingle < CalculateExtract
+  RATE_FIXED_TAX = 119.35
+  def sum_tax
     RATE_FIXED_TAX
   end
 end

@@ -18,9 +18,9 @@
       <% @taxes.each do |tax| %>
         <tr>
           <td class="col-md-3"><%= "c #{tax.period_event.first.to_formatted_s(:rfc822)} по #{tax.period_event.last.to_formatted_s(:rfc822)}" %></td>
-          <td class="col-md-3"><%= tax.name %></td>
+          <td class="col-md-3"><%= tax.tax_name %></td>
           <td class="col-md-3"><%= tax.rate %></td>
-          <td class="col-md-3"><%= tax.organization %></td>
+          <td class="col-md-3"><%= tax.organization_name %></td>
           <td class="col-md-3"><%= link_to 'Рассчитать', extract_new_path(tax.organization_id), class: 'btn btn-sm btn-info' %></td>
         </tr>
       <% end %>
