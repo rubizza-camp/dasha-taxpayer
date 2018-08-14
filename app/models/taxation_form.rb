@@ -3,6 +3,7 @@
 class TaxationForm < ApplicationRecord
   belongs_to :organization_form
   has_many :organizations, dependent: :destroy
+  has_many :calculation_forms, class_name: 'Taxes::CalculationForm', dependent: :destroy
   belongs_to :declaration_event, class_name: 'RecurrenceEvent'
   belongs_to :payment_event, class_name: 'RecurrenceEvent'
 
