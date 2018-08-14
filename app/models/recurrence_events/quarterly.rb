@@ -5,7 +5,7 @@ module RecurrenceEvents
     private
 
     def reccurence_params(day)
-      yield.merge(interval: :quarterly)
+      super.merge(interval: :quarterly)
     end
   end
 end
