@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class StatementLoadersController < ApplicationController
-  skip_before_action :verify_authenticity_token
 
   def new
     @organization = Organization.find(params[:id])

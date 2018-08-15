@@ -5,6 +5,7 @@ class TaxesBuilderPresenter < BasePresenter
 
   delegate :name, to: :taxation_form, prefix: :tax
   delegate :name, to: :model, prefix: :organization
+  delegate :id, to: :model, prefix: :organization
   delegate :declaration_event, to: :taxation_form
   delegate :payment_event, to: :taxation_form
 
