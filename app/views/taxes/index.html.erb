@@ -24,4 +24,12 @@
       <% end %>
     </tbody>
   </table>
+  <%= month_calendar do |date| %>
+    <%= date %>
+      <% if date.to_s == '2018-08-16'%>
+        <div>
+          <%= '2018-08-16' %>
+        </div>
+      <% end %>
+    <% end %>
 </div>
