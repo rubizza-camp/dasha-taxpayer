@@ -3,6 +3,7 @@
     <h1 class="text-center">Organizations</h1>
   </div>
 
+  <% if @organizations.present? %>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -25,6 +26,9 @@
       <% end %>
     </tbody>
   </table>
+  <% else %>
+    <div class="col-md-12 text-center">Here you will see the organizations you added</div>
+  <% end %>
 
   <div class="col-md-12 text-center" id="div-new-organization">
     <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
