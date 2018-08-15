@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_12_210504) do
+ActiveRecord::Schema.define(version: 2018_08_14_145342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,7 @@ ActiveRecord::Schema.define(version: 2018_08_12_210504) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organization_form_id"
-    t.bigint "taxation_form_id"
     t.index ["organization_form_id"], name: "index_organizations_on_organization_form_id"
-    t.index ["taxation_form_id"], name: "index_organizations_on_taxation_form_id"
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
@@ -73,8 +71,6 @@ ActiveRecord::Schema.define(version: 2018_08_12_210504) do
     t.bigint "organization_form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "declaration_period_in_days"
-    t.string "period_type"
     t.bigint "declaration_event_id"
     t.bigint "payment_event_id"
     t.index ["declaration_event_id"], name: "index_taxation_forms_on_declaration_event_id"
@@ -105,7 +101,6 @@ ActiveRecord::Schema.define(version: 2018_08_12_210504) do
   add_foreign_key "calculation_forms", "activity_types"
   add_foreign_key "calculation_forms", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
-  add_foreign_key "organizations", "taxation_forms"
   add_foreign_key "organizations", "users"
   add_foreign_key "taxation_forms", "organization_forms"
   add_foreign_key "taxation_forms", "recurrence_events", column: "declaration_event_id"
