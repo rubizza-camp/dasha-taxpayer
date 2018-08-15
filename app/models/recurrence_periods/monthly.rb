@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-module RecurrenceEvents
+module RecurrencePeriods
   class Monthly < Base
     private
 
     def recurrence_start_params
-      reccurence_params(day_start)
+      recurrence_params(day_start)
     end
 
     def recurrence_end_params
-      reccurence_params(day_end)
+      recurrence_params(day_end)
     end
 
-    def reccurence_params(day)
+    def recurrence_params(day)
       {every: :month, on: day}
     end
   end

@@ -24,20 +24,20 @@ ActivityType.create(name: 'Деятельность3')
 ActivityType.create(name: 'Деятельность4')
 ActivityType.create(name: 'Деятельность5')
 
-RecurrenceEvents::Monthly.create(day_start: 1, day_end: 31)
-RecurrenceEvents::Monthly.create(day_start: 1, day_end: 31)
-RecurrenceEvents::Quarterly.create(day_start: 15, day_end: 20)
-RecurrenceEvents::Quarterly.create(day_start: 1, day_end: 22)
+RecurrencePeriods::Monthly.create(day_start: 1, day_end: 31)
+RecurrencePeriods::Monthly.create(day_start: 1, day_end: 31)
+RecurrencePeriods::Quarterly.create(day_start: 15, day_end: 20)
+RecurrencePeriods::Quarterly.create(day_start: 1, day_end: 22)
 
-TaxationForm.create(name:              'Единый налог',
-                    organization_form: OrganizationForm.first,
-                    declaration_event: RecurrenceEvents::Monthly.first,
-                    payment_event:     RecurrenceEvents::Monthly.second)
+TaxationForm.create(name:               'Единый налог',
+                    organization_form:  OrganizationForm.first,
+                    declaration_period: RecurrencePeriods::Monthly.first,
+                    payment_period:     RecurrencePeriods::Monthly.second)
 
-TaxationForm.create(name:              'УСН',
-                    organization_form: OrganizationForm.second,
-                    declaration_event: RecurrenceEvents::Quarterly.first,
-                    payment_event:     RecurrenceEvents::Quarterly.second)
+TaxationForm.create(name:               'УСН',
+                    organization_form:  OrganizationForm.second,
+                    declaration_period: RecurrencePeriods::Quarterly.first,
+                    payment_period:     RecurrencePeriods::Quarterly.second)
 
 Organization.create(name: 'Rubizza',               user: users.first, organization_form: organization_forms[2], taxation_form_id: 2)
 Organization.create(name: 'Organization1',         user: users.last,  organization_form: organization_forms[3], taxation_form_id: 2)

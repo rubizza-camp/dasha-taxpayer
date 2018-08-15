@@ -5,15 +5,15 @@ class TaxesBuilderPresenter < BasePresenter
 
   delegate :name, to: :taxation_form, prefix: :tax
   delegate :name, to: :model, prefix: :organization
-  delegate :declaration_event, to: :taxation_form
-  delegate :payment_event, to: :taxation_form
+  delegate :declaration_period, to: :taxation_form
+  delegate :payment_period, to: :taxation_form
 
-  def next_declaration_event
-    declaration_event.next_event
+  def next_declaration_period
+    declaration_period.next_event
   end
 
-  def next_payment_event
-    payment_event.next_event
+  def next_payment_period
+    payment_period.next_event
   end
 
   def rate
