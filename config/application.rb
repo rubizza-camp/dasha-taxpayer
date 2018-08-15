@@ -27,5 +27,7 @@ module DashaTaxpayer
       g.assets false
       g.helper false
     end
+
+    config.active_record.belongs_to_required_by_default = false
   end
 end
