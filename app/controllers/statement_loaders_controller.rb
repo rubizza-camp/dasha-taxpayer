@@ -14,7 +14,7 @@ class StatementLoadersController < ApplicationController
     tmp = params[:my_file].tempfile
     csv_text = File.read(tmp)
     csv = CSV.parse(csv_text, headers: true)
-    array_obj = CsvParser.new(csv).fetch
+    array_obj = BgpbCsvParser.new(csv).fetch
     @data_statement = select_type_tax(params[:id]).new(array_obj)
     render :show, data: @data_statement
   end
@@ -36,7 +36,7 @@ class StatementLoadersController < ApplicationController
   end
 end
 
-class CsvParser
+class BgpbCsvParser
   attr_reader :csv
   def initialize(csv)
     @csv = csv
@@ -51,7 +51,7 @@ class CsvParser
       statement_data.nominal_debit = row['Номинал - Дебет'].to_f
       statement_data.equivalent_debit = row['Эквивалент - Дебет'].to_f
       statement_data.correspondent_currency = row['Корреспондент - Валюта']
-      statement_data.equivalent_debit_byn_nbrb = CalculateExtract.rate_byn(statement_data.document_data,
+      statement_data.equivalent_debit_byn_nbrb = CurrencyCalculator.rate_byn(statement_data.document_data,
                                                                            statement_data.nominal_debit, statement_data.correspondent_currency)
       statement_data
     end
@@ -64,12 +64,7 @@ class StatementData
                 :equivalent_debit_byn_nbrb, :correspondent_currency
 end
 
-class CalculateExtract
-  attr_reader :objects_statement_data
-  def initialize(objects_statement_data)
-    @objects_statement_data = objects_statement_data
-  end
-
+class CurrencyCalculator
   def self.rate_byn(date_select, amount, currency_rate)
     tmp = currency_for_date(date_select, currency_rate)
     amount = amount.to_f
@@ -78,6 +73,13 @@ class CalculateExtract
 
   def self.currency_for_date(_date_select, _currency_rate)
     2.0
+  end
+end
+
+class CalculateExtract
+  attr_reader :objects_statement_data
+  def initialize(objects_statement_data)
+    @objects_statement_data = objects_statement_data
   end
 
   def receipts
