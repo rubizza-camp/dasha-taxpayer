@@ -2,10 +2,8 @@
   <div class="col-md-12">
     <h1 class="text-center">Organizations</h1>
   </div>
-  <div class="col-md-12 text-center" id="div-new-organization">
-    <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
-  </div>
-  <table class="table bg-success table-striped">
+
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Name</th>
@@ -27,4 +25,8 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class="col-md-12 text-center" id="div-new-organization">
+    <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
+  </div>
 </div>

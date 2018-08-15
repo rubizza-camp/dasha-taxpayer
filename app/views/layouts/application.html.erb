@@ -9,19 +9,22 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
+        <div class="collapse navbar-collapse" id="navbar1">
+          <ul class="navbar-nav mr-auto">
            <%= render 'layouts/menu/user_form' %>
           </ul>
-          <ul class="nav navbar-nav">
-            <%= render 'layouts/menu/login_form' %>
-         </ul>
+
+          <form class="form-inline">
+            <ul class="nav navbar-nav">
+              <%= render 'layouts/menu/login_form' %>
+            </ul>
+          </form>
         </div>
       </div>
     </nav>
-    <div class="container">
+    <div class="container" id = "alert-messages">
       <% if notice %>
           <p class="alert alert-success alert-dismissible show"><%= notice %></p>
       <% end%>
