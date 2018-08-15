@@ -10,7 +10,10 @@ FactoryBot.define do
 
     trait :worldwide_corparation do
       name 'worldwide_corparation'
-      association :taxation_form, :monthly_fixed_price
+
+      after(:create) do |organization_form|
+        create_list(:taxation_form, 1, organization_form: organization_form)
+      end
     end
   end
 end
