@@ -44,6 +44,7 @@ gem 'jquery-rails'
 gem 'cucumber'
 gem 'devise'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
+gem 'recurrence'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -75,6 +76,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'timecop'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

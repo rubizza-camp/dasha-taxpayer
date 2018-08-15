@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_09_153549) do
+ActiveRecord::Schema.define(version: 2018_08_12_210504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activity_types", force: :cascade do |t|
     t.string "name"
-    t.bigint "organization_form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["organization_form_id"], name: "index_activity_types_on_organization_form_id"
   end
 
   create_table "activity_types_organization_forms", id: false, force: :cascade do |t|
@@ -57,6 +55,16 @@ ActiveRecord::Schema.define(version: 2018_08_09_153549) do
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
+  create_table "recurrence_events", force: :cascade do |t|
+    t.string "type"
+    t.integer "day_start"
+    t.integer "day_end"
+    t.integer "month_start"
+    t.integer "month_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "taxation_forms", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
@@ -65,15 +73,11 @@ ActiveRecord::Schema.define(version: 2018_08_09_153549) do
     t.datetime "updated_at", null: false
     t.integer "declaration_period_in_days"
     t.string "period_type"
+    t.bigint "declaration_event_id"
+    t.bigint "payment_event_id"
+    t.index ["declaration_event_id"], name: "index_taxation_forms_on_declaration_event_id"
     t.index ["organization_form_id"], name: "index_taxation_forms_on_organization_form_id"
-  end
-
-  create_table "taxes", force: :cascade do |t|
-    t.string "date"
-    t.string "name"
-    t.string "rate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["payment_event_id"], name: "index_taxation_forms_on_payment_event_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,11 +99,12 @@ ActiveRecord::Schema.define(version: 2018_08_09_153549) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "activity_types", "organization_forms"
   add_foreign_key "calculation_forms", "activity_types"
   add_foreign_key "calculation_forms", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
   add_foreign_key "organizations", "taxation_forms"
   add_foreign_key "organizations", "users"
   add_foreign_key "taxation_forms", "organization_forms"
+  add_foreign_key "taxation_forms", "recurrence_events", column: "declaration_event_id"
+  add_foreign_key "taxation_forms", "recurrence_events", column: "payment_event_id"
 end
