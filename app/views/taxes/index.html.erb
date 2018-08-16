@@ -3,27 +3,31 @@
     <h1 class="text-center">Taxes</h1>
   </div>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Payment period</th>
-        <th>Declaration period</th>
-        <th>Name</th>
-        <th>Rate</th>
-        <th>Organization</th>
-      </tr>
-    </thead>
+  <% if @taxes.present? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Payment period</th>
+            <th>Declaration period</th>
+            <th>Name</th>
+            <th>Rate</th>
+            <th>Organization</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <% @taxes.each do |tax| %>
-        <tr>
-          <td class="col-md-3"><%= "c #{tax.next_payment_period.first.to_formatted_s(:rfc822)} по #{tax.next_payment_period.last.to_formatted_s(:rfc822)}" %></td>
-          <td class="col-md-3"><%= "c #{tax.next_declaration_period.first.to_formatted_s(:rfc822)} по #{tax.next_declaration_period.last.to_formatted_s(:rfc822)}" %></td>
-          <td class="col-md-3"><%= tax.tax_name %></td>
-          <td class="col-md-3"><%= tax.rate %></td>
-          <td class="col-md-3"><%= tax.organization_name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tbody>
+          <% @taxes.each do |tax| %>
+            <tr>
+              <td class="col-md-3"><%= "c #{tax.next_payment_period.first.to_formatted_s(:rfc822)} по #{tax.next_payment_period.last.to_formatted_s(:rfc822)}" %></td>
+              <td class="col-md-3"><%= "c #{tax.next_declaration_period.first.to_formatted_s(:rfc822)} по #{tax.next_declaration_period.last.to_formatted_s(:rfc822)}" %></td>
+              <td class="col-md-3"><%= tax.tax_name %></td>
+              <td class="col-md-3"><%= tax.rate %></td>
+              <td class="col-md-3"><%= tax.organization_name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  <% else %>
+    <div class="col-md-12 text-center">First you need to add an organization</div>
+  <% end %>
 </div>

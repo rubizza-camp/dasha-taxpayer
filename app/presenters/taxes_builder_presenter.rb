@@ -7,6 +7,7 @@ class TaxesBuilderPresenter < BasePresenter
   delegate :name, to: :model, prefix: :organization
   delegate :declaration_period, to: :taxation_form
   delegate :payment_period, to: :taxation_form
+  delegate :calculation_forms, to: :taxation_form
 
   def next_declaration_period
     declaration_period.next_period
@@ -17,11 +18,6 @@ class TaxesBuilderPresenter < BasePresenter
   end
 
   def rate
-    case tax_name
-    when 'Единый налог'
-      '109.22'
-    when 'УСН'
-      '5% от выручки'
-    end
+    calculation_forms.first.rate
   end
 end
