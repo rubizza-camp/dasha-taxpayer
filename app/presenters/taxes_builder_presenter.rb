@@ -4,7 +4,7 @@ class TaxesBuilderPresenter < BasePresenter
   class UnknownPeriodType < StandardError; end
 
   delegate :name, to: :taxation_form, prefix: :tax
-  delegate :name, to: :model, prefix: :organization
+  delegate :name, to: :organization, prefix: :organization
   delegate :declaration_period, to: :taxation_form
   delegate :payment_period, to: :taxation_form
 

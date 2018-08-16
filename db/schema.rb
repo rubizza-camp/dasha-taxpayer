@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_15_101210) do
+ActiveRecord::Schema.define(version: 2018_08_16_075731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "activity_type_id"
+    t.bigint "taxation_form_id"
+    t.bigint "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_type_id"], name: "index_activities_on_activity_type_id"
+    t.index ["organization_id"], name: "index_activities_on_organization_id"
+    t.index ["taxation_form_id"], name: "index_activities_on_taxation_form_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
 
   create_table "activity_types", force: :cascade do |t|
     t.string "name"
@@ -45,14 +58,10 @@ ActiveRecord::Schema.define(version: 2018_08_15_101210) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organization_form_id"
-    t.bigint "taxation_form_id"
     t.index ["organization_form_id"], name: "index_organizations_on_organization_form_id"
-    t.index ["taxation_form_id"], name: "index_organizations_on_taxation_form_id"
-    t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
   create_table "recurrence_periods", force: :cascade do |t|
@@ -97,11 +106,13 @@ ActiveRecord::Schema.define(version: 2018_08_15_101210) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "activity_types"
+  add_foreign_key "activities", "organizations"
+  add_foreign_key "activities", "taxation_forms"
+  add_foreign_key "activities", "users"
   add_foreign_key "calculation_forms", "activity_types"
   add_foreign_key "calculation_forms", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
-  add_foreign_key "organizations", "taxation_forms"
-  add_foreign_key "organizations", "users"
   add_foreign_key "taxation_forms", "organization_forms"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "declaration_period_id"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "payment_period_id"
