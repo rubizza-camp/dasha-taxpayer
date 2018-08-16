@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module RecurrenceEvents
+module RecurrencePeriods
   class Quarterly < Monthly
     private
 
-    def reccurence_params(day)
+    def recurrence_params(day)
       super.merge(interval: :quarterly)
     end
   end

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-module RecurrenceEvents
-  class Base < RecurrenceEvent
-    def next_event
+module RecurrencePeriods
+  class Base < RecurrencePeriod
+    def next_period
       date_start..date_end
     end
 
-    def events(options={})
+    def periods(options={})
       dates_end = recurrence_end.events(options)
       dates_end.map do |date|
         date_start_before_date(date)..date

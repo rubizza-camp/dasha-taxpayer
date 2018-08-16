@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe RecurrenceEvents::Yearly, type: :model do
+RSpec.describe RecurrencePeriods::Yearly, type: :model do
   let(:today_date) { Date.new(2018, 7, 31) }
   let(:day_start) { 1 }
   let(:day_end) { 22 }
@@ -26,14 +26,14 @@ RSpec.describe RecurrenceEvents::Yearly, type: :model do
 
   context 'with date_start and date_end' do
     it 'return valid date range' do
-      expect(subject.next_event).to eq(Date.new(2019, month_start, day_start)..Date.new(2019, month_end, day_end))
+      expect(subject.next_period).to eq(Date.new(2019, month_start, day_start)..Date.new(2019, month_end, day_end))
     end
 
     it 'return date ranges in set interval' do
-      events = subject.events(until: Date.new(2021, 1, 1))
+      periods = subject.periods(until: Date.new(2021, 1, 1))
 
-      expect(events).to eq([Date.new(2019, month_start, day_start)..Date.new(2019, month_end, day_end),
-                            Date.new(2020, month_start, day_start)..Date.new(2020, month_end, day_end)])
+      expect(periods).to eq([Date.new(2019, month_start, day_start)..Date.new(2019, month_end, day_end),
+                             Date.new(2020, month_start, day_start)..Date.new(2020, month_end, day_end)])
     end
   end
 end

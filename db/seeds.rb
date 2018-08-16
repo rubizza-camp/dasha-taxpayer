@@ -18,24 +18,30 @@ organization_forms = [OrganizationForm.create(name: 'Физическое лиц
                       OrganizationForm.create(name: 'Частное предприятие'),
                       OrganizationForm.create(name: 'OOO')]
 
-TaxationForm.create(name:                       'Единый налог',
-                    organization_form:          OrganizationForm.first,
-                    period_type:                'month',
-                    declaration_period_in_days: 1)
-TaxationForm.create(name:                       'УСН',
-                    organization_form:          OrganizationForm.second,
-                    period_type:                'quarter',
-                    declaration_period_in_days: 22)
-
-Organization.create(name: 'Rubizza',               user: users.first, organization_form: organization_forms[2], taxation_form_id: 2)
-Organization.create(name: 'Organization1',         user: users.last,  organization_form: organization_forms[3], taxation_form_id: 2)
-Organization.create(name: 'Ivanov Ivan Ivanovich', user: users.last,  organization_form: organization_forms[1], taxation_form_id: 1)
-
 ActivityType.create(name: 'Деятельность1')
 ActivityType.create(name: 'Деятельность2')
 ActivityType.create(name: 'Деятельность3')
 ActivityType.create(name: 'Деятельность4')
 ActivityType.create(name: 'Деятельность5')
+
+RecurrencePeriods::Monthly.create(day_start: 1, day_end: 31)
+RecurrencePeriods::Monthly.create(day_start: 1, day_end: 31)
+RecurrencePeriods::Quarterly.create(day_start: 15, day_end: 20)
+RecurrencePeriods::Quarterly.create(day_start: 1, day_end: 22)
+
+TaxationForm.create(name:               'Единый налог',
+                    organization_form:  OrganizationForm.first,
+                    declaration_period: RecurrencePeriods::Monthly.first,
+                    payment_period:     RecurrencePeriods::Monthly.second)
+
+TaxationForm.create(name:               'УСН',
+                    organization_form:  OrganizationForm.second,
+                    declaration_period: RecurrencePeriods::Quarterly.first,
+                    payment_period:     RecurrencePeriods::Quarterly.second)
+
+Organization.create(name: 'Rubizza',               user: users.first, organization_form: organization_forms[2], taxation_form_id: 2)
+Organization.create(name: 'Organization1',         user: users.last,  organization_form: organization_forms[3], taxation_form_id: 2)
+Organization.create(name: 'Ivanov Ivan Ivanovich', user: users.last,  organization_form: organization_forms[1], taxation_form_id: 1)
 
 Taxes::CalculationForms::FixedRate.create(rate: 109.22, taxation_form_id: 1, activity_type_id: 1)
 Taxes::CalculationForms::FixedRate.create(rate: 155.00, taxation_form_id: 1, activity_type_id: 1)

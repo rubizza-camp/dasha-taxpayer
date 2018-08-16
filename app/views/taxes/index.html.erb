@@ -3,15 +3,17 @@
     <h1 class="text-center">Taxes</h1>
   </div>
 
-  <table class="table bg-success table-striped">
-    <thead>
-      <tr>
-        <th>Period</th>
-        <th>Name</th>
-        <th>Rate</th>
-        <th>Organization</th>
-      </tr>
-    </thead>
+  <% if @taxes.present? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Payment period</th>
+            <th>Declaration period</th>
+            <th>Name</th>
+            <th>Rate</th>
+            <th>Organization</th>
+          </tr>
+        </thead>
 
     <tbody>
       <% @taxes.each do |tax| %>
