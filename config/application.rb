@@ -29,6 +29,5 @@ module DashaTaxpayer
     end
 
     config.active_record.belongs_to_required_by_default = false
-    #config.action_controller.default_protect_from_forgery = false
   end
 end

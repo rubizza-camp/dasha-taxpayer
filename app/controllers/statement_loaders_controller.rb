@@ -8,10 +8,9 @@ class StatementLoadersController < ApplicationController
   def show; end
 
   def extract_tax
-    raise 'Exception Upload CSV' if params[:my_file].blank?
-    csv       = CsvParserStatementService.new.parse(params[:my_file])
-    array_obj = BgpbCsvHandlingService.new(csv).fetch
-    @data_statement = GetTaxForOrganizationService.fetch(params[:id]).new(array_obj)
+    @data_statement = BankStatementCalculateService.calculate(params)
     render :show, data: @data_statement
+  rescue StandardError
+    redirect_to extract_new_path, alert: 'Ошибка. Попробуйте загрузить еще раз'
   end
 end
