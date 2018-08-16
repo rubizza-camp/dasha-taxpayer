@@ -15,18 +15,35 @@
           </tr>
         </thead>
 
-        <tbody>
-          <% @taxes.each do |tax| %>
-            <tr>
-              <td class="col-md-3"><%= "c #{tax.next_payment_period.first.to_formatted_s(:rfc822)} по #{tax.next_payment_period.last.to_formatted_s(:rfc822)}" %></td>
-              <td class="col-md-3"><%= "c #{tax.next_declaration_period.first.to_formatted_s(:rfc822)} по #{tax.next_declaration_period.last.to_formatted_s(:rfc822)}" %></td>
-              <td class="col-md-3"><%= tax.tax_name %></td>
-              <td class="col-md-3"><%= tax.rate %></td>
-              <td class="col-md-3"><%= tax.organization_name %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <tbody>
+      <% @taxes.each do |tax| %>
+        <tr>
+            <td class="col-md-3"><%= "c #{tax.next_payment_period.first.to_formatted_s(:rfc822)} по #{tax.next_payment_period.last.to_formatted_s(:rfc822)}" %></td>
+            <td class="col-md-3"><%= "c #{tax.next_declaration_period.first.to_formatted_s(:rfc822)} по #{tax.next_declaration_period.last.to_formatted_s(:rfc822)}" %></td>
+            <td class="col-md-3"><%= tax.tax_name %></td>
+            <td class="col-md-3"><%= tax.rate %></td>
+            <td class="col-md-3"><%= tax.organization_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= month_calendar do |date| %>
+    <%= date %>
+      <% @taxes.each do |tax| %>
+        <% if date == tax.next_payment_period.last %>
+          <div class="p-1 bg-primary text-white">
+            <%= tax.organization_name %>
+          </div>
+        <% end %>
+
+        <% if date == tax.next_declaration_period.last %>
+          <div class="p-1 bg-warning text-white">
+            <%= tax.organization_name %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   <% else %>
     <div class="col-md-12 text-center">First you need to add an organization</div>
   <% end %>
