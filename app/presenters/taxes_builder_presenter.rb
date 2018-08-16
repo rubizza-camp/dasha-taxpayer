@@ -9,11 +9,11 @@ class TaxesBuilderPresenter < BasePresenter
   delegate :payment_period, to: :taxation_form
 
   def next_declaration_period
-    declaration_period.next_event
+    declaration_period.next_period
   end
 
   def next_payment_period
-    payment_period.next_event
+    payment_period.next_period
   end
 
   def rate
