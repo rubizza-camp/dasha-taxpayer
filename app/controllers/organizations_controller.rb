@@ -19,6 +19,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
+    @activity = Activity.new(organization: @organization)
+    @organization
   end
 
   # GET /organizations/1/edit
@@ -30,10 +32,11 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   # This method smells of :reek:DuplicateMethodCall
   def create
-    @organization = Organization.new(organization_params.merge(user_id: current_user.id))
+    @organization = Organization.new(organization_params)
+    @activity = Activity.new(activity_params.merge(user: current_user, organization: @organization))
 
     respond_to do |format|
-      if @organization.save
+      if @activity.save
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render :show, status: :created, location: @organization }
       else
@@ -48,7 +51,7 @@ class OrganizationsController < ApplicationController
   # This method smells of :reek:DuplicateMethodCall
   def update
     respond_to do |format|
-      if @organization.update(organization_params.merge(user_id: current_user.id))
+      if @organization.update(organization_params)
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
         format.json { render :show, status: :ok, location: @organization }
       else
@@ -77,6 +80,10 @@ class OrganizationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
-    params.require(:organization).permit(:name, :organization_form_id, :taxation_form_id)
+    params.require(:organization).permit(:name, :organization_form_id)
+  end
+
+  def activity_params
+    params.require(:organization).require(:activity).permit(:activity_type_id, :taxation_form_id)
   end
 end

@@ -2,57 +2,39 @@
   <div class="col-md-12">
     <h1 class="text-center">Organizations</h1>
   </div>
-
   <% if @organizations.present? %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Organization Form</th>
-          <th>Activities</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @organizations.each do |organization| %>
-          <tr>
-            <td class="col-md-2"><%= organization.name %></td>
-            <td class="col-md-2"><%= organization.organization_form.name %></td>
-            <td class="col-md-2">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Activity Type</th>
-                    <th>Taxation Form</th>
-                  </tr>
-                 </thead>
-               <tbody>
-                <% organization.activities.each do |activity|%>
-                    <td><%= activity.activity_type.name %></td>
-                    <td><%= activity.taxation_form.name %></td>
-                <% end %>
-               </tbody>
-            </td>
-            <td class="col-md-1">
-              <%= link_to 'Show', organization, class: 'btn btn-sm btn-success' %>
-            </td>
-            <td class="col-md-1">
-              <%= link_to 'Edit', edit_organization_path(organization), class: 'btn btn-sm btn-info' %>
-            </td>
-            <td class="col-md-1">
-              <%= link_to 'Destroy', organization, method: :delete,
-                                                   data: { confirm: 'Are you sure?' },
-                                                   class: 'btn btn-sm btn-danger' %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <% @organizations.each do |organization| %>
+          <div class="col-md-12" id="organization-show-main">
+            <div class="row form-group" id="organization-show-name">
+              <h3><%= link_to "#{organization.organization_form.name} #{organization.name}", organization %></h3>
+            </div>
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                  <th>Вид деятельности</th>
+                  <th>Форма налогообложения</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              <% organization.activities.each do |activity|%>
+                <tr>
+                  <th scope="col"><%= activity.activity_type.name %></th>
+                  <td scope="col"><%= activity.taxation_form.name %></td>
+                  <td class="col-md-1"><%= link_to 'Edit', edit_activity_path(activity), class: 'btn btn-sm btn-info' %></th>
+                  <td class="col-md-1"><%= link_to 'Destroy', activity, method: :delete,
+                              data: { confirm: 'Are you sure?' },
+                              class: 'btn btn-sm btn-danger' %></th>
+              </tr>
+              </tbody>
+            </table>
+            <% end %>
+          </div>
+      <% end %>
   <% else %>
     <div class="col-md-12 text-center">Here you will see the organizations you added</div>
   <% end %>
-
   <div class="col-md-12 text-center" id="div-new-organization">
     <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
   </div>
