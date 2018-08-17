@@ -8,19 +8,27 @@
             <div class="row form-group" id="organization-show-name">
               <h3><%= link_to "#{organization.organization_form.name} #{organization.name}", organization %></h3>
             </div>
-            <% organization.activities.each do |activity|%>
-                <div class="row">
-                  <h4 class="col-md-6 bg-organization-attr">ActivityType</h4>
-                  <h4 class="col-md-6 bg-organization-attr">TaxationForm</h4>
-                </div>
-                <div class="row">
-                  <h5 class="col-md-5"><%= activity.activity_type.name %>></h5>
-                  <h5 class="col-md-5"><%= activity.taxation_form.name %></h5>
-                  <%= link_to 'Edit', edit_activity_path(activity), class: 'col-md-1 btn btn-sm btn-info' %>
-                  <%= link_to 'Destroy', activity, method: :delete,
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                  <th>Вид деятельности</th>
+                  <th>Форма налогообложения</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              <% organization.activities.each do |activity|%>
+                <tr>
+                  <th scope="col"><%= activity.activity_type.name %></th>
+                  <td scope="col"><%= activity.taxation_form.name %></td>
+                  <td class="col-md-1"><%= link_to 'Edit', edit_activity_path(activity), class: 'btn btn-sm btn-info' %></th>
+                  <td class="col-md-1"><%= link_to 'Destroy', activity, method: :delete,
                               data: { confirm: 'Are you sure?' },
-                              class: 'col-md-1 btn btn-sm btn-danger' %>
-                </div>
+                              class: 'btn btn-sm btn-danger' %></th>
+              </tr>
+              </tbody>
+            </table>
             <% end %>
           </div>
       <% end %>
