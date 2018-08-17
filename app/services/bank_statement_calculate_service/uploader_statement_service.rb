@@ -3,8 +3,7 @@
 module BankStatementCalculateService
   class UploaderStatementService
     def self.upload(file)
-      tmp = file.tempfile
-      File.read(tmp)
+      File.read(file)
     end
   end
 end
