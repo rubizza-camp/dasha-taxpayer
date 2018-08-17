@@ -2,14 +2,15 @@
 
 module BankStatementCalculateService
   class BankStatementBgpbService
-    attr_reader :type_file, :file
-    def initialize(type_file, file)
+    attr_reader :bank_name, :type_file, :file
+    def initialize(bank_name, type_file, file)
+      @bank_name = bank_name
       @type_file = type_file
       @file = file
     end
 
     def parse
-      ParserStatementService.new(type_file, file).parse
+      ParserStatementService.new(bank_name, type_file, file).parse
     end
 
     def handling_data(data_statement)

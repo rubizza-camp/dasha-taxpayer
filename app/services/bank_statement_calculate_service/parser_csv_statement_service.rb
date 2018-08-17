@@ -2,10 +2,12 @@
 
 module BankStatementCalculateService
   class ParserCsvStatementService
-    def self.parse(csv_file)
-      csv_text = UploaderStatementService.upload(csv_file)
-      csv_text = StringHandlingHelper.delete_first_sym_bom(csv_text)
-      CSV.parse(csv_text, col_sep: ';', headers: true)
+    # This method smells of :reek:ControlParameter:
+    def self.parse(csv_file, bank_name)
+      case bank_name
+      when :bgpb
+        ParserCsvStatementBgpbService.parse(csv_file)
+      end
     end
   end
 end

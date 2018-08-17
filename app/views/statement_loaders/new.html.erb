@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-left">
-      <h1><%= @organization.name %> </h1>
+      <h3>Загрузить csv файл для выписки</h3>
       <%= simple_form_for(extract_tax_path(@organization.id)) do |f| %>
         <%= f.input :my_file, as: :file, label: false, input_html: { name: 'my_file' }  %>
         <%= f.button :submit, 'Загрузить', class: "btn-primary" %>

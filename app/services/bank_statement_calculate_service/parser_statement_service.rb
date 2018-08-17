@@ -2,8 +2,9 @@
 
 module BankStatementCalculateService
   class ParserStatementService
-    attr_reader :type_file, :file
-    def initialize(type_file, file)
+    attr_reader :bank_name, :type_file, :file
+    def initialize(bank_name, type_file, file)
+      @bank_name = bank_name
       @type_file = type_file
       @file = file
     end
@@ -11,7 +12,7 @@ module BankStatementCalculateService
     def parse
       case type_file
       when :csv
-        ParserCsvStatementService.parse(file)
+        ParserCsvStatementService.parse(file, bank_name)
       end
     end
   end

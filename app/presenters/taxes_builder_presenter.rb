@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 class TaxesBuilderPresenter < BasePresenter
@@ -6,7 +5,6 @@ class TaxesBuilderPresenter < BasePresenter
 
   delegate :name, to: :taxation_form, prefix: :tax
   delegate :name, to: :organization, prefix: :organization
-  delegate :id, to: :organization, prefix: :organization
   delegate :declaration_period, to: :taxation_form
   delegate :payment_period, to: :taxation_form
   delegate :calculation_forms, to: :taxation_form
