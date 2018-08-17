@@ -10,12 +10,20 @@
       <div class="row">
         <h4><%= @organization.organization_form.name %></h4>
       </div>
-      <div class="row">
-        <h5 class="bg-organization-attr">TaxationForm</h5>
-      </div>
-      <div class="row">
-        <h4><%= @organization.taxation_form.name %></h4>
-      </div>
+      <% @organization.activities.each do |activity|%>
+          <div class="row">
+            <h5 class="bg-organization-attr">ActivityType</h5>
+          </div>
+          <div class="row">
+            <h4><%= activity.activity_type.name %>></h4>
+          </div>
+          <div class="row">
+            <h5 class="bg-organization-attr">TaxationForm</h5>
+          </div>
+          <div class="row">
+            <h4><%= activity.taxation_form.name %></h4>
+          </div>
+      <% end %>
     </div>
   </div>
   <div class="col-md-12">&nbsp;</div>

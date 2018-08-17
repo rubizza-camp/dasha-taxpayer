@@ -10,8 +10,8 @@ class TaxesController < ApplicationController
   private
 
   def wrapped_taxes
-    current_user.organizations.map do |organization|
-      TaxesBuilderPresenter.new(organization)
+    current_user.activities.map do |activity|
+      TaxesBuilderPresenter.new(activity)
     end
   end
 end

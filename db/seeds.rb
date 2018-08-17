@@ -10,7 +10,7 @@
 
 # User.create(email: 'test@mail.ru', password: '123456', password_confirmation: '123456')
 
-users = [User.create(email: 'yourname@yourcompany.com', password: '111111', password_confirmation: '111111'),
+users = [User.create(email: 'test@mail.ru', password: '111111', password_confirmation: '111111'),
          User.create(email: 'user2@mail2.com', password: '111111', password_confirmation: '111111')]
 
 organization_forms = [OrganizationForm.create(name: 'Физическое лицо (самозанятость)'),
@@ -39,9 +39,24 @@ TaxationForm.create(name:               'УСН',
                     declaration_period: RecurrencePeriods::Quarterly.first,
                     payment_period:     RecurrencePeriods::Quarterly.second)
 
-Organization.create(name: 'Rubizza',               user: users.first, organization_form: organization_forms[2], taxation_form_id: 2)
-Organization.create(name: 'Organization1',         user: users.last,  organization_form: organization_forms[3], taxation_form_id: 2)
-Organization.create(name: 'Ivanov Ivan Ivanovich', user: users.last,  organization_form: organization_forms[1], taxation_form_id: 1)
+Organization.create(name: 'Rubizza',               organization_form: organization_forms[2])
+Organization.create(name: 'Organization1',         organization_form: organization_forms[3])
+Organization.create(name: 'Ivanov Ivan Ivanovich', organization_form: organization_forms[1])
+
+Activity.create(user:          users.first,
+                activity_type: ActivityType.first,
+                taxation_form: TaxationForm.first,
+                organization:  Organization.first)
+
+Activity.create(user:          users.second,
+                activity_type: ActivityType.second,
+                taxation_form: TaxationForm.second,
+                organization:  Organization.second)
+
+Activity.create(user:          users.second,
+                activity_type: ActivityType.second,
+                taxation_form: TaxationForm.second,
+                organization:  Organization.third)
 
 Taxes::CalculationForms::FixedRate.create(rate: 109.22, taxation_form_id: 1, activity_type_id: 1)
 Taxes::CalculationForms::FixedRate.create(rate: 155.00, taxation_form_id: 1, activity_type_id: 1)

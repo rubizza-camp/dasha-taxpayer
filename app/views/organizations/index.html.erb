@@ -9,7 +9,7 @@
         <tr>
           <th>Name</th>
           <th>Organization Form</th>
-          <th>Taxation Form</th>
+          <th>Activities</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -17,9 +17,23 @@
       <tbody>
         <% @organizations.each do |organization| %>
           <tr>
-            <td class="col-md-3"><%= organization.name %></td>
-            <td class="col-md-3"><%= organization.organization_form.name %></td>
-            <td class="col-md-3"><%= organization.taxation_form.name %></td>
+            <td class="col-md-2"><%= organization.name %></td>
+            <td class="col-md-2"><%= organization.organization_form.name %></td>
+            <td class="col-md-2">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Activity Type</th>
+                    <th>Taxation Form</th>
+                  </tr>
+                 </thead>
+               <tbody>
+                <% organization.activities.each do |activity|%>
+                    <td><%= activity.activity_type.name %></td>
+                    <td><%= activity.taxation_form.name %></td>
+                <% end %>
+               </tbody>
+            </td>
             <td class="col-md-1">
               <%= link_to 'Show', organization, class: 'btn btn-sm btn-success' %>
             </td>
