@@ -2,8 +2,8 @@
 
 class TaxationForm < ApplicationRecord
   belongs_to :organization_form
-  has_many :organizations, dependent: :destroy
+  has_many :activities, dependent: :destroy
   has_many :calculation_forms, class_name: 'Taxes::CalculationForm', dependent: :destroy
-  belongs_to :declaration_event, class_name: 'RecurrenceEvent'
-  belongs_to :payment_event, class_name: 'RecurrenceEvent'
+  belongs_to :declaration_period, class_name: 'RecurrencePeriod'
+  belongs_to :payment_period, class_name: 'RecurrencePeriod'
 end

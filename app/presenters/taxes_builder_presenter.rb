@@ -1,28 +1,25 @@
+
 # frozen_string_literal: true
 
 class TaxesBuilderPresenter < BasePresenter
   class UnknownPeriodType < StandardError; end
 
   delegate :name, to: :taxation_form, prefix: :tax
-  delegate :name, to: :model, prefix: :organization
-  delegate :id, to: :model, prefix: :organization
-  delegate :declaration_event, to: :taxation_form
-  delegate :payment_event, to: :taxation_form
+  delegate :name, to: :organization, prefix: :organization
+  delegate :id, to: :organization, prefix: :organization
+  delegate :declaration_period, to: :taxation_form
+  delegate :payment_period, to: :taxation_form
+  delegate :calculation_forms, to: :taxation_form
 
-  def next_declaration_event
-    declaration_event.next_event
+  def next_declaration_period
+    declaration_period.next_period
   end
 
-  def next_payment_event
-    payment_event.next_event
+  def next_payment_period
+    payment_period.next_period
   end
 
   def rate
-    case tax_name
-    when 'Единый налог'
-      '109.22'
-    when 'УСН'
-      '5% от выручки'
-    end
+    calculation_forms.first.rate
   end
 end

@@ -1,8 +1,4 @@
 <% if user_signed_in? %>
-    <li class='active'>
-      <%= link_to('Organizations', organizations_path) %>
-    </li>
-    <li>
-      <%= link_to('Taxes', taxes_path) %>
-    </li>
+  <li class='nav-link'><%= link_to('Organizations', organizations_path) %></li>
+  <li class='nav-link'><%= link_to('Taxes', taxes_path) %></li>
 <% end %>

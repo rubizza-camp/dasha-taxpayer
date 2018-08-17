@@ -4,14 +4,14 @@ class TaxesController < ApplicationController
   before_action :authenticate_user!, only: %i[index]
 
   def index
-    @taxes = wrapped_taxes.sort_by { |tax| tax.next_payment_event.last }
+    @taxes = wrapped_taxes.sort_by { |tax| tax.next_payment_period.last }
   end
 
   private
 
   def wrapped_taxes
-    current_user.organizations.map do |organization|
-      TaxesBuilderPresenter.new(organization)
+    current_user.activities.map do |activity|
+      TaxesBuilderPresenter.new(activity)
     end
   end
 end

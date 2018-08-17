@@ -8,7 +8,6 @@ FactoryBot.define do
     trait :global_dominator do
       name 'Global Dominator, Inc.'
       association :organization_form, :worldwide_corparation
-      association :taxation_form, :monthly_fixed_price
     end
   end
 end

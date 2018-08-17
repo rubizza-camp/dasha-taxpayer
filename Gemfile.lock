@@ -313,6 +313,8 @@ GEM
     selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    simple_calendar (2.3.0)
+      rails (>= 3.0)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -393,6 +395,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_calendar (~> 2.0)
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

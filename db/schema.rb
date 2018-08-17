@@ -10,17 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_15_073048) do
+ActiveRecord::Schema.define(version: 2018_08_16_075731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "activity_types", force: :cascade do |t|
-    t.string "name"
-    t.bigint "organization_form_id"
+  create_table "activities", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "activity_type_id"
+    t.bigint "taxation_form_id"
+    t.bigint "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["organization_form_id"], name: "index_activity_types_on_organization_form_id"
+    t.index ["activity_type_id"], name: "index_activities_on_activity_type_id"
+    t.index ["organization_id"], name: "index_activities_on_organization_id"
+    t.index ["taxation_form_id"], name: "index_activities_on_taxation_form_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "activity_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "activity_types_organization_forms", id: false, force: :cascade do |t|
@@ -47,17 +58,13 @@ ActiveRecord::Schema.define(version: 2018_08_15_073048) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organization_form_id"
-    t.bigint "taxation_form_id"
     t.index ["organization_form_id"], name: "index_organizations_on_organization_form_id"
-    t.index ["taxation_form_id"], name: "index_organizations_on_taxation_form_id"
-    t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
-  create_table "recurrence_events", force: :cascade do |t|
+  create_table "recurrence_periods", force: :cascade do |t|
     t.string "type"
     t.integer "day_start"
     t.integer "day_end"
@@ -73,11 +80,11 @@ ActiveRecord::Schema.define(version: 2018_08_15_073048) do
     t.bigint "organization_form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "declaration_event_id"
-    t.bigint "payment_event_id"
-    t.index ["declaration_event_id"], name: "index_taxation_forms_on_declaration_event_id"
+    t.bigint "declaration_period_id"
+    t.bigint "payment_period_id"
+    t.index ["declaration_period_id"], name: "index_taxation_forms_on_declaration_period_id"
     t.index ["organization_form_id"], name: "index_taxation_forms_on_organization_form_id"
-    t.index ["payment_event_id"], name: "index_taxation_forms_on_payment_event_id"
+    t.index ["payment_period_id"], name: "index_taxation_forms_on_payment_period_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,13 +106,14 @@ ActiveRecord::Schema.define(version: 2018_08_15_073048) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "activity_types", "organization_forms"
+  add_foreign_key "activities", "activity_types"
+  add_foreign_key "activities", "organizations"
+  add_foreign_key "activities", "taxation_forms"
+  add_foreign_key "activities", "users"
   add_foreign_key "calculation_forms", "activity_types"
   add_foreign_key "calculation_forms", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
-  add_foreign_key "organizations", "taxation_forms"
-  add_foreign_key "organizations", "users"
   add_foreign_key "taxation_forms", "organization_forms"
-  add_foreign_key "taxation_forms", "recurrence_events", column: "declaration_event_id"
-  add_foreign_key "taxation_forms", "recurrence_events", column: "payment_event_id"
+  add_foreign_key "taxation_forms", "recurrence_periods", column: "declaration_period_id"
+  add_foreign_key "taxation_forms", "recurrence_periods", column: "payment_period_id"
 end
