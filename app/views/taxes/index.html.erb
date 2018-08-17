@@ -12,17 +12,19 @@
             <th>Name</th>
             <th>Rate</th>
             <th>Organization</th>
+             <th></th>
           </tr>
         </thead>
 
     <tbody>
       <% @taxes.each do |tax| %>
         <tr>
-            <td class="col-md-3"><%= "c #{tax.next_payment_period.first.to_formatted_s(:rfc822)} по #{tax.next_payment_period.last.to_formatted_s(:rfc822)}" %></td>
+          <td class="col-md-3"><%= "c #{tax.next_payment_period.first.to_formatted_s(:rfc822)} по #{tax.next_payment_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= "c #{tax.next_declaration_period.first.to_formatted_s(:rfc822)} по #{tax.next_declaration_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= tax.tax_name %></td>
             <td class="col-md-3"><%= tax.rate %></td>
             <td class="col-md-3"><%= tax.organization_name %></td>
+            <td class="col-md-3"><%= link_to 'Рассчитать', extract_new_path(tax.organization_id), class: 'btn btn-sm btn-info' %></td>
         </tr>
       <% end %>
     </tbody>
