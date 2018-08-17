@@ -81,10 +81,6 @@ class OrganizationsController < ApplicationController
   def organization_params
     params.require(:organization).permit(:name,
                                          :organization_form_id,
-                                         activities_attributes: [:id,
-                                                                 :activity_type_id,
-                                                                 :taxation_form_id,
-                                                                 :_destroy])
+                                         activities_attributes: %i[id activity_type_id taxation_form_id _destroy])
   end
-
 end
