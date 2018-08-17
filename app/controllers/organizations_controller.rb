@@ -19,8 +19,6 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
-    @activity = Activity.new(organization: @organization)
-    @organization
   end
 
   # GET /organizations/1/edit
