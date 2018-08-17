@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_activity, only: %i[edit update destroy]
 
   # GET /activities/new
   def new
@@ -8,6 +10,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/edit
   def edit
+    # edit
   end
 
   # POST /activities
@@ -43,6 +46,7 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_activity
     @activity = Activity.find(params[:id])
