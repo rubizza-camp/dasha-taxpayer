@@ -17,3 +17,5 @@
 //= require bootstrap-sprockets
 //= require jquery3
 //= require popper
+//= require nested_form_fields
+//= require jquery_ujs

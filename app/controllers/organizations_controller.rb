@@ -33,10 +33,9 @@ class OrganizationsController < ApplicationController
   # This method smells of :reek:DuplicateMethodCall
   def create
     @organization = Organization.new(organization_params)
-    @activity = Activity.new(activity_params.merge(user: current_user, organization: @organization))
 
     respond_to do |format|
-      if @activity.save
+      if @organization.save
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render :show, status: :created, location: @organization }
       else
@@ -80,10 +79,12 @@ class OrganizationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
-    params.require(:organization).permit(:name, :organization_form_id)
+    params.require(:organization).permit(:name,
+                                         :organization_form_id,
+                                         activities_attributes: [:id,
+                                                                 :activity_type_id,
+                                                                 :taxation_form_id,
+                                                                 :_destroy])
   end
 
-  def activity_params
-    params.require(:organization).require(:activity).permit(:activity_type_id, :taxation_form_id)
-  end
 end
