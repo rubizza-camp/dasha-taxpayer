@@ -77,8 +77,10 @@ class OrganizationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
-    params.require(:organization).permit(:name,
-                                         :organization_form_id,
-                                         activities_attributes: %i[id activity_type_id taxation_form_id _destroy])
+    permited_params = params.require(:organization).permit(:name,
+                                                           :organization_form_id,
+                                                           activities_attributes: %i[id activity_type_id taxation_form_id _destroy])
+    permited_params['activities_attributes']['0']['user_id'] = current_user.id
+    permited_params
   end
 end
