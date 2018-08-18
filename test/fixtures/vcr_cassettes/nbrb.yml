@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.nbrb.by/API/ExRates/Rates/USD?ParamMode=2&Periodicity=0&onDate=2018-8-18
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.nbrb.by
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=60
+      Content-Length:
+      - '141'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - '"0daa5bd8-f696-40ba-96e9-6eca66302dc8"'
+      Server:
+      - Microsoft-IIS/8.5
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Fri, 17 Aug 2018 23:47:19 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJDdXJfSUQiOjE0NSwiRGF0ZSI6IjIwMTgtMDgtMThUMDA6MDA6MDAiLCJDdXJfQWJicmV2aWF0aW9uIjoiVVNEIiwiQ3VyX1NjYWxlIjoxLCJDdXJfTmFtZSI6ItCU0L7Qu9C70LDRgCDQodCo0JAiLCJDdXJfT2ZmaWNpYWxSYXRlIjoyLjA1MDh9
+    http_version: 
+  recorded_at: Sat, 18 Aug 2018 02:50:25 GMT
+recorded_with: VCR 4.0.0
