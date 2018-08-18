@@ -6,7 +6,7 @@ require 'rails_helper'
 RSpec.describe BankStatementCalculateService do
   let(:tax) { OpenStruct.new(name: 'УСН') }
   let(:success_result_for_statement) do
-    {receipts: 5841.0, exchange_difference: 13.63, gross_revenue: 5854.63, sum_tax: 292.73}
+    {receipts: 5861.1, exchange_difference: -6.47, gross_revenue: 5854.63, sum_tax: 292.73}
   end
   describe "processes an extract of Belgazprombank from csv file" do
     it "returns success calculate" do
