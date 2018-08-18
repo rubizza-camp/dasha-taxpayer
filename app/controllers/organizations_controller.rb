@@ -7,7 +7,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = current_user.activities.map(&:organization)
+    @organizations = current_user.activities.map(&:organization).uniq
   end
 
   # rubocop:disable Style/EmptyMethod
@@ -80,7 +80,9 @@ class OrganizationsController < ApplicationController
     permited_params = params.require(:organization).permit(:name,
                                                            :organization_form_id,
                                                            activities_attributes: %i[id activity_type_id taxation_form_id _destroy])
-    permited_params['activities_attributes']['0']['user_id'] = current_user.id
+    permited_params['activities_attributes'].transform_values! do |activity_attributes|
+      activity_attributes.merge(user_id: current_user.id)
+    end
     permited_params
   end
 end
