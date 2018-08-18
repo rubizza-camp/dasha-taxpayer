@@ -2,26 +2,16 @@
   <div class="row text-center">
     <div class="col-md-12" id="organization-show-main">
       <div class="row form-group" id="organization-show-name">
-        <h3><%= @organization.name %></h3>
-      </div>
-      <div class="row">
-        <h5 class="bg-organization-attr">OrganizationForm</h5>
-      </div>
-      <div class="row">
-        <h4><%= @organization.organization_form.name %></h4>
+        <h3><%= "#{@organization.organization_form.name} #{@organization.name}" %></h3>
       </div>
       <% @organization.activities.each do |activity|%>
           <div class="row">
-            <h5 class="bg-organization-attr">ActivityType</h5>
+            <h4 class="col-md-6 bg-organization-attr">ActivityType</h4>
+            <h4 class="col-md-6 bg-organization-attr">TaxationForm</h4>
           </div>
           <div class="row">
-            <h4><%= activity.activity_type.name %>></h4>
-          </div>
-          <div class="row">
-            <h5 class="bg-organization-attr">TaxationForm</h5>
-          </div>
-          <div class="row">
-            <h4><%= activity.taxation_form.name %></h4>
+            <h5 class="col-md-5"><%= activity.activity_type.name %>></h5>
+            <h5 class="col-md-5"><%= activity.taxation_form.name %></h5>
           </div>
       <% end %>
     </div>
@@ -29,6 +19,9 @@
   <div class="col-md-12">&nbsp;</div>
   <div class="col-md-12 form-group text-center">
     <%= link_to 'Edit', edit_organization_path(@organization), class: "btn btn-info" %>
+    <%= link_to 'Destroy', @organization, method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-danger' %>
     <%= link_to 'Back', organizations_path, class: "btn btn-success" %>
  </div>
 </div>

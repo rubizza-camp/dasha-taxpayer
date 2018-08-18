@@ -11,8 +11,8 @@ Feature: List of User organizations
     Then I should see "Here you will see the organizations you added"
      And I should see "New Organization"
 
-  Scenario: Отобразить страницу списка моих организаций
-    Given I have organization
+  Scenario: Displaying a page with my organizations
+    Given I have organization with activity
     When I click Organizations
-    Then I should see info about my organization
+    Then I should see info about my organization and activity
     Then I should see organization control buttons

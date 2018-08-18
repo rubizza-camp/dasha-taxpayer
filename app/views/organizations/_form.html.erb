@@ -4,25 +4,39 @@
       <%= f.error_notification %>
     </div>
     <div class="form-group">
-	  <%= f.input :name %>
+      <%= f.input :name %>
     </div>
     <div class="form-group">
-  	  <div>
-  	    <label class="control-label " for="organization_form_id">Organzation Form</label>
-  	  </div>
+      <div>
+        <label class="control-label " for="organization_form_id">Organization Form</label>
+      </div>
       <%= f.collection_select :organization_form_id, OrganizationForm.all, :id, :name %>
     </div>
+    <%= f.nested_fields_for :activities, wrapper_tag: :div do |a_f| %>
+        <div class="form-group">
+          <div>
+            <label class="control-label " for="organization_form_id">Activity Type</label>
+          </div>
+          <%= a_f.collection_select :activity_type_id, ActivityType.all, :id, :name %>
+        </div>
+        <div class="form-group">
+          <div>
+            <label class="control-label " for="organization_form_id">Taxation Form</label>
+          </div>
+          <div>
+            <%= a_f.collection_select :taxation_form_id, TaxationForm.all, :id, :name %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= a_f.remove_nested_fields_link 'Remove this activity', class: 'btn btn-danger'%>
+        </div>
+    <% end %>
     <div class="form-group">
-  	  <div>
-  	    <label class="control-label " for="organization_form_id">Taxation Form</label>
-  	  </div>
-      <div>
-        <%= f.collection_select :taxation_form_id, TaxationForm.all, :id, :name %>
-      </div>
+      <%= f.add_nested_fields_link :activities, 'Add activity', class: 'btn btn-primary'%>
     </div>
     <div class="text-center">
-      <%= link_to 'Back', organizations_path, class: "btn btn-success" %>
-      <%= f.button :submit, class: "btn-primary" %>
+      <%= link_to 'Back', organizations_path, class: 'btn btn-success' %>
+      <%= f.button :submit, class: 'btn-primary' %>
     </div>
   </div>
 <% end %>
