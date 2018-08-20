@@ -7,7 +7,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = current_user.activities.map(&:organization).uniq
+    @organizations = current_user.organizations
   end
 
   # rubocop:disable Style/EmptyMethod
