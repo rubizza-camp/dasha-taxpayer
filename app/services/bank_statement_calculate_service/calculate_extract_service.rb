@@ -2,9 +2,10 @@
 
 module BankStatementCalculateService
   class CalculateExtractService
-    attr_reader :objects_statement_data
-    def initialize(objects_statement_data)
+    attr_reader :objects_statement_data, :tax
+    def initialize(objects_statement_data, tax)
       @objects_statement_data = objects_statement_data
+      @tax = tax
     end
 
     def receipts

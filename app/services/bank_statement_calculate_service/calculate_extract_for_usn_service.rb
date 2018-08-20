@@ -2,9 +2,9 @@
 
 module BankStatementCalculateService
   class CalculateExtractForUsnService < CalculateExtractService
-    RATE_USN = 0.05
     def sum_tax
-      (gross_revenue * RATE_USN).round(2)
+      rate_usn = (tax.calculation_forms.first.rate.to_f / 100).round(2)
+      (gross_revenue * rate_usn).round(2)
     end
   end
 end

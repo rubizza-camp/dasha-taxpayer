@@ -2,9 +2,8 @@
 
 module BankStatementCalculateService
   class CalculateExtractForSingleService < CalculateExtractService
-    RATE_FIXED_TAX = 119.35
     def sum_tax
-      RATE_FIXED_TAX
+      tax.calculation_forms.first.rate
     end
   end
 end
