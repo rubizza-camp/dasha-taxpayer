@@ -7,6 +7,8 @@ class CreateTaxes < ActiveRecord::Migration[5.2]
       t.float :exchange_difference
       t.float :gross_revenue
       t.float :sum_tax
+      t.daterange :payment_period
+      t.daterange :declaration_period
     end
   end
 end

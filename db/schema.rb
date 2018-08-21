@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 2018_08_21_060934) do
     t.float "exchange_difference"
     t.float "gross_revenue"
     t.float "sum_tax"
+    t.daterange "payment_period"
+    t.daterange "declaration_period"
     t.index ["activity_id"], name: "index_taxes_on_activity_id"
   end
 
