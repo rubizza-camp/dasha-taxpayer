@@ -37,3 +37,4 @@
 # Prevent from commiting files after 'bundle package'
 vendor/cache/*
 vendor/bundle/*
+coverage
