@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_16_075731) do
+ActiveRecord::Schema.define(version: 2018_08_21_060934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,16 @@ ActiveRecord::Schema.define(version: 2018_08_16_075731) do
     t.index ["payment_period_id"], name: "index_taxation_forms_on_payment_period_id"
   end
 
+  create_table "taxes", force: :cascade do |t|
+    t.string "name"
+    t.bigint "activity_id"
+    t.float "receipts"
+    t.float "exchange_difference"
+    t.float "gross_revenue"
+    t.float "sum_tax"
+    t.index ["activity_id"], name: "index_taxes_on_activity_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -116,4 +126,5 @@ ActiveRecord::Schema.define(version: 2018_08_16_075731) do
   add_foreign_key "taxation_forms", "organization_forms"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "declaration_period_id"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "payment_period_id"
+  add_foreign_key "taxes", "activities"
 end
