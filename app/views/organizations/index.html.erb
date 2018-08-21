@@ -2,34 +2,42 @@
   <div class="col-md-12">
     <h1 class="text-center">Organizations</h1>
   </div>
+  <div class="col-md-12 text-center" id="div-new-organization">
+    <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
+  </div>
   <% if @organizations.present? %>
       <% @organizations.each do |organization| %>
-          <div class="col-md-12" id="organization-show-main">
-            <div class="row form-group" id="organization-show-name">
-              <h3><%= link_to "#{organization.organization_form.name} #{organization.name}", organization %></h3>
-            </div>
-            <% organization.activities.each do |activity|%>
-                <div class="row">
-                  <h4 class="col-md-6 bg-organization-attr">ActivityType</h4>
-                  <h4 class="col-md-6 bg-organization-attr">TaxationForm</h4>
-                </div>
-                <div class="row">
-                  <h5 class="col-md-5"><%= activity.activity_type.name %>></h5>
-                  <h5 class="col-md-5"><%= activity.taxation_form.name %></h5>
-                </div>
-            <% end %>
+      <div style="box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); border-radius: 20px; margin:20px 0; padding-bottom: 3px">
+        <div class="text-center" id="organizations-table">
+          <h3><%= link_to "#{organization.organization_form.name} #{organization.name}", organization %></h3>
+        </div>
+          <div class="text-center">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Вид деятельности</th>
+                  <th>Форма налогообложения</th>
+                </tr>
+            </thead>
+          <% organization.activities.each do |activity|%>
+            <tbody>
+              <tr>
+                <th scope="col"><%= activity.activity_type.name %></th>
+                <td scope="col"><%= activity.taxation_form.name %></td>
+              </tr>
+            </tbody>
+          <% end %>
+            </table>
           </div>
           <div class="col-md-12 form-group text-center">
             <%= link_to 'Edit', edit_organization_path(organization), class: "btn btn-info" %>
             <%= link_to 'Destroy', organization, method: :delete,
                         data: { confirm: 'Are you sure?' },
                         class: 'btn btn-danger' %>
-          <div>
+          </div>
+        </div>
       <% end %>
   <% else %>
     <div class="col-md-12 text-center">Here you will see the organizations you added</div>
   <% end %>
-  <div class="col-md-12 text-center" id="div-new-organization">
-    <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
-  </div>
 </div>
