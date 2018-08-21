@@ -24,12 +24,13 @@
             <%= link_to 'Destroy', organization, method: :delete,
                         data: { confirm: 'Are you sure?' },
                         class: 'btn btn-danger' %>
-          <div>
+          </div>
       <% end %>
   <% else %>
     <div class="col-md-12 text-center">Here you will see the organizations you added</div>
   <% end %>
   <div class="col-md-12 text-center" id="div-new-organization">
     <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
+    <%= link_to 'Assistant to create organization', new_survey_path, class:'btn btn-primary' %>
   </div>
 </div>
