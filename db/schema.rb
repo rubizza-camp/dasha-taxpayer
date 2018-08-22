@@ -98,6 +98,18 @@ ActiveRecord::Schema.define(version: 2018_08_22_062814) do
     t.index ["payment_period_id"], name: "index_taxation_forms_on_payment_period_id"
   end
 
+  create_table "taxes", force: :cascade do |t|
+    t.string "name"
+    t.bigint "activity_id"
+    t.float "receipts"
+    t.float "exchange_difference"
+    t.float "gross_revenue"
+    t.float "sum_tax"
+    t.daterange "payment_period"
+    t.daterange "declaration_period"
+    t.index ["activity_id"], name: "index_taxes_on_activity_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -129,4 +141,5 @@ ActiveRecord::Schema.define(version: 2018_08_22_062814) do
   add_foreign_key "taxation_forms", "organization_forms"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "declaration_period_id"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "payment_period_id"
+  add_foreign_key "taxes", "activities"
 end

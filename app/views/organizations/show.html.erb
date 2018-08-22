@@ -1,19 +1,25 @@
 <div class="container">
   <div class="row text-center">
     <div class="col-md-12" id="organization-show-main">
-      <div class="row form-group" id="organization-show-name">
+      <div class="form-group" id="organization-show-name">
         <h3><%= "#{@organization.organization_form.name} #{@organization.name}" %></h3>
       </div>
-      <% @organization.activities.each do |activity|%>
-          <div class="row">
-            <h4 class="col-md-6 bg-organization-attr">ActivityType</h4>
-            <h4 class="col-md-6 bg-organization-attr">TaxationForm</h4>
-          </div>
-          <div class="row">
-            <h5 class="col-md-5"><%= activity.activity_type.name %>></h5>
-            <h5 class="col-md-5"><%= activity.taxation_form.name %></h5>
-          </div>
-      <% end %>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Вид деятельности</th>
+            <th>Форма налогообложения</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @organization.activities.each do |activity|%>
+            <tr>
+              <th scope="col"><%= activity.activity_type.name %></th>
+              <td scope="col"><%= activity.taxation_form.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="col-md-12">&nbsp;</div>
