@@ -5,6 +5,7 @@ class TaxesController < ApplicationController
 
   def index
     @taxes = wrapped_taxes.sort_by { |tax| tax.next_payment_period.last }
+    @taxes_all = Tax.where(activity: current_user.activities)
   end
 
   private

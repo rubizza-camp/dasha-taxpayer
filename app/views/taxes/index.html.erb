@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-12">
-    <h1 class="text-center">Taxes</h1>
+    <h1 class="text-center">Immediate Taxes</h1>
   </div>
 
   <% if @taxes.present? %>
@@ -12,7 +12,7 @@
             <th>Name</th>
             <th>Rate</th>
             <th>Organization</th>
-             <th></th>
+            <th>Receipts</th>
           </tr>
         </thead>
 
@@ -24,11 +24,54 @@
             <td class="col-md-3"><%= tax.tax_name %></td>
             <td class="col-md-3"><%= tax.rate %></td>
             <td class="col-md-3"><%= tax.organization_name %></td>
-            <td class="col-md-3"><%= link_to 'Рассчитать', extract_new_path(tax.organization_id), class: 'btn btn-sm btn-info' %></td>
+            <td class="col-md-3">
+              <% if tax.taxes.blank? %>
+                <%= link_to 'Рассчитать', extract_new_path(tax.organization_id), class: 'btn btn-sm btn-info calculate' %>
+              <% else %>
+                <%= tax.taxes.map(&:receipts).sum %>
+              <% end %>
+            </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+  <% if @taxes_all.present? %>
+    <div class="col-md-12">
+      <h1 class="text-center">Taxes</h1>
+    </div>
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Payment period</th>
+          <th>Declaration period</th>
+          <th>Activity</th>
+          <th>Name</th>
+          <th>Receipts</th>
+          <th>Exchange difference</th>
+          <th>Gross revenue</th>
+          <th>Sum tax</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @taxes_all.each do |tax| %>
+          <tr>
+            <td class="col-md-3"><%= "c #{tax.payment_period.first.to_formatted_s(:rfc822)} по #{tax.payment_period.last.to_formatted_s(:rfc822)}" %></td>
+            <td class="col-md-3"><%= "c #{tax.declaration_period.first.to_formatted_s(:rfc822)} по #{tax.declaration_period.last.to_formatted_s(:rfc822)}" %>
+            </td>
+            <td class="col-md-3"><%= tax.activity.activity_type.name %></td>
+            <td class="col-md-3"><%= tax.name %></td>
+            <td class="col-md-3"><%= tax.receipts %></td>
+            <td class="col-md-3"><%= tax.exchange_difference %></td>
+            <td class="col-md-3"><%= tax.gross_revenue %></td>
+            <td class="col-md-3"><%= tax.sum_tax %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 
   <%= month_calendar do |date| %>
     <%= date %>
