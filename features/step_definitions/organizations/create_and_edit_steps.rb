@@ -15,7 +15,6 @@ end
 When(/^I add activity for organization/) do
   click_on('Add activity')
 
-  binding.pry
   select @activity_type.name, from: 'organization\[activities_attributes\]\[__organization_activities_index__\]\[activity_type_id\]'
   select @taxation_form.name, from: 'organization\[activities_attributes\]\[__organization_activities_index__\]\[taxation_form_id\]'
 end
