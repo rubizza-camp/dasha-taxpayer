@@ -5,7 +5,7 @@
 
   <% if @taxes.present? %>
       <table class="table table-striped">
-        <thead>
+        <thead class="thead-dark">
           <tr>
             <th>Payment period</th>
             <th>Declaration period</th>
@@ -34,15 +34,21 @@
     <%= date %>
       <% @taxes.each do |tax| %>
         <% if date == tax.next_payment_period.last %>
+        <div style="padding-bottom: 2px">
+
           <div class="p-1 bg-primary text-white">
             <%= tax.organization_name %>
           </div>
+        </div>
         <% end %>
 
         <% if date == tax.next_declaration_period.last %>
+        <div style="padding-bottom: 2px">
+
           <div class="p-1 bg-warning text-white">
             <%= tax.organization_name %>
           </div>
+        </div>
         <% end %>
       <% end %>
     <% end %>
