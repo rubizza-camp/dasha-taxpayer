@@ -13,5 +13,6 @@ class SurveyProcessingService
 
   def call
     activity_type = ActivityType.find_by(id: params[:activity_type_id])
+
   end
 end
