@@ -18,11 +18,11 @@ organization_forms = [OrganizationForm.create(name: 'Физическое лиц
                       OrganizationForm.create(name: 'Частное предприятие'),
                       OrganizationForm.create(name: 'OOO')]
 
-ActivityType.create(name: 'Деятельность1')
-ActivityType.create(name: 'Деятельность2')
-ActivityType.create(name: 'Деятельность3')
-ActivityType.create(name: 'Деятельность4')
-ActivityType.create(name: 'Деятельность5')
+ActivityType.create(name: 'Программирование')
+ActivityType.create(name: 'Выращивание тыкв')
+ActivityType.create(name: 'Страдания')
+ActivityType.create(name: 'Просмотр смешных видосиков')
+ActivityType.create(name: 'Торговля бонстиками')
 
 RecurrencePeriods::Monthly.create(day_start: 1, day_end: 31)
 RecurrencePeriods::Monthly.create(day_start: 1, day_end: 31)
