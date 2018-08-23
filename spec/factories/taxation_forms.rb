@@ -14,7 +14,7 @@ FactoryBot.define do
       end
     end
 
-    trait :monthly_fixed_price1 do
+    trait :monthly_usn do
       name 'УСН'
       declaration_period { create(:monthly) }
       payment_period { create(:monthly) }

@@ -8,8 +8,8 @@ FactoryBot.define do
 
     trait :tax_usn do
       association :activity
-      association :taxation_form, :monthly_fixed_price1
-      association :organization, :alexey
+      association :taxation_form, :monthly_usn
+      association :organization, :alexeyka
     end
   end
 end

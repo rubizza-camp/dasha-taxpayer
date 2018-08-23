@@ -10,9 +10,9 @@ FactoryBot.define do
       association :organization_form, :worldwide_corparation
     end
 
-    trait :alexey do
+    trait :alexeyka do
       name 'Fit Free'
-      association :organization_form, :worldwide_corparation1
+      association :organization_form, :regional_corparation
     end
   end
 end

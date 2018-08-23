@@ -6,10 +6,10 @@ FactoryBot.define do
     association :taxation_form, :monthly_fixed_price
     association :organization, :global_dominator
 
-    trait :activity_usn do
+    trait :sale_of_kittens do
       association :activity_type
-      association :taxation_form, :monthly_fixed_price1
-      association :organization, :alexey
+      association :taxation_form, :monthly_usn
+      association :organization, :alexeyka
     end
   end
 end
