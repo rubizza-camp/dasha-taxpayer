@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :omniauthable
 
   has_many :activities
-
+  has_many :taxes, through: :activities
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true, length: {minimum: 6}
   validates :password_confirmation, presence: true

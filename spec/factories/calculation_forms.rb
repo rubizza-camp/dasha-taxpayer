@@ -10,6 +10,7 @@ FactoryBot.define do
   end
 
   factory :percent_from_receipt, parent: :calculation_form, class: 'Taxes::CalculationForms::PercentFromReceipt' do
+    rate 5
   end
 
   factory :percent_from_sales, parent: :calculation_form, class: 'Taxes::CalculationForms::PercentFromSales' do

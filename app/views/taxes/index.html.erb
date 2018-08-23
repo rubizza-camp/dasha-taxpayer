@@ -19,16 +19,16 @@
     <tbody>
       <% @taxes.each do |tax| %>
         <tr>
-          <td class="col-md-3"><%= "c #{tax.next_payment_period.first.to_formatted_s(:rfc822)} по #{tax.next_payment_period.last.to_formatted_s(:rfc822)}" %></td>
-            <td class="col-md-3"><%= "c #{tax.next_declaration_period.first.to_formatted_s(:rfc822)} по #{tax.next_declaration_period.last.to_formatted_s(:rfc822)}" %></td>
+          <td class="col-md-3"><%= "c #{tax.payment_period.first.to_formatted_s(:rfc822)} по #{tax.payment_period.last.to_formatted_s(:rfc822)}" %></td>
+            <td class="col-md-3"><%= "c #{tax.declaration_period.first.to_formatted_s(:rfc822)} по #{tax.declaration_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= tax.tax_name %></td>
             <td class="col-md-3"><%= tax.rate %></td>
             <td class="col-md-3"><%= tax.organization_name %></td>
             <td class="col-md-3">
-              <% if tax.taxes.blank? %>
-                <%= link_to 'Рассчитать', extract_new_path(tax.organization_id), class: 'btn btn-sm btn-info calculate' %>
+              <% if tax.sum_tax.blank? %>
+                <%= link_to 'рассчитать', extract_new_path(tax.activity.organization_id), class: 'btn btn-sm btn-info calculate' %>
               <% else %>
-                <%= tax.taxes.map(&:receipts).sum %>
+                <%= tax.sum_tax %>
               <% end %>
             </td>
         </tr>
@@ -36,53 +36,16 @@
     </tbody>
   </table>
 
-  <% if @taxes_all.present? %>
-    <div class="col-md-12">
-      <h1 class="text-center">Taxes</h1>
-    </div>
-    
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Payment period</th>
-          <th>Declaration period</th>
-          <th>Activity</th>
-          <th>Name</th>
-          <th>Receipts</th>
-          <th>Exchange difference</th>
-          <th>Gross revenue</th>
-          <th>Sum tax</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <% @taxes_all.each do |tax| %>
-          <tr>
-            <td class="col-md-3"><%= "c #{tax.payment_period.first.to_formatted_s(:rfc822)} по #{tax.payment_period.last.to_formatted_s(:rfc822)}" %></td>
-            <td class="col-md-3"><%= "c #{tax.declaration_period.first.to_formatted_s(:rfc822)} по #{tax.declaration_period.last.to_formatted_s(:rfc822)}" %>
-            </td>
-            <td class="col-md-3"><%= tax.activity.activity_type.name %></td>
-            <td class="col-md-3"><%= tax.name %></td>
-            <td class="col-md-3"><%= tax.receipts %></td>
-            <td class="col-md-3"><%= tax.exchange_difference %></td>
-            <td class="col-md-3"><%= tax.gross_revenue %></td>
-            <td class="col-md-3"><%= tax.sum_tax %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-
   <%= month_calendar do |date| %>
     <%= date %>
       <% @taxes.each do |tax| %>
-        <% if date == tax.next_payment_period.last %>
+        <% if date == tax.payment_period.last %>
           <div class="p-1 bg-primary text-white">
             <%= tax.organization_name %>
           </div>
         <% end %>
 
-        <% if date == tax.next_declaration_period.last %>
+        <% if date == tax.declaration_period.last %>
           <div class="p-1 bg-warning text-white">
             <%= tax.organization_name %>
           </div>
