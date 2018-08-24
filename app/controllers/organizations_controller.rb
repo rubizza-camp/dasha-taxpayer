@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: %i[show edit update destroy]
+  before_action :set_organization, only: %i[show edit destroy]
   before_action :authenticate_user!
 
   # GET /organizations
@@ -47,6 +47,7 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1.json
   # This method smells of :reek:DuplicateMethodCall
   def update
+    @organization = Organization.find(params[:id])
     respond_to do |format|
       if @organization.update(organization_params)
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
