@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'popup_message' %>
+
 <div class="container">
   <div class="col-md-12">
     <h1 class="text-center">Taxes</h1>
@@ -17,11 +19,18 @@
         </thead>
 
     <tbody>
+      <div id="tooltip"></div>
       <% @taxes.each do |tax| %>
         <tr>
           <td class="col-md-3"><%= "c #{tax.next_payment_period.first.to_formatted_s(:rfc822)} по #{tax.next_payment_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= "c #{tax.next_declaration_period.first.to_formatted_s(:rfc822)} по #{tax.next_declaration_period.last.to_formatted_s(:rfc822)}" %></td>
-            <td class="col-md-3"><%= tax.tax_name %></td>
+            <td class="col-md-3"><%= tax.tax_name %>
+              <span data-tooltip='<%= check_tax_form(tax.tax_name) %>'>
+                <span style="font-size: 1em; color: Darkgray">
+                  <i class="far fa-question-circle fa-spin fa-xs"></i>
+                </span>
+              </span>
+            </td>
             <td class="col-md-3"><%= tax.rate %></td>
             <td class="col-md-3"><%= tax.organization_name %></td>
             <td class="col-md-3"><%= link_to 'Рассчитать', extract_new_path(tax.organization_id), class: 'btn btn-sm btn-info' %></td>

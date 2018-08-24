@@ -8,19 +8,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# User.create(email: 'test@mail.ru', password: '123456', password_confirmation: '123456')
-
 users = [User.create(email: 'test@mail.ru', password: '111111', password_confirmation: '111111'),
          User.create(email: 'user2@mail2.com', password: '111111', password_confirmation: '111111')]
 
 organization_forms = [OrganizationForm.create(name: 'Физическое лицо (самозанятость)'),
                       OrganizationForm.create(name: 'Индивидуальный Предприниматель'),
-                      OrganizationForm.create(name: 'Частное предприятие'),
+                      OrganizationForm.create(name: 'Унитарное предприятие'),
                       OrganizationForm.create(name: 'OOO')]
 
 ActivityType.create(name: 'Программирование')
 ActivityType.create(name: 'Выращивание тыкв')
-ActivityType.create(name: 'Страдания')
+ActivityType.create(name: 'Консультирование')
 ActivityType.create(name: 'Просмотр смешных видосиков')
 ActivityType.create(name: 'Торговля бонстиками')
 
@@ -39,23 +37,23 @@ TaxationForm.create(name:               'УСН',
                     declaration_period: RecurrencePeriods::Quarterly.first,
                     payment_period:     RecurrencePeriods::Quarterly.second)
 
-Organization.create(name: 'Rubizza',               organization_form: organization_forms[2])
-Organization.create(name: 'Organization1',         organization_form: organization_forms[3])
+Organization.create(name: 'Rubizza',               organization_form: organization_forms[3])
+Organization.create(name: 'Global Cunsulting',         organization_form: organization_forms[3])
 Organization.create(name: 'Ivanov Ivan Ivanovich', organization_form: organization_forms[1])
 
 Activity.create(user:          users.first,
-                activity_type: ActivityType.first,
-                taxation_form: TaxationForm.first,
+                activity_type: ActivityType.find(3),
+                taxation_form: TaxationForm.second,
                 organization:  Organization.first)
 
 Activity.create(user:          users.second,
-                activity_type: ActivityType.second,
+                activity_type: ActivityType.find(1),
                 taxation_form: TaxationForm.second,
                 organization:  Organization.second)
 
 Activity.create(user:          users.second,
-                activity_type: ActivityType.second,
-                taxation_form: TaxationForm.second,
+                activity_type: ActivityType.find(5),
+                taxation_form: TaxationForm.first,
                 organization:  Organization.third)
 
 Taxes::CalculationForms::FixedRate.create(rate: 109.22, taxation_form_id: 1, activity_type_id: 1)
