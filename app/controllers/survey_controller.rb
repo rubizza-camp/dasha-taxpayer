@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class SurveyController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
-    SurveyProcessingService.call(survey_params)
+    activity_params = SurveyProcessingService.call(survey_params)
+    Activity.create(activity_params.merge(user: current_user))
   end
 
   private
@@ -14,4 +14,3 @@ class SurveyController < ApplicationController
     params.permit(:activity_type_id, :workers_number, :work_abroad, :profit)
   end
 end
-

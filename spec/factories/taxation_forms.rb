@@ -15,4 +15,16 @@ FactoryBot.define do
       end
     end
   end
+
+  factory :taxation_form_with_constraints, parent: :taxation_form do
+    name 'УСН c ограничениями'
+    declaration_period { create(:monthly) }
+    payment_period { create(:monthly) }
+
+    after(:create) do |taxation_form|
+      create_list(:constraint_by_profit, 1, value: 165_000, taxation_form: taxation_form)
+      create_list(:constraint_by_workers_number, 1, value: 100, taxation_form: taxation_form)
+      create_list(:constraint_by_work_abroad, 1, taxation_form: taxation_form)
+    end
+  end
 end

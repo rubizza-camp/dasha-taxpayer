@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_062814) do
+ActiveRecord::Schema.define(version: 2018_08_24_094418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2018_08_22_062814) do
     t.bigint "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organization_form_id"
     t.index ["activity_type_id"], name: "index_activities_on_activity_type_id"
+    t.index ["organization_form_id"], name: "index_activities_on_organization_form_id"
     t.index ["organization_id"], name: "index_activities_on_organization_id"
     t.index ["taxation_form_id"], name: "index_activities_on_taxation_form_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
@@ -130,6 +132,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_062814) do
   end
 
   add_foreign_key "activities", "activity_types"
+  add_foreign_key "activities", "organization_forms"
   add_foreign_key "activities", "organizations"
   add_foreign_key "activities", "taxation_forms"
   add_foreign_key "activities", "users"
