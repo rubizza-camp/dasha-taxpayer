@@ -10,7 +10,7 @@ class TaxesController < ApplicationController
   private
 
   def wrapped_taxes
-    current_user.activities.map do |activity|
+    current_user.activities.includes(:organization, taxation_form: %i[declaration_period payment_period]).map do |activity|
       TaxesBuilderPresenter.new(activity)
     end
   end
