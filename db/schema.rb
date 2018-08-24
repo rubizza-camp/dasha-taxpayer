@@ -76,11 +76,13 @@ ActiveRecord::Schema.define(version: 2018_08_24_110339) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "event_type"
+    t.bigint "user_id"
     t.daterange "event_period"
     t.date "event_date"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "taxation_forms", force: :cascade do |t|
@@ -134,6 +136,7 @@ ActiveRecord::Schema.define(version: 2018_08_24_110339) do
   add_foreign_key "calculation_forms", "activity_types"
   add_foreign_key "calculation_forms", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
+  add_foreign_key "tasks", "users"
   add_foreign_key "taxation_forms", "organization_forms"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "declaration_period_id"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "payment_period_id"

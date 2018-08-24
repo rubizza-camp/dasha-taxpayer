@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_many :activities
   has_many :organizations, -> { distinct }, through: :activities
+  has_many :tasks
+
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true, length: {minimum: 6}
