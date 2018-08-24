@@ -64,3 +64,21 @@ Taxes::CalculationForms::FixedRate.create(rate: 193.67, taxation_form_id: 1, act
 Taxes::CalculationForms::PercentFromReceipt.create(rate: 5.0, taxation_form_id: 2, activity_type_id: 2)
 Taxes::CalculationForms::PercentFromReceipt.create(rate: 3.0, taxation_form_id: 2, activity_type_id: 3)
 Taxes::CalculationForms::PercentFromSales.create(rate: 20.0, taxation_form_id: 2, activity_type_id: 4)
+
+Task.create(event_type: 'tax_payment'
+            event_period:
+            event_date:
+            description: "Плоти нологе"
+            )
+
+Task.create(event_type:
+            event_period:
+            event_date:
+            description: "Слыш подавай декларацию"
+            )
+
+Task.create(event_type:
+            event_period:
+            event_date:
+            description: "Слыш плоти нологе"
+            )

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_060934) do
+ActiveRecord::Schema.define(version: 2018_08_24_110339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 2018_08_21_060934) do
     t.integer "day_end"
     t.integer "month_start"
     t.integer "month_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "event_type"
+    t.daterange "event_period"
+    t.date "event_date"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
