@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'extract_tax/:id', to: 'statement_loaders#redirect_taxes'
 
   resources :taxes
-  resources :activities, except: %i[index show]
   resources :survey, only: %i[new create]
 
   root 'pages#index'
