@@ -21,4 +21,4 @@ SimpleCov.at_exit do
   SimpleCov.result.format!
 end
 
-SimpleCov.minimum_coverage 80 if ENV['COVERAGE']
+SimpleCov.minimum_coverage 80 if ENV['CHECK_COVERAGE']

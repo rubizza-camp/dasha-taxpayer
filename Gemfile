@@ -55,7 +55,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
   gem 'rspec-rails', '~> 3.7'
-  gem 'simplecov'
+  gem 'simplecov', require: false
 end
 
 group :development do
