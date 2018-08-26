@@ -8,8 +8,9 @@ class StatementLoadersController < ApplicationController
   def show; end
 
   def extract_tax
-    tax = Activity.find(params[:id]).taxation_form
-    @data_statement = BankStatementCalculateService.calculate(tax, params[:my_file].tempfile)
+    activities = Organization.find(params[:id]).activities
+    @data_statement = BankStatementCalculateService.calculate(activities, params[:my_file].tempfile)
+    flash.now[:notice] = 'Statement successfully loaded and processed'
     render :show, data: @data_statement
   rescue StandardError
     redirect_to extract_new_path, alert: 'Ошибка. Попробуйте загрузить еще раз'

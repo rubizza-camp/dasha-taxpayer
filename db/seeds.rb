@@ -69,3 +69,6 @@ Constraints::Profit.create(value: 165_000, taxation_form: TaxationForm.second)
 Constraints::WorkAbroad.create(value: true, taxation_form: TaxationForm.second)
 Constraints::WorkersNumber.create(value: 100, taxation_form: TaxationForm.second)
 Constraints::WorkersNumber.create(value: 4, organization_form: OrganizationForm.second)
+
+Tax.create(name: 'УСН', activity: Activity.first, payment_period: '01.06.2018'..'30.06.2018', declaration_period: '01.06.2018'..'30.06.2018')
+Tax.create(name: 'УСН', activity: Activity.second, payment_period: '01.06.2018'..'30.06.2018', declaration_period: '01.06.2018'..'30.06.2018')
