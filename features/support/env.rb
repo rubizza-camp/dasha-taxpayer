@@ -5,7 +5,7 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-require "./spec/support/simplecov"
+require './spec/support/simplecov'
 require 'cucumber/rails'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -60,9 +60,26 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+
 ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.perform_deliveries = true
 
 Before do
   ActionMailer::Base.deliveries.clear
 end
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome, resynchronize: true)
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: {args: %w[headless disable-gpu]}
+  )
+
+  Capybara::Selenium::Driver.new app, browser: :chrome, desired_capabilities: capabilities
+end
+Capybara.current_driver = :headless_chrome
+Capybara.javascript_driver = :headless_chrome
+Capybara.current_session.driver.browser.manage.window.resize_to(2_500, 2_500)
+Capybara.default_max_wait_time = 15
