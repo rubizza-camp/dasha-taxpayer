@@ -18,4 +18,5 @@
 //= require popper
 //= require nested_form_fields
 //= require jquery_ujs
+//= require popup_message
 //= require_tree .

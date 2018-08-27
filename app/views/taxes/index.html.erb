@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'popup_message' %>
+
 <div class="container">
   <div class="col-md-12">
     <h1 class="text-center">Immediate Taxes</h1>
@@ -21,7 +23,13 @@
         <tr>
           <td class="col-md-3"><%= "c #{tax.payment_period.first.to_formatted_s(:rfc822)} по #{tax.payment_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= "c #{tax.declaration_period.first.to_formatted_s(:rfc822)} по #{tax.declaration_period.last.to_formatted_s(:rfc822)}" %></td>
-            <td class="col-md-3"><%= tax.tax_name %></td>
+            <td class="col-md-3"><%= tax.tax_name %>
+              <span data-tooltip='<%= check_tax_form(tax.tax_name) %>'>
+                <span style="font-size: 1em; color: Darkgray">
+                  <i class="far fa-question-circle fa-spin fa-xs"></i>
+                </span>
+              </span>
+            </td>
             <td class="col-md-3"><%= tax.rate %></td>
             <td class="col-md-3"><%= tax.organization_name %></td>
             <td class="col-md-3">
