@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Task < ApplicationRecord
   belongs_to :activity
-  validates :status, inclusion: { in: %w[completed failed pending] }
+  validates :status, inclusion: {in: %w[completed failed pending]}
   after_initialize :set_status
 
   def completed

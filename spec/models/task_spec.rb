@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-
   context 'default_status' do
     it 'return status pending' do
       expect(described_class.new.status).to eq('pending')
