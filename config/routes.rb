@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :tasks
   resources :organizations
   post 'organization/:id/extract/new', to: 'statement_loaders#extract_tax', as: 'extract_tax'
   get 'organization/:id/extract/new', to: 'statement_loaders#new', as: 'extract_new'

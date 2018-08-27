@@ -32,6 +32,17 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(organization_params)
 
+    @activities = Activity.where(organization_id: Organization.last.id).all
+    @activities.each do |activity|
+      org_name = activity.organization.name
+      act_name = activity.activity_type.name
+      desc = "#{org_name} / #{act_name}"
+      decl_per = activity.taxation_form.declaration_period.next_period
+      paym_per = activity.taxation_form.payment_period.next_period
+      Task.create(event_type: "Подача декларации", user_id: current_user.id, event_period: decl_per, event_date:  decl_per.last-3, description: desc)
+      Task.create(event_type: "Оплата налога", user_id: current_user.id, event_period: paym_per, event_date:  paym_per.last-3, description: desc)
+    end
+
     respond_to do |format|
       if @organization.save
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
