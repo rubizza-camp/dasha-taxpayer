@@ -14,12 +14,14 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true, length: {minimum: 6}
   validates :password_confirmation, presence: true
 
+  # :reek:LongParameterList and :reek:TooManyStatements
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.email = auth.info.email
+      user.email = auth.info.email || auth.provider + '_' + auth.info.nickname
       user.password = Devise.friendly_token[0, 20]
+      user.password_confirmation = user.password
     end
   end
 end

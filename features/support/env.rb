@@ -101,3 +101,13 @@ end
 SimpleCov.at_exit do
   SimpleCov.result.format!
 end
+
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.add_mock(:twitter, uid: '12345', provider: 'twitter', info: {nickname: 'twitteruser'})
+  OmniAuth.config.add_mock(:github, uid: '12345', provider: 'github', info: {nickname: 'githubuser'})
+end
+
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
+end
