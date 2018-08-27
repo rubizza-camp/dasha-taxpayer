@@ -7,4 +7,5 @@ class Activity < ApplicationRecord
   belongs_to :organization
   belongs_to :organization_form
   has_many   :taxes, dependent: :destroy
+  has_many   :tasks, dependent: :destroy
 end
