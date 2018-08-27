@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1 class="text-center">Tasks</h1>
+  </div>
+
+  <% if @tasks.present? %>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Task type</th>
+            <th>Task period</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+            <td class="col-md-3"><%= "#{task.type}" %></td>
+            <td class="col-md-3"><%= "c #{task.period.first.to_formatted_s(:rfc822)} по #{task.period.last.to_formatted_s(:rfc822)}" %></td>
+            <td class="col-md-1"><%= "#{task.date}" %></td>
+            <td class="col-md-3"><%= "#{task.description}" %></td>
+            <td class="col-md-3"><%= "#{task.status}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+    <h1 class="text-center">Календарь событий</h1>
+    <%= month_calendar do |date| %>
+    <%= date %>
+      <% @tasks.each do |task| %>
+        <% if date == task.period.last %>
+          <div style="padding-bottom: 2px">
+            <% if task.type == "Tasks::Declaration" %>
+              <div class="p-1 bg-primary text-white">
+                <small><%= task.description %></small>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+
+  <% else %>
+    <div class="col-md-12 text-center">First you need to add an organization</div>
+  <% end %>
+</div>
