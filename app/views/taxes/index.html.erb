@@ -22,8 +22,8 @@
       <div id="tooltip"></div>
       <% @taxes.each do |tax| %>
         <tr>
-          <td class="col-md-3"><%= "c #{tax.next_payment_period.first.to_formatted_s(:rfc822)} по #{tax.next_payment_period.last.to_formatted_s(:rfc822)}" %></td>
-            <td class="col-md-3"><%= "c #{tax.next_declaration_period.first.to_formatted_s(:rfc822)} по #{tax.next_declaration_period.last.to_formatted_s(:rfc822)}" %></td>
+          <td class="col-md-3"><%= "c #{tax.payment_period.first.to_formatted_s(:rfc822)} по #{tax.payment_period.last.to_formatted_s(:rfc822)}" %></td>
+            <td class="col-md-3"><%= "c #{tax.declaration_period.first.to_formatted_s(:rfc822)} по #{tax.declaration_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= tax.tax_name %>
               <span data-tooltip='<%= check_tax_form(tax.tax_name) %>'>
                 <span style="font-size: 1em; color: Darkgray">

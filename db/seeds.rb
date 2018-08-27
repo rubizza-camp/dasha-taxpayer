@@ -37,8 +37,8 @@ TaxationForm.create(name:               'УСН',
                     declaration_period: RecurrencePeriods::Quarterly.first,
                     payment_period:     RecurrencePeriods::Quarterly.second)
 
-Organization.create(name: 'Rubizza',               organization_form: organization_forms[3])
-Organization.create(name: 'Global Cunsulting',         organization_form: organization_forms[3])
+Organization.create(name: 'Rubizza', organization_form: organization_forms[3])
+Organization.create(name: 'Global Cunsulting', organization_form: organization_forms[3])
 Organization.create(name: 'Ivanov Ivan Ivanovich', organization_form: organization_forms[1])
 
 Activity.create(user:          users.first,
