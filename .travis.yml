@@ -18,7 +18,7 @@ before_install:
   - bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
 script:
-  - "bundle exec rake cucumber spec"
-  - "bundle exec rake spec COVERAGE=true"
+  - "bundle exec rspec"
+  - "CHECK_COVERAGE=true bundle exec cucumber"
   - "bundle exec rubocop"
   - "bundle exec reek"

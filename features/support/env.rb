@@ -5,9 +5,9 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-require './spec/support/simplecov'
+require 'simplecov'
+# require './spec/support/simplecov'
 require 'cucumber/rails'
-
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
@@ -60,7 +60,6 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-
 ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.perform_deliveries = true
 
@@ -83,3 +82,23 @@ Capybara.current_driver = :headless_chrome
 Capybara.javascript_driver = :headless_chrome
 Capybara.current_session.driver.browser.manage.window.resize_to(2_500, 2_500)
 Capybara.default_max_wait_time = 15
+
+require 'simplecov'
+
+SimpleCov.start 'rails' do
+  add_filter '/test/'
+  add_filter '/config/'
+  add_filter '/db/'
+  add_filter do |source_file|
+    source_file.lines.count <= 10
+  end
+
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Models', 'app/models'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Libraries', 'lib'
+end
+
+SimpleCov.at_exit do
+  SimpleCov.result.format!
+end
