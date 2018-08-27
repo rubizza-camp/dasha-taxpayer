@@ -1,4 +1,7 @@
 # frozen_string_literal: true
+
+# Setup simplecov
+
 require 'simplecov'
 
 SimpleCov.start 'rails' do

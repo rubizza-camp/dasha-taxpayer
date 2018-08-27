@@ -4,6 +4,7 @@
   </div>
   <div class="col-md-12 text-center" id="div-new-organization">
     <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
+    <%= link_to 'Assistant to create organization', new_survey_path, class:'btn btn-primary' %>
   </div>
   <% if @organizations.present? %>
       <% @organizations.each do |organization| %>
@@ -40,8 +41,4 @@
   <% else %>
       <div class="col-md-12 text-center">Here you will see the organizations you added</div>
   <% end %>
-  <div class="col-md-12 text-center" id="div-new-organization">
-    <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
-    <%= link_to 'Assistant to create organization', new_survey_path, class:'btn btn-primary' %>
-  </div>
 </div>

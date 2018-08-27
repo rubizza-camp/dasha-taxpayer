@@ -7,7 +7,6 @@
 # files.
 require 'simplecov'
 require 'cucumber/rails'
-
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
@@ -67,7 +66,24 @@ Before do
   ActionMailer::Base.deliveries.clear
 end
 
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome, resynchronize: true)
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: {args: %w[headless disable-gpu]}
+  )
+
+  Capybara::Selenium::Driver.new app, browser: :chrome, desired_capabilities: capabilities
+end
+Capybara.current_driver = :headless_chrome
+Capybara.javascript_driver = :headless_chrome
+Capybara.current_session.driver.browser.manage.window.resize_to(2_500, 2_500)
+Capybara.default_max_wait_time = 15
+
 require 'simplecov'
+
 SimpleCov.start 'rails' do
   add_filter '/test/'
   add_filter '/config/'

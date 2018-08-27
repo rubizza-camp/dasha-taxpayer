@@ -10,7 +10,7 @@ class TaxesController < ApplicationController
   private
 
   def wrapped_taxes
-    current_user.taxes.map do |tax|
+    current_user.taxes.includes(:organization, taxation_form: :calculation_forms).map do |tax|
       TaxesBuilderPresenter.new(tax)
     end
   end

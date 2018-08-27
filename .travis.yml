@@ -3,6 +3,9 @@ services:
   - postgresql
 rvm:
   - 2.5.1
+sudo: required
+addons:
+  chrome: stable
 cache:
   directories:
   - /home/travis/.rvm/
