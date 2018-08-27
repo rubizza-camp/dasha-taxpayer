@@ -2,9 +2,8 @@
 
 class Tax < ApplicationRecord
   belongs_to :activity
+  has_one :taxation_form, through: :activity
+  has_one :organization, through: :activity
+
   validates :name, presence: true
-  validates :receipts, numericality: true
-  validates :exchange_difference, numericality: true
-  validates :gross_revenue, numericality: true
-  validates :sum_tax, numericality: true
 end

@@ -9,5 +9,10 @@ FactoryBot.define do
       name 'Global Dominator, Inc.'
       association :organization_form, :worldwide_corparation
     end
+
+    trait :alexeyka do
+      name 'Fit Free'
+      association :organization_form, :regional_corparation
+    end
   end
 end
