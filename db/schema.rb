@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_24_094418) do
+ActiveRecord::Schema.define(version: 2018_08_27_073717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,20 @@ ActiveRecord::Schema.define(version: 2018_08_24_094418) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "type"
+    t.daterange "period"
+    t.date "date"
+    t.string "description"
+    t.string "status"
+    t.bigint "activity_id"
+    t.bigint "tax_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_tasks_on_activity_id"
+    t.index ["tax_id"], name: "index_tasks_on_tax_id"
+  end
+
   create_table "taxation_forms", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
@@ -141,6 +155,8 @@ ActiveRecord::Schema.define(version: 2018_08_24_094418) do
   add_foreign_key "constraints", "organization_forms"
   add_foreign_key "constraints", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
+  add_foreign_key "tasks", "activities"
+  add_foreign_key "tasks", "taxes"
   add_foreign_key "taxation_forms", "organization_forms"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "declaration_period_id"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "payment_period_id"
