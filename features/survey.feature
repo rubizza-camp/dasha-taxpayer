@@ -10,6 +10,7 @@ Feature: Assistant to create organization
   Scenario: Create organization
     Given I click Organizations
     When I click Assistant to create organization
-    And I feel survey fields
+    And I fill survey fields
     And I click Get organization
     Then I have activity for new organization
+    And I have tasks for organization creation in tasks list

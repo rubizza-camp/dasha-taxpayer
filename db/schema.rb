@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_073717) do
+ActiveRecord::Schema.define(version: 2018_08_27_090105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,14 @@ ActiveRecord::Schema.define(version: 2018_08_27_073717) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.string "description"
+    t.bigint "organization_form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_form_id"], name: "index_steps_on_organization_form_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "type"
     t.daterange "period"
@@ -97,7 +105,9 @@ ActiveRecord::Schema.define(version: 2018_08_27_073717) do
     t.bigint "tax_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "step_id"
     t.index ["activity_id"], name: "index_tasks_on_activity_id"
+    t.index ["step_id"], name: "index_tasks_on_step_id"
     t.index ["tax_id"], name: "index_tasks_on_tax_id"
   end
 
@@ -155,7 +165,9 @@ ActiveRecord::Schema.define(version: 2018_08_27_073717) do
   add_foreign_key "constraints", "organization_forms"
   add_foreign_key "constraints", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
+  add_foreign_key "steps", "organization_forms"
   add_foreign_key "tasks", "activities"
+  add_foreign_key "tasks", "steps"
   add_foreign_key "tasks", "taxes"
   add_foreign_key "taxation_forms", "organization_forms"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "declaration_period_id"
