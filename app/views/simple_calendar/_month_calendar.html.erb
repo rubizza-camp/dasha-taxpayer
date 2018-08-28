@@ -1,12 +1,15 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
-    <div class="btn btn-secondary">
+      <div class="row" style="padding-left: 15px; padding-bottom: 5px">
+
+      <div class="btn btn-secondary">
       <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, :class => "btn" %>
 
-    </div>
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <div class="btn btn-secondary">
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, :class => "btn" %>
+      </div>
+      <span class="col-md-4 calendar-title"><h1><%= t('date.month_names')[start_date.month] %>   <%= start_date.year %></h1></span>
+      <div class="btn btn-secondary">
+        <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, :class => "btn" %>
+      </div>
     </div>
   </div>
 
