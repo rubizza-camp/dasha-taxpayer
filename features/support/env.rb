@@ -28,7 +28,7 @@ require 'cucumber/rails'
 # recommended as it will mask a lot of errors for you!
 #
 
-Capybara.default_max_wait_time = 30
+Capybara.default_max_wait_time = 60
 World(FactoryBot::Syntax::Methods)
 
 ActionController::Base.allow_rescue = false
