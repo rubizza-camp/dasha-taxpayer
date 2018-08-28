@@ -15,4 +15,3 @@ Feature: List of User organizations
     Given I have organization with activity
     When I click Organizations
     Then I should see info about my organization and activity
-    Then I should see organization control buttons
