@@ -12,14 +12,14 @@ When(/^I fill organization fields/) do
   select @organization_form.name, from: 'organization_organization_form_id'
 end
 
-When(/^I add activity for organization/) do
-  select @activity_type.name, from: 'organization_activities_attributes_0_activity_type_id'
-  select @taxation_form.name, from: 'organization_activities_attributes_0_taxation_form_id'
+When(/^I add first activity for organization/) do
+  find('#organization_activities_attributes_0_activity_type_id').select(@activity_type.name)
+  find('#organization_activities_attributes_0_taxation_form_id').select(@taxation_form.name)
 end
 
-When(/^I add two activity for organization/) do
-  select @activity_type.name, from: 'organization_activities_attributes_1_activity_type_id'
-  select @taxation_form.name, from: 'organization_activities_attributes_1_taxation_form_id'
+When(/^I add second activity for organization/) do
+  find('#organization_activities_attributes_1_activity_type_id').select(@activity_type.name)
+  find('#organization_activities_attributes_1_taxation_form_id').select(@taxation_form.name)
 end
 
 When(/^I going to edit my organization/) do

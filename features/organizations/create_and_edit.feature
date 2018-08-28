@@ -13,7 +13,7 @@ Feature: Create organizations
     When I click New Organization
     And I fill organization fields
     And I click Add activity
-    And I add activity for organization
+    And I add first activity for organization
     And I click Create Organization
     Then I should see "Organization was successfully created"
 
@@ -23,7 +23,7 @@ Feature: Create organizations
     When I going to edit my organization
     And I click Remove this activity
     And I click Add activity
-    And I add two activity for organization
+    And I add second activity for organization
     And I fill organization fields
     And I click Update Organization
     Then I should see "Organization was successfully updated"
