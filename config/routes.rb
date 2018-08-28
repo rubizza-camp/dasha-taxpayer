@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   resources :organizations
   post 'organization/:id/extract/new', to: 'statement_loaders#extract_tax', as: 'extract_tax'
@@ -18,4 +20,7 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index', as: 'users'
 
   get 'tasks', to: 'tasks#index', as: 'tasks'
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
