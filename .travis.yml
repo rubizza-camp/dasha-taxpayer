@@ -3,6 +3,9 @@ services:
   - postgresql
 rvm:
   - 2.5.1
+sudo: required
+addons:
+  chrome: stable
 cache:
   directories:
   - /home/travis/.rvm/
@@ -18,6 +21,7 @@ before_install:
   - bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
 script:
-  - "bundle exec rake"
+  - "bundle exec rspec"
+  - "CHECK_COVERAGE=true bundle exec cucumber"
   - "bundle exec rubocop"
   - "bundle exec reek"

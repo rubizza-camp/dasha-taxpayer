@@ -5,9 +5,8 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-
+require 'simplecov'
 require 'cucumber/rails'
-
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
@@ -28,6 +27,8 @@ require 'cucumber/rails'
 # 2) Set the value below to true. Beware that doing this globally is not
 # recommended as it will mask a lot of errors for you!
 #
+
+Capybara.default_max_wait_time = 60
 World(FactoryBot::Syntax::Methods)
 
 ActionController::Base.allow_rescue = false
@@ -65,4 +66,49 @@ ActionMailer::Base.perform_deliveries = true
 
 Before do
   ActionMailer::Base.deliveries.clear
+end
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome, resynchronize: true)
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: {args: %w[headless disable-gpu]}
+  )
+
+  Capybara::Selenium::Driver.new app, browser: :chrome, desired_capabilities: capabilities
+end
+Capybara.current_driver = :headless_chrome
+Capybara.javascript_driver = :headless_chrome
+Capybara.current_session.driver.browser.manage.window.resize_to(2_500, 2_500)
+
+require 'simplecov'
+
+SimpleCov.start 'rails' do
+  add_filter '/test/'
+  add_filter '/config/'
+  add_filter '/db/'
+  add_filter do |source_file|
+    source_file.lines.count <= 10
+  end
+
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Models', 'app/models'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Libraries', 'lib'
+end
+
+SimpleCov.at_exit do
+  SimpleCov.result.format!
+end
+
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.add_mock(:twitter, uid: '12345', provider: 'twitter', info: {nickname: 'twitteruser'})
+  OmniAuth.config.add_mock(:github, uid: '12345', provider: 'github', info: {nickname: 'githubuser'})
+end
+
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
 end
