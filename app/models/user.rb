@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :activities
   has_many :taxes, through: :activities
   has_many :organizations, -> { distinct }, through: :activities
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, unless: :provider?
   validates :password, presence: true, confirmation: true, length: {minimum: 6}, unless: :provider?
   validates :password_confirmation, presence: true, unless: :provider?
 
@@ -18,7 +18,7 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.email = auth.info.email || auth.info.nickname + '_' + auth.provider
+      user.email = auth.info.email if auth.info.email.present?
     end
   end
 end
