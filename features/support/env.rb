@@ -27,6 +27,7 @@ require 'cucumber/rails'
 # 2) Set the value below to true. Beware that doing this globally is not
 # recommended as it will mask a lot of errors for you!
 #
+
 Capybara.default_max_wait_time = 30
 World(FactoryBot::Syntax::Methods)
 
