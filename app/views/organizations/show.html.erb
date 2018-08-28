@@ -24,7 +24,7 @@
   </div>
   <div class="col-md-12">&nbsp;</div>
   <div class="col-md-12 form-group text-center">
-    <%= link_to 'Edit', edit_organization_path(@organization), class: "btn btn-info" %>
+    <%= link_to 'Edit', edit_organization_path(@organization), class: "btn btn-info", id: "edit_organization" %>
     <%= link_to 'Destroy', @organization, method: :delete,
                 data: { confirm: 'Are you sure?' },
                 class: 'btn btn-danger' %>

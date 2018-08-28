@@ -1,4 +1,7 @@
 # frozen_string_literal: true
+
+# Setup simplecov
+
 require 'simplecov'
 
 SimpleCov.start 'rails' do
@@ -21,4 +24,4 @@ SimpleCov.at_exit do
   SimpleCov.result.format!
 end
 
-SimpleCov.minimum_coverage 80 if ENV['CHECK_COVERAGE']
+SimpleCov.minimum_coverage 90 if ENV['CHECK_COVERAGE']
