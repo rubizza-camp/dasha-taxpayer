@@ -16,3 +16,6 @@ Feature: List of User organizations
     When I click Organizations
     Then I should see info about my organization and activity
     Then I should see organization control buttons
+    When I click Destroy
+    Then I should see "Organization was successfully destroyed"
+    And I should see "Here you will see the organizations you added"
