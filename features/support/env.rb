@@ -27,7 +27,8 @@ require 'cucumber/rails'
 # 2) Set the value below to true. Beware that doing this globally is not
 # recommended as it will mask a lot of errors for you!
 #
-Capybara.default_max_wait_time = 15
+
+Capybara.default_max_wait_time = 30
 World(FactoryBot::Syntax::Methods)
 
 ActionController::Base.allow_rescue = false
@@ -100,4 +101,14 @@ end
 
 SimpleCov.at_exit do
   SimpleCov.result.format!
+end
+
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.add_mock(:twitter, uid: '12345', provider: 'twitter', info: {nickname: 'twitteruser'})
+  OmniAuth.config.add_mock(:github, uid: '12345', provider: 'github', info: {nickname: 'githubuser'})
+end
+
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
 end
