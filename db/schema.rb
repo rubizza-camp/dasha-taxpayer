@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_061958) do
+ActiveRecord::Schema.define(version: 2018_08_29_065348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,11 @@ ActiveRecord::Schema.define(version: 2018_08_28_061958) do
   create_table "activity_types_organization_forms", id: false, force: :cascade do |t|
     t.bigint "activity_type_id", null: false
     t.bigint "organization_form_id", null: false
+  end
+
+  create_table "activity_types_taxation_forms", id: false, force: :cascade do |t|
+    t.bigint "activity_type_id", null: false
+    t.bigint "taxation_form_id", null: false
   end
 
   create_table "calculation_forms", force: :cascade do |t|
