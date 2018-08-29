@@ -14,7 +14,7 @@
       <div class="text-left" id="organizations-table">
         <h3><%= link_to "#{organization.name}", organization, title: 'Нажми для редактирования этой оганизации' %></h3>
         <h6><%= "#{organization.organization_form.name}"%>
-          <span style="font-size: 1em; color: Darkgray" data-tooltip='<%= check_org_form(organization.organization_form.name) %>'>
+          <span style="font-size: 1em; color: Darkgray" data-tooltip='<%= hint_org_form(organization.organization_form) %>'>
             <i class="far fa-question-circle fa-spin fa-xs"></i>
           </span>
         </h6>
@@ -32,7 +32,7 @@
             <tr>
               <th scope="col"><%= activity.activity_type.name %></th>
               <td scope="col"><%= activity.taxation_form.name %>
-                <span style="font-size: 1em; color: Darkgray" data-tooltip='<%= check_tax_form(activity.taxation_form.name) %>'>
+                <span style="font-size: 1em; color: Darkgray" data-tooltip='<%= hint_tax_form(activity.taxation_form) %>'>
                   <i class="far fa-question-circle fa-spin fa-xs"></i>
                 </span>
               </td>

@@ -24,7 +24,7 @@
           <td class="col-md-3"><%= "c #{tax.payment_period.first.to_formatted_s(:rfc822)} по #{tax.payment_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= "c #{tax.declaration_period.first.to_formatted_s(:rfc822)} по #{tax.declaration_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= tax.tax_name %>
-              <span data-tooltip='<%= check_tax_form(tax.tax_name) %>'>
+              <span data-tooltip='<%= hint_tax_page(tax.tax_name) %>'>
                 <span style="font-size: 1em; color: Darkgray">
                   <i class="far fa-question-circle fa-spin fa-xs"></i>
                 </span>
