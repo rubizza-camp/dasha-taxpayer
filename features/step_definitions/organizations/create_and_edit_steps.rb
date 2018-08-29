@@ -24,7 +24,7 @@ end
 
 When(/^I going to edit my organization/) do
   click_on('Organizations')
-  click_on("#{@organization.organization_form.name} #{@organization.name}")
+  click_on(@organization.name)
   find('#edit_organization').click
 end
 

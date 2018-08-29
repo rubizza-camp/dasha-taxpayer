@@ -5,4 +5,5 @@ class ActivityType < ApplicationRecord
   has_many :calculation_forms, dependent: :destroy
   has_one :activity, dependent: :destroy
   validates :name, presence: true
+  has_one :hint, as: :hint_owner, dependent: :destroy
 end
