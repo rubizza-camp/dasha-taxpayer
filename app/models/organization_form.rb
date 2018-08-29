@@ -6,4 +6,5 @@ class OrganizationForm < ApplicationRecord
   has_many :constraints, dependent: :destroy
   has_many :activity, dependent: :destroy
   has_and_belongs_to_many :activity_types
+  has_one :hint, as: :hint_owner, dependent: :destroy
 end
