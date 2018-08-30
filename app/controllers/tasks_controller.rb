@@ -4,4 +4,8 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
   end
+
+  def edit
+    @tasks = Task.first
+  end
 end

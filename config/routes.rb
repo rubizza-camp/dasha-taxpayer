@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index', as: 'users'
 
   get 'tasks', to: 'tasks#index', as: 'tasks'
+  get 'tasks/edit', to: 'tasks#edit', as: 'tasks_edit'
+  post 'tasks', to: 'tasks#index', as: 'tasks_post'
 end
