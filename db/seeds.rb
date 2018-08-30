@@ -16,8 +16,8 @@ organization_forms = [OrganizationForm.create(name: 'Физическое лиц
                       OrganizationForm.create(name: 'Унитарное предприятие'),
                       OrganizationForm.create(name: 'OOO')]
 
-ActivityType.create(name: 'Программирование')
-ActivityType.create(name: 'Выращивание тыкв')
+ActivityType.create(name: 'Программирование', organization_forms: organization_forms)
+ActivityType.create(name: 'Выращивание тыкв', organization_forms: organization_forms)
 ActivityType.create(name: 'Страдания')
 ActivityType.create(name: 'Просмотр смешных видосиков')
 ActivityType.create(name: 'Торговля бонстиками')
