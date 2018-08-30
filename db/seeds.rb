@@ -103,4 +103,22 @@ Translate.create(text:    "Единый налог – это подлежаща
 Translate.create(text:    "Упрощенная система налогообложения (УСН) – это особый налоговый режим, отличающийся сравнительной простотой расчета сумм налогов,который может применяться в отношении юридических лиц и индивидуальных предпринимателей при одновременном соблюдении следующих условий: средняя численность работников организации составляет не более 100 человек; размер валовой выручки нарастающим итогом не превышает установленную законодательством сумму.\n\n(Налоговый кодекс Республики Беларусь. Особенная часть, Глава 35)",
                  locales: 'ru',
                  hint_id: 6)
+Translate.create(text:    'Self-employment is a form of receipt by a natural person (income) through classes prescribed by law (Article 1 of the Civil Code of the Republic of Belarus, item 1.1 of the Instruction of the Republic of Belarus №337 of 19.09.2017) for types of activities which do not require registration as an individual entrepreneur.',
+                 locales: 'en',
+                 hint_id: 1)
+Translate.create(text:    "An individual entrepreneur is an individual registered in accordance with the procedure established by law as an individual entrepreneur independently engaged in entrepreneurial activities.\n\n(Civil Code of the Republic of Belarus, Article 1, 22)",
+                 locales: 'en',
+                 hint_id: 2)
+Translate.create(text:    "A unitary enterprise is a commercial organization whose founder (owner of property) is a state, a legal entity or an individual who is not entitled to ownership of the property assigned to it by the owner. The property of a unitary enterprise is indivisible and can not be distributed among deposits (shares), including deposits between employees of the enterprise.\n\n(Civil Code of the Republic of Belarus, § 4.)",
+                 locales: 'en',
+                 hint_id: 3)
+Translate.create(text:    "A limited liability company is a company whose statutory fund is divided into shares of the specified sizes in the charter. Participants in a limited liability company are not liable for its obligations and bear the risk of losses associated with the activities of the company, within the value of their contributions.\n\n(Civil Code of the Republic of Belarus, §2 item 4)",
+                 locales: 'en',
+                 hint_id: 4)
+Translate.create(text:    "A single tax is a fixed amount to be paid by an individual entrepreneur or a self-employed person, established within the framework of the law by the regional executive committees or the Minsk city executive committee, depending on: the type of activity, the region and other conditions of activity stipulated by the law.\n\n(Tax Code of the Republic of Belarus(Special Part), Chapter 34)",
+                 locales: 'en',
+                 hint_id: 5)
+Translate.create(text:    "The simplified taxation system (STS) is a special tax regime that is characterized by comparative simplicity in calculating the amount of taxes that can be applied to legal entities and individual entrepreneurs, while simultaneously meeting the following conditions: the average number of employees of the organization is no more than 100 people; the amount of gross revenue by the cumulative total does not exceed the amount established by law.\n\n(Tax Code of the Republic of Belarus(Special Part), Chapter 35)",
+                 locales: 'en',
+                 hint_id: 6)
 # rubocop:enable Metrics/LineLength
