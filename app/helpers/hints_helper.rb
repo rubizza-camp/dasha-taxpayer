@@ -3,9 +3,8 @@
 module HintsHelper
   DEFAULT_MESSAGE = 'Oops...no hints found here :('
 
-  # :reek:NilCheck
   def hint_form(hint_owner)
-    hint_owner.hint.translates.find_by(locales: 'ru')&.text || DEFAULT_MESSAGE
+    hint_owner.hint.translates.find_by_locales('ru').try(:text) || DEFAULT_MESSAGE
   end
 
   def identify_tax(name_tax)
