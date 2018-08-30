@@ -11,7 +11,8 @@
 # User.create(email: 'test@mail.ru', password: '123456', password_confirmation: '123456')
 
 users = [User.create(email: 'test@mail.ru', password: '111111', password_confirmation: '111111'),
-         User.create(email: 'user2@mail2.com', password: '111111', password_confirmation: '111111')]
+         User.create(email: 'user2@mail2.com', password: '111111', password_confirmation: '111111'),
+         User.create(email: 'test2@mail.ru', password: '111111', password_confirmation: '111111', admin: true)]
 
 organization_forms = [OrganizationForm.create(name: 'Физическое лицо (самозанятость)'),
                       OrganizationForm.create(name: 'Индивидуальный Предприниматель'),

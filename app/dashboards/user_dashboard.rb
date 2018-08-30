@@ -26,6 +26,7 @@ class UserDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     provider: Field::String,
     uid: Field::String,
+    admin: Field::Boolean,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -61,6 +62,7 @@ class UserDashboard < Administrate::BaseDashboard
     :updated_at,
     :provider,
     :uid,
+    :admin,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -82,6 +84,7 @@ class UserDashboard < Administrate::BaseDashboard
     :last_sign_in_ip,
     :provider,
     :uid,
+    :admin,
   ].freeze
 
   # Overwrite this method to customize how users are displayed
