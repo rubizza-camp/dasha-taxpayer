@@ -37,3 +37,7 @@ Then(/^I should behold only new activity for my organization/) do
   expect(page).to have_content @activity_type.name
   expect(page).to have_content @taxation_form.name
 end
+
+When(/^I click_link to my specific organization/) do
+  click_on(@organization.name)
+end
