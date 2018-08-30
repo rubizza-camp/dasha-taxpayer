@@ -12,6 +12,7 @@ cache:
   bundler: true
   yarn: true
 before_install:
+  - sudo apt-get update && sudo apt-get -y install google-chrome-stable
   - gem install bundler -v 1.16.2
   - cp config/database.yml.travis config/database.yml
   - cp config/secrets.yml.example config/secrets.yml
