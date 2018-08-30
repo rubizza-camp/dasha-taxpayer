@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_061958) do
+ActiveRecord::Schema.define(version: 2018_08_29_065348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,11 @@ ActiveRecord::Schema.define(version: 2018_08_28_061958) do
   create_table "activity_types_organization_forms", id: false, force: :cascade do |t|
     t.bigint "activity_type_id", null: false
     t.bigint "organization_form_id", null: false
+  end
+
+  create_table "activity_types_taxation_forms", id: false, force: :cascade do |t|
+    t.bigint "activity_type_id", null: false
+    t.bigint "taxation_form_id", null: false
   end
 
   create_table "calculation_forms", force: :cascade do |t|
@@ -87,6 +92,14 @@ ActiveRecord::Schema.define(version: 2018_08_28_061958) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.string "description"
+    t.bigint "organization_form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_form_id"], name: "index_steps_on_organization_form_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "type"
     t.daterange "period"
@@ -97,7 +110,9 @@ ActiveRecord::Schema.define(version: 2018_08_28_061958) do
     t.bigint "tax_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "step_id"
     t.index ["activity_id"], name: "index_tasks_on_activity_id"
+    t.index ["step_id"], name: "index_tasks_on_step_id"
     t.index ["tax_id"], name: "index_tasks_on_tax_id"
   end
 
@@ -154,7 +169,9 @@ ActiveRecord::Schema.define(version: 2018_08_28_061958) do
   add_foreign_key "constraints", "organization_forms"
   add_foreign_key "constraints", "taxation_forms"
   add_foreign_key "organizations", "organization_forms"
+  add_foreign_key "steps", "organization_forms"
   add_foreign_key "tasks", "activities"
+  add_foreign_key "tasks", "steps"
   add_foreign_key "tasks", "taxes"
   add_foreign_key "taxation_forms", "organization_forms"
   add_foreign_key "taxation_forms", "recurrence_periods", column: "declaration_period_id"

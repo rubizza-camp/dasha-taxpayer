@@ -6,6 +6,4 @@ class Tax < ApplicationRecord
   has_one :organization, through: :activity
   has_one :declaration_task, class_name: 'Tasks::Declaration', dependent: :destroy
   has_one :payment_task, class_name: 'Tasks::Payment', dependent: :destroy
-
-  validates :name, presence: true
 end
