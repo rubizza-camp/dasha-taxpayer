@@ -7,4 +7,5 @@ class TaxationForm < ApplicationRecord
   has_many :constraints, dependent: :destroy
   belongs_to :declaration_period, class_name: 'RecurrencePeriod'
   belongs_to :payment_period, class_name: 'RecurrencePeriod'
+  has_and_belongs_to_many :activity_types
 end

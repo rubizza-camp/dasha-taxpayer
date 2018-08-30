@@ -27,3 +27,7 @@ Then(/^I have tasks for organization creation in tasks list/) do
     expect(page).to have_content(step.description)
   end
 end
+
+Given(/^only unsuitable taxation forms/) do
+  @taxation_form.constraints.find_by(type: 'Constraints::WorkersNumber').update(value: 5)
+end
