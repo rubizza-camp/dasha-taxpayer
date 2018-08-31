@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: 'user'
   get 'users', to: 'users#index', as: 'users'
 
- # authenticate :user do
+  authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
-#  end
+  end
 end

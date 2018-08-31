@@ -2,45 +2,48 @@
 /bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
 /bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
 /bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-bash: /usr/local/bin/bundle: No such file or directory
-/bin/bash: /usr/local/bin/bundle: No such file or directory
-bash: /usr/local/bin/bundle: No such file or directory
-/bin/bash: /usr/local/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
-/bin/bash: /home/ruby/.rvm/gems/ruby-2.5.1/bin/bundle: No such file or directory
+undefined method `pry' for #<Binding:0x00000000026ed1e0>
+config/initializers/sidekiq.rb:2:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `run'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/bin/sidekiq-client:8:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `<main>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `eval'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `<main>'
+undefined method `pry' for #<Binding:0x00000000013d94a0>
+config/initializers/sidekiq.rb:2:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `run'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/bin/sidekiq-client:8:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `<main>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `eval'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `<main>'
+undefined method `pry' for #<Binding:0x00000000021215b8>
+config/initializers/sidekiq.rb:2:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `run'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/bin/sidekiq-client:8:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `<main>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `eval'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `<main>'
+undefined method `pry' for #<Binding:0x00000000022175d0>
+config/initializers/sidekiq.rb:2:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `run'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/bin/sidekiq-client:8:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `<main>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `eval'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `<main>'
+undefined method `pry' for #<Binding:0x0000000001df8378>
+config/initializers/sidekiq.rb:2:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/lib/sidekiq_client_cli.rb:35:in `run'
+/home/ruby/.rvm/gems/ruby-2.5.1/gems/sidekiq-client-cli-0.1.7/bin/sidekiq-client:8:in `<top (required)>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `load'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/sidekiq-client:23:in `<main>'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `eval'
+/home/ruby/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:15:in `<main>'

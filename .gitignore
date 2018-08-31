@@ -38,3 +38,5 @@
 vendor/cache/*
 vendor/bundle/*
 coverage
+cron.log
+error.log
