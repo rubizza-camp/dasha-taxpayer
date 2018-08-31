@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :taxes
   resources :survey, only: %i[new create]
-  resources :tasks
+  resources :tasks, only: %i[index edit update]
 
   root 'pages#index'
 

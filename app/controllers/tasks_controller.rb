@@ -5,19 +5,16 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = current_user.tasks.sort_by(&:date)
+    @tasks = current_user.tasks.where(status: 'pending').sort_by(&:date)
   end
 
   def edit; end
 
-  # This method smells of :reek:DuplicateMethodCall
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to '/tasks', notice: 'Task was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @task.update(task_params)
+      redirect_to '/tasks', notice: 'Task was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -28,7 +25,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    permited_params = params.require(:task).permit(:date)
-    permited_params
+    params.require(:task).permit(:date, :status)
   end
 end

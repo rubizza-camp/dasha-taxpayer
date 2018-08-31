@@ -18,8 +18,8 @@ When(/^I add first activity for organization/) do
 end
 
 When(/^I add second activity for organization/) do
-  find('#organization_activities_attributes_1_activity_type_id').select(@activity_type.name)
-  find('#organization_activities_attributes_1_taxation_form_id').select(@taxation_form.name)
+  first('#organization_activities_attributes_1_activity_type_id').select(@activity_type.name)
+  first('#organization_activities_attributes_1_taxation_form_id').select(@taxation_form.name)
 end
 
 When(/^I going to edit my organization/) do
