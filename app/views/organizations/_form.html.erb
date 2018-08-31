@@ -8,34 +8,34 @@
     </div>
     <div class="form-group">
       <div>
-        <label class="control-label " for="organization_form_id">Organization Form</label>
+        <label class="control-label " for="organization_form_id"><%= t :organization_form%></label>
       </div>
       <%= f.collection_select :organization_form_id, OrganizationForm.all, :id, :name %>
     </div>
     <%= f.nested_fields_for :activities, wrapper_tag: :div do |a_f| %>
         <div class="form-group">
           <div>
-            <label class="control-label " for="organization_form_id">Activity Type</label>
+            <label class="control-label " for="organization_form_id"><%= t :activity_type %></label>
           </div>
           <%= a_f.collection_select :activity_type_id, ActivityType.all, :id, :name %>
         </div>
         <div class="form-group">
           <div>
-            <label class="control-label " for="organization_form_id">Taxation Form</label>
+            <label class="control-label " for="organization_form_id"><%= t :form_of_taxation %></label>
           </div>
           <div>
             <%= a_f.collection_select :taxation_form_id, TaxationForm.all, :id, :name %>
           </div>
         </div>
         <div class="form-group">
-          <%= a_f.remove_nested_fields_link 'Remove this activity', class: 'btn btn-danger'%>
+          <%= a_f.remove_nested_fields_link "#{t :remove_activity}", class: 'btn btn-danger'%>
         </div>
     <% end %>
     <div class="form-group">
-      <%= f.add_nested_fields_link :activities, 'Add activity', class: 'btn btn-primary'%>
+      <%= f.add_nested_fields_link :activities, "#{t :add_activity}", class: 'btn btn-primary'%>
     </div>
     <div class="text-center">
-      <%= link_to 'Back', organizations_path, class: 'btn btn-success' %>
+      <%= link_to "#{t :back}", organizations_path, class: 'btn btn-success' %>
       <%= f.button :submit, class: 'btn-primary' %>
     </div>
   </div>

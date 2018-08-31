@@ -1,5 +1,43 @@
 ---
 ru:
+  organizations: Организации
+  activity_type: Вид деятельности
+  form_of_taxation: Форма налогообложения
+  absence_of_organizations: Здесь вы увидите организации, которые вы добавили
+  enter_organization: Нажми для редактирования этой оганизации
+  new_organization: Новая организация
+  assistant: Помощник создания организации
+  immediate_taxes: Ближайшие налоги
+  payment_period: Период оплаты налога
+  declaration_period: Период подачи декларации
+  name_of_tax: Название налога
+  rate: Ставка налога
+  name_of_organization: Название организации
+  receipts: Выручка
+  calculate: Pассчитать
+  absence_of_taxes: Сначала вам нужно добавить организацию
+  taxes: Налоги
+  edit: Редактировать
+  logout: Выйти
+  login: Воити
+  signup: Зарегистрироваться
+  have_account?: У вас уже есть учетная запись?
+  destroy_org: Удалить
+  back: Назад
+  editing_organization: Редактирование организации
+  remove_activity: Удалить деятельность
+  add_activity: Добавить деятельность
+  organization_form: Форма организации
+  confirmation: Вы уверены?
+  dasha_taxpayer: Даша налогоплательщица
+  download_csv: Загрузить csv файл для выписки
+  bgpb_csv: Белгазпромбанк
+  download: Загрузить
+  receipts_BYN: Выручка в BYN
+  exchange_difference: Курсовая разница
+  gross_revenue: Валовая выручка
+  amount_of_tax: Сумма налога к оплате
+  get_organization: Получить организацию
   activerecord:
     errors:
       messages:
@@ -265,4 +303,3 @@ ru:
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: вечера
-
