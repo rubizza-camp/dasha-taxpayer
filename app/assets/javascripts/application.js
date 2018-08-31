@@ -19,3 +19,5 @@
 //= require nested_form_fields
 //= require jquery_ujs
 //= require_tree .
+//= require popup_message
+//= require_tree .

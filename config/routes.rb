@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :taxes
   resources :survey, only: %i[new create]
+  resources :tasks
 
   root 'pages#index'
 
@@ -19,7 +20,6 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: 'user'
   get 'users', to: 'users#index', as: 'users'
 
-  get 'tasks', to: 'tasks#index', as: 'tasks'
   authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
   end
