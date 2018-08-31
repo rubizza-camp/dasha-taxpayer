@@ -8,6 +8,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# rubocop:disable Style/NumericLiteralPrefix
+
 users = [User.create(email: 'test@mail.ru', password: '111111', password_confirmation: '111111'),
          User.create(email: 'user2@mail2.com', password: '111111', password_confirmation: '111111')]
 
@@ -121,4 +123,8 @@ Translate.create(text:    "A single tax is a fixed amount to be paid by an indiv
 Translate.create(text:    "The simplified taxation system (STS) is a special tax regime that is characterized by comparative simplicity in calculating the amount of taxes that can be applied to legal entities and individual entrepreneurs, while simultaneously meeting the following conditions: the average number of employees of the organization is no more than 100 people; the amount of gross revenue by the cumulative total does not exceed the amount established by law.\n\n(Tax Code of the Republic of Belarus(Special Part), Chapter 35)",
                  locale:  'en',
                  hint_id: 6)
+
+Task.create(type: Tasks::Payment, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: 'Test', activity_id: 3)
+Task.create(type: Tasks::Delaration, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: 'Test2', activity_id: 3)
+# rubocop:enable Style/NumericLiteralPrefix
 # rubocop:enable Metrics/LineLength
