@@ -24,15 +24,14 @@
               <td class="col-md-3"><%= "c #{task.period.first.to_formatted_s(:rfc822)} по #{task.period.last.to_formatted_s(:rfc822)}" %></td>
               <td class="col-md-1"><%= "#{task.date}" %></td>
               <td class="col-md-3"><%= "#{task.description}" %></td>
-              <td class="col-md-1"><%= button_to 'V', "tasks/#{task.id}/completed", class: "btn btn-info"%></td>
-              <td class="col-md-1"><%= button_to 'X', "tasks/#{task.id}/failed", class: "btn btn-info"%></td>
+              <td class="col-md-1"><%= button_to 'V', "tasks/#{task.id}", method: :put, params: {task: {status: 'completed'}}, class: "btn btn-info"%></td>
+              <td class="col-md-1"><%= button_to 'X', "tasks/#{task.id}", method: :put, params: {task: {status: 'failed'}}, class: "btn btn-info"%></td>
               <td class="col-md-1"><%= link_to 'Edit', "/tasks/#{task.id}/edit", class: "btn btn-info" %></td>
             </tr>
         <% end %>
       <% end %>
     </tbody>
   </table>
-
 
     <h1 class="text-center">Календарь событий</h1>
     <%= month_calendar do |date| %>
