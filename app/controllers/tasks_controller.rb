@@ -10,12 +10,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
   end
 
   def update
-    @tasks = current_user.tasks
-
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to "/tasks", notice: 'Task was successfully updated.' }
