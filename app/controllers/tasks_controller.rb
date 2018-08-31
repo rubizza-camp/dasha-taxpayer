@@ -9,13 +9,13 @@ class TasksController < ApplicationController
     @tasks = current_user.tasks.sort_by(&:date)
   end
 
-  def edit
-  end
+  def edit; end
 
+  # This method smells of :reek:DuplicateMethodCall
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to "/tasks", notice: 'Task was successfully updated.' }
+        format.html { redirect_to '/tasks', notice: 'Task was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -30,5 +30,6 @@ class TasksController < ApplicationController
 
   def task_params
     permited_params = params.require(:task).permit(:date)
+    permited_params
   end
 end
