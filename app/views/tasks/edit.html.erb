@@ -1,7 +1,7 @@
 <div class="container">
   <div class="col-md-5 col-md-offset-3">
     <h1 class="text-center">Editing Organization</h1>
-    <%= simple_form_for(@tasks) do |f| %>
+    <%= simple_form_for(@task.becomes(Task)) do |f| %>
       <div id="form-organization">
         <div class="col-md-12">
           <%= f.error_notification %>
