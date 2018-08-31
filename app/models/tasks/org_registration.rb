@@ -2,5 +2,6 @@
 
 module Tasks
   class OrgRegistration < Task
+    belongs_to :activity
   end
 end

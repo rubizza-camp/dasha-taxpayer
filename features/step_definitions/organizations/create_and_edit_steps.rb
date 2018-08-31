@@ -9,30 +9,35 @@ end
 When(/^I fill organization fields/) do
   fill_in 'Name', with: 'TestOrg'
 
-  select @organization_form.name, from: 'organization[organization_form_id]'
+  select @organization_form.name, from: 'organization_organization_form_id'
 end
 
-When(/^I add activity for organization/) do
-  click_on('Add activity')
+When(/^I add first activity for organization/) do
+  find('#organization_activities_attributes_0_activity_type_id').select(@activity_type.name)
+  find('#organization_activities_attributes_0_taxation_form_id').select(@taxation_form.name)
+end
 
-  select @activity_type.name, from: 'organization\[activities_attributes\]\[__organization_activities_index__\]\[activity_type_id\]'
-  select @taxation_form.name, from: 'organization\[activities_attributes\]\[__organization_activities_index__\]\[taxation_form_id\]'
+When(/^I add second activity for organization/) do
+  find('#organization_activities_attributes_1_activity_type_id').select(@activity_type.name)
+  find('#organization_activities_attributes_1_taxation_form_id').select(@taxation_form.name)
 end
 
 When(/^I going to edit my organization/) do
   click_on('Organizations')
-  click_on("#{@organization.organization_form.name} #{@organization.name}")
-  click_on('Edit')
+  click_on(@organization.name)
+  find('#edit_organization').click
 end
 
-Then(/^And I should see new organization info/) do
+Then(/^I should behold new organization info/) do
   expect(page).to have_content 'TestOrg'
   expect(page).to have_content @organization_form.name
 end
 
-Then(/^I should see only new activity for my organization/) do
-  @organization.activities.size = 1
-
+Then(/^I should behold only new activity for my organization/) do
   expect(page).to have_content @activity_type.name
   expect(page).to have_content @taxation_form.name
+end
+
+When(/^I click_link to my specific organization/) do
+  click_on(@organization.name)
 end
