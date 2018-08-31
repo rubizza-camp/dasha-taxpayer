@@ -5,7 +5,13 @@ class SurveyController < ApplicationController
 
   def create
     activity_params = SurveyProcessingService.call(survey_params)
-    Activity.create(activity_params.merge(user: current_user))
+    if activity_params
+      activity = Activity.create(activity_params.merge(user: current_user))
+      OrganizationTasksService.generate_tasks(activity)
+      redirect_to tasks_path
+    else
+      redirect_to new_survey_path, alert: 'Sorry you cannot open the desired organization'
+    end
   end
 
   private

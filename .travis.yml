@@ -3,13 +3,17 @@ services:
   - postgresql
 rvm:
   - 2.5.1
+sudo: required
+addons:
+  chrome: stable
 cache:
   directories:
   - /home/travis/.rvm/
   bundler: true
   yarn: true
 before_install:
-  - gem install bundler -v 1.16.2
+  - sudo apt-get update && sudo apt-get -y install google-chrome-stable
+  - gem install bundler -v 1.16.3
   - cp config/database.yml.travis config/database.yml
   - cp config/secrets.yml.example config/secrets.yml
   - bundle install
