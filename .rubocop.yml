@@ -8,6 +8,7 @@ AllCops:
     - 'config.ru'
     - 'bin/spring'
     - 'vendor/**/*'
+    - 'app/dashboards/**/*'
     - 'db/schema.rb'
 
 #################### Bundler ###############################

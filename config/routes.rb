@@ -2,20 +2,14 @@
 
 Rails.application.routes.draw do
   namespace :admin do
-      resources :users
-      resources :activities
-      resources :activity_types
-      resources :constraints
-      resources :organizations
-      resources :organization_forms
-      resources :recurrence_periods
-      resources :steps
-      resources :tasks
-      resources :taxes
-      resources :taxation_forms
-  
-      root to: "users#index"
-    end
+    resources :users
+    resources :activities
+    resources :organizations
+    resources :organization_forms
+    resources :steps
+    resources :taxation_forms
+    root to: 'users#index'
+  end
   resources :organizations
   post 'organization/:id/extract/new', to: 'statement_loaders#extract_tax', as: 'extract_tax'
   get 'organization/:id/extract/new', to: 'statement_loaders#new', as: 'extract_new'
