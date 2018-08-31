@@ -72,3 +72,6 @@ Constraints::WorkersNumber.create(value: 4, organization_form: OrganizationForm.
 
 Tax.create(name: 'УСН', activity: Activity.first, payment_period: '01.06.2018'..'30.06.2018', declaration_period: '01.06.2018'..'30.06.2018')
 Tax.create(name: 'УСН', activity: Activity.second, payment_period: '01.06.2018'..'30.06.2018', declaration_period: '01.06.2018'..'30.06.2018')
+
+Task.create(type: Tasks::Payment, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: "Test", status: "pending", activity_id: 3)
+Task.create(type: Tasks::Delaration, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: "Test2", status: "pending", activity_id: 3)
