@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  scope '(:locale)', locale: /en|ru/ do
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     resources :organizations
     post 'organization/:id/extract/new', to: 'statement_loaders#extract_tax', as: 'extract_tax'
     get 'organization/:id/extract/new', to: 'statement_loaders#new', as: 'extract_new'
