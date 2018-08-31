@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index', as: 'users'
 
   get 'tasks', to: 'tasks#index', as: 'tasks'
+  post 'tasks/:id/completed', to: 'tasks#completed'
+  post 'tasks/:id/failed', to: 'tasks#failed'
 end

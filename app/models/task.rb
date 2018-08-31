@@ -13,6 +13,10 @@ class Task < ApplicationRecord
     update(status: 'failed')
   end
 
+  def uncompleted?
+    status == 'pending'
+  end
+
   private
 
   def set_status

@@ -12,18 +12,24 @@
             <th>Date</th>
             <th>Description</th>
             <th>Status</th>
+            <th></th>
           </tr>
         </thead>
 
     <tbody>
       <% @tasks.each do |task| %>
-        <tr>
-            <td class="col-md-3"><%= "#{task.type}" %></td>
-            <td class="col-md-3"><%= "c #{task.period.first.to_formatted_s(:rfc822)} по #{task.period.last.to_formatted_s(:rfc822)}" %></td>
-            <td class="col-md-1"><%= "#{task.date}" %></td>
-            <td class="col-md-3"><%= "#{task.description}" %></td>
-            <td class="col-md-3"><%= "#{task.status}" %></td>
-        </tr>
+        <% if task.uncompleted? %>
+            <tr>
+              <td class="col-md-3"><%= "#{task.type}" %></td>
+              <td class="col-md-3"><%= "c #{task.period.first.to_formatted_s(:rfc822)} по #{task.period.last.to_formatted_s(:rfc822)}" %></td>
+              <td class="col-md-1"><%= "#{task.date}" %></td>
+              <td class="col-md-3"><%= "#{task.description}" %></td>
+              <td class="col-md-3">
+                <%= button_to 'V', "tasks/#{task.id}/completed"%>
+                <%= button_to 'X', "tasks/#{task.id}/failed"%>
+              </td>
+            </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
