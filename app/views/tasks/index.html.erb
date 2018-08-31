@@ -20,14 +20,13 @@
       <% @tasks.each do |task| %>
         <% if task.uncompleted? %>
             <tr>
-              <td class="col-md-3"><%= "#{task.type}" %></td>
+              <td class="col-md-2"><%= "#{task.type.demodulize}" %></td>
               <td class="col-md-3"><%= "c #{task.period.first.to_formatted_s(:rfc822)} по #{task.period.last.to_formatted_s(:rfc822)}" %></td>
               <td class="col-md-1"><%= "#{task.date}" %></td>
               <td class="col-md-3"><%= "#{task.description}" %></td>
-              <td class="col-md-3">
-                <%= button_to 'V', "tasks/#{task.id}/completed"%>
-                <%= button_to 'X', "tasks/#{task.id}/failed"%>
-              </td>
+              <td class="col-md-1"><%= button_to 'V', "tasks/#{task.id}/completed", class: "btn btn-info"%></td>
+              <td class="col-md-1"><%= button_to 'X', "tasks/#{task.id}/failed", class: "btn btn-info"%></td>
+              <td class="col-md-1"><%= link_to 'Edit', "/tasks/#{task.id}/edit", class: "btn btn-info" %></td>
             </tr>
         <% end %>
       <% end %>
