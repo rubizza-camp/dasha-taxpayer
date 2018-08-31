@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 Sidekiq.configure_server do |config|
-  config.redis = {url: 'redis://localhost:6379/sidekiq_production'}
+  config.redis = {url: ENV['REDIS_SIDEKIQ_URL']}
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = {url: 'redis://localhost:6379/sidekiq_production'}
+  config.redis = {url: ENV['REDIS_SIDEKIQ_URL']}
 end
 
 Rails.application.configure do
