@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 2018_08_28_061958) do
     t.bigint "organization_form_id", null: false
   end
 
+  create_table "activity_types_taxation_forms", id: false, force: :cascade do |t|
+    t.bigint "activity_type_id", null: false
+    t.bigint "taxation_form_id", null: false
+  end
+
   create_table "calculation_forms", force: :cascade do |t|
     t.string "type", null: false
     t.float "rate"
@@ -61,6 +66,12 @@ ActiveRecord::Schema.define(version: 2018_08_28_061958) do
     t.datetime "updated_at", null: false
     t.index ["organization_form_id"], name: "index_constraints_on_organization_form_id"
     t.index ["taxation_form_id"], name: "index_constraints_on_taxation_form_id"
+  end
+
+  create_table "hints", force: :cascade do |t|
+    t.string "hint_owner_type"
+    t.bigint "hint_owner_id"
+    t.index ["hint_owner_type", "hint_owner_id"], name: "index_hints_on_hint_owner_type_and_hint_owner_id"
   end
 
   create_table "organization_forms", force: :cascade do |t|
@@ -134,6 +145,14 @@ ActiveRecord::Schema.define(version: 2018_08_28_061958) do
     t.daterange "payment_period"
     t.daterange "declaration_period"
     t.index ["activity_id"], name: "index_taxes_on_activity_id"
+  end
+
+  create_table "translates", force: :cascade do |t|
+    t.text "text"
+    t.string "locale"
+    t.integer "hint_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

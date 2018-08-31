@@ -16,6 +16,6 @@ class Task < ApplicationRecord
   private
 
   def set_status
-    self.status = 'pending'
+    self.status ||= 'pending'
   end
 end

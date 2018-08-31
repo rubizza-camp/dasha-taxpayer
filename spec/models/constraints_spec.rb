@@ -26,22 +26,42 @@ end
 
 RSpec.describe Constraints::WorkAbroad do
   subject { described_class.create(value: value) }
-  let(:value) { true }
 
-  it 'return boolean value' do
-    expect(subject.value).to eq(value)
-  end
+  context 'when true value' do
+    let(:value) { true }
 
-  context '#appropriate?' do
-    let(:valid_value) { 1 }
-    let(:invalid_value) { 0 }
-
-    it 'return true' do
-      expect(subject.appropriate?(valid_value)).to eq true
+    it 'return boolean value' do
+      expect(subject.value).to eq(value)
     end
 
-    it 'return false' do
-      expect(subject.appropriate?(invalid_value)).to eq false
+    context '#appropriate?' do
+      let(:valid_value) { 1 }
+      let(:invalid_value) { 0 }
+
+      it 'return true' do
+        expect(subject.appropriate?(valid_value)).to eq true
+      end
+
+      it 'return false' do
+        expect(subject.appropriate?(invalid_value)).to eq false
+      end
+    end
+  end
+
+  context 'when false value' do
+    let(:value) { false }
+
+    context '#appropriate?' do
+      let(:valid_value) { 0 }
+      let(:invalid_value) { 1 }
+
+      it 'return true' do
+        expect(subject.appropriate?(valid_value)).to eq true
+      end
+
+      it 'return false' do
+        expect(subject.appropriate?(invalid_value)).to eq false
+      end
     end
   end
 end
