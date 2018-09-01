@@ -38,6 +38,9 @@ en:
   gross_revenue: Gross revenue
   amount_of_tax: Amount of tax payable
   get_organization: Get organization
+  tasks: Tasks
+  next: Next
+  previous: Previous
   activerecord:
     errors:
       messages:

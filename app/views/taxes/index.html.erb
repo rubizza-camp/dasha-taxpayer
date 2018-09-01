@@ -31,7 +31,7 @@
             <td class="col-md-3"><%= tax.organization_name %></td>
             <td class="col-md-3">
               <% if tax.sum_tax.blank? %>
-                <%= link_to 'Calculate', extract_new_path(tax.activity.organization_id), class: 'btn btn-sm btn-info calculate' %>
+                  <%= link_to "#{t :calculate}", extract_new_path(tax.activity.organization_id), class: 'btn btn-sm btn-info calculate' %>
               <% else %>
                   <%= tax.sum_tax %>
               <% end %>
