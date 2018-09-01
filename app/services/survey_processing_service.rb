@@ -36,7 +36,7 @@ class SurveyProcessingService
   end
 
   def taxation_forms_filter
-    taxation_forms = activity_type.taxation_forms & organization_forms.map(&:taxation_forms).flatten
+    taxation_forms = activity_type.taxation_forms && organization_forms.map(&:taxation_forms).flatten
     taxation_forms.reject do |tax_form|
       check_taxation_form(tax_form)
     end
