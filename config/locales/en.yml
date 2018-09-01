@@ -45,7 +45,7 @@ en:
   task_period: Task period
   description: Description
   status: Status
-  date_task: Дата задачи
+  date_task: Task date
   calendar_task: Task calendar
   name_of_task: Tasks
   profile: Profile
