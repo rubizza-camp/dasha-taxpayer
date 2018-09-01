@@ -10,7 +10,7 @@
   </div>
   <% if @organizations.present? %>
       <% @organizations.each do |organization| %>
-    <div style="box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); border-radius: 20px; margin:20px 0; padding-bottom: 3px">
+    <div class="organizations_table_form">
       <div class="text-left" id="organizations-table">
         <h3><%= link_to "#{organization.name}", organization, title: "#{t :enter_organization}" %></h3>
         <h6><%= "#{organization.organization_form.name}"%>

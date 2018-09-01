@@ -11,7 +11,8 @@
 # rubocop:disable Style/NumericLiteralPrefix
 
 users = [User.create(email: 'test@mail.ru', password: '111111', password_confirmation: '111111'),
-         User.create(email: 'user2@mail2.com', password: '111111', password_confirmation: '111111')]
+         User.create(email: 'user2@mail2.com', password: '111111', password_confirmation: '111111'),
+         User.create(email: 'test2@mail.ru', password: '111111', password_confirmation: '111111', admin: true)]
 
 organization_forms = [OrganizationForm.create(name: 'Физическое лицо (самозанятость)'),
                       OrganizationForm.create(name: 'Индивидуальный Предприниматель'),
@@ -126,5 +127,6 @@ Translate.create(text:    "The simplified taxation system (STS) is a special tax
 
 Task.create(type: Tasks::Payment, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: 'Test', activity_id: 3)
 Task.create(type: Tasks::Declaration, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: 'Test2', activity_id: 3)
+TaxesAndTasksGeneratorWorker.perform_async
 # rubocop:enable Style/NumericLiteralPrefix
 # rubocop:enable Metrics/LineLength

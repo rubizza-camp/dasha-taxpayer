@@ -18,6 +18,10 @@
 
 /node_modules
 /yarn-error.log
+/error.log
+/cron.log
+error.log
+cron.log
 
 /public/assets
 .byebug_history
@@ -38,3 +42,7 @@
 vendor/cache/*
 vendor/bundle/*
 coverage
+cron.log
+error.log
+/cron.log
+/error.log
