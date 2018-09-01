@@ -1,16 +1,16 @@
-<%= simple_form_for(@task) do |f| %>
+<%= simple_form_for(@task.becomes(Task)) do |f| %>
   <div id="form-organization">
     <div class="col-md-12">
       <%= f.error_notification %>
     </div>
     <div class="form-group">
-      <%= f.input :type %>
-    </div>
-        <div class="form-group">
       <%= f.input :date %>
     </div>
+    <div class="form-group">
+      <%= f.input :description %>
+    </div>
     <div class="text-center">
-      <%= link_to 'Back', organizations_path, class: 'btn btn-success' %>
+      <%= link_to 'Back', tasks_path, class: 'btn btn-success' %>
       <%= f.button :submit, class: 'btn-primary' %>
     </div>
   </div>

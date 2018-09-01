@@ -3,6 +3,15 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+    resources :activities
+    resources :organizations
+    resources :organization_forms
+    resources :steps
+    resources :taxation_forms
+    root to: 'users#index'
+  end
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     resources :organizations
     post 'organization/:id/extract/new', to: 'statement_loaders#extract_tax', as: 'extract_tax'

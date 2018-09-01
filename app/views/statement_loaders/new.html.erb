@@ -1,12 +1,14 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 text-left">
-      <h3><%= t :download_csv%></h3>
-      <h4><%= t :bgpb_csv></h4>
-      <%= simple_form_for(extract_tax_path(@organization.id)) do |f| %>
-        <%= f.input :my_file, as: :file, label: false, input_html: { name: 'my_file' }  %>
-        <%= f.button :submit, "#{t :download}", class: "btn-primary" %>
-      <% end %>
+  <div class="offset-md-3 row">
+    <div class="table_form">
+      <div class="col-md-12 text-left">
+        <h3><%= t :download_csv%></h3>
+        <h4><%= t :bgpb_csv %></h4>
+        <%= simple_form_for(extract_tax_path(@organization.id)) do |f| %>
+          <%= f.input :my_file, as: :file, label: false, input_html: { name: 'my_file' }  %>
+          <%= f.button :submit, "#{t :download}", class: "btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -40,7 +40,10 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'simple_calendar', '~> 2.0'
 gem 'nested_form_fields'
+gem 'administrate'
 gem 'sidekiq'
+gem 'whenever', require: false
+gem 'sidekiq-client-cli'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
