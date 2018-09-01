@@ -55,16 +55,6 @@
                 <small><%= "#{task.activity.activity_type.name}/#{task.type.demodulize}" %></small>
               </div>
             <% end %>
-            <% if task.type == "Tasks::Payment" %>
-              <div class="p-1 bg-warning text-white">
-                <small><%= task.description %></small>
-              </div>
-            <% end %>
-            <% if task.type == "Tasks::Declaration" %>
-              <div class="p-1 bg-secondary text-white">
-                <small><%= task.description %></small>
-              </div>
-            <% end %>
           </div>
         <% end %>
       <% end %>
