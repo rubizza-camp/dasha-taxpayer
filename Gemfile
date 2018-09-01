@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'simple_calendar', '~> 2.0'
 gem 'nested_form_fields'
+gem 'administrate'
 gem 'sidekiq'
 gem 'whenever', require: false
 gem 'sidekiq-client-cli'
