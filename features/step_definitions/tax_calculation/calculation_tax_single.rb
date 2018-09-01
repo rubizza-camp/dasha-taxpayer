@@ -27,11 +27,11 @@ When(/^Я нажал на кнопку ([a-zA-Zа-яА-Я]+) налог/) do |bt
 end
 
 Then(/^Я перешел на страницу выбора способов рассчета/) do
-  expect(page).to have_content 'Загрузить csv файл для выписки'
+  expect(page).to have_content 'Download csv file for statement'
 end
 
 Then(/^Я вижу способ "БГПБ CSV"/) do
-  expect(page).to have_content 'БГПБ CSV'
+  expect(page).to have_content 'Belgazprombank'
 end
 
 Then(/^Я выбираю файл с выпиской/) do
@@ -47,7 +47,7 @@ When(/^Выписка успешна загружена и обработана/
 end
 
 Then(/^Я вижу детали рассчета/) do |data|
-  table_headers = data.cell_matrix.first.first.value.split(',').map(&:strip)
+  table_headers = ['receipts in BYN', 'Exchange difference', 'Gross revenue', 'Amount of tax payable']
   row_values = data.cell_matrix.second.first.value.split(',').map(&:strip)
   table_headers.each do |value|
     expect(page).to have_content value
