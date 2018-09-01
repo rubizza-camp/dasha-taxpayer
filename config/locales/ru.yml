@@ -41,6 +41,13 @@ ru:
   tasks: Задачи
   next: Вперед
   previous: Назад
+  task_type: Вид задачи
+  task_period: Сроки задачи
+  description: Описание задачи
+  status: Статус
+  date_task: Дата
+  calendar_task: Календарь задач
+  name_of_task: Задачи
   activerecord:
     errors:
       messages:
