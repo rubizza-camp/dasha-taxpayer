@@ -42,7 +42,7 @@
           <div style="padding-bottom: 2px">
             <% if task.type == "Tasks::Declaration" %>
               <div class="p-1 bg-primary text-white">
-                <small><%= task.description %></small>
+                <small><%= "#{task.activity.activity_type.name}/#{task.type.demodulize}" %></small>
               </div>
             <% end %>
           </div>
