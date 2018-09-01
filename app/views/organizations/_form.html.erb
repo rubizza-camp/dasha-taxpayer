@@ -18,27 +18,27 @@
         <div class="row">
           <div class="form-group col-md-5">
             <div>
-              <label class="control-label " for="organization_form_id">Activity Type</label>
+              <label class="control-label " for="organization_form_id"><%= t :activity_type %></label>
             </div>
             <%= a_f.collection_select :activity_type_id, ActivityType.all, :id, :name %>
           </div>
           <div class="form-group col-md-3">
             <div>
-              <label class="control-label " for="organization_form_id">Taxation Form</label>
+              <label class="control-label " for="organization_form_id"><%= t :form_of_taxation%></label>
             </div>
             <div>
               <%= a_f.collection_select :taxation_form_id, TaxationForm.all, :id, :name %>
             </div>
           </div>
           <div class="col-md-4 form-group" >
-            <%= a_f.remove_nested_fields_link 'Remove this activity', class: 'btn btn-danger bottom_position' %>
+            <%= a_f.remove_nested_fields_link "#{t :remove_activity}", class: 'btn btn-danger bottom_position' %>
           </div>
         </div>
       </div>
     <% end %>
 
     <div class="form-group col-md-6">
-      <%= f.add_nested_fields_link :activities, 'Add activity', class: 'btn btn-primary'%>
+      <%= f.add_nested_fields_link :activities, "#{t :add_activity}", class: 'btn btn-primary'%>
     </div>
     <div class="text-center">
       <%= link_to "#{t :back}", organizations_path, class: 'btn btn-success' %>
