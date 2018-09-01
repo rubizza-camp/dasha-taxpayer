@@ -5,7 +5,7 @@ module Constraints
     validates :value, inclusion: [true, false], presence: true
 
     def appropriate?(work_abroad)
-      value && work_abroad == 1
+      work_abroad == (value ? 1 : 0)
     end
   end
 end

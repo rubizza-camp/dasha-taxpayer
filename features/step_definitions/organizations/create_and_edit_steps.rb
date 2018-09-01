@@ -18,13 +18,13 @@ When(/^I add first activity for organization/) do
 end
 
 When(/^I add second activity for organization/) do
-  find('#organization_activities_attributes_1_activity_type_id').select(@activity_type.name)
-  find('#organization_activities_attributes_1_taxation_form_id').select(@taxation_form.name)
+  first('#organization_activities_attributes_1_activity_type_id').select(@activity_type.name)
+  first('#organization_activities_attributes_1_taxation_form_id').select(@taxation_form.name)
 end
 
 When(/^I going to edit my organization/) do
   click_on('Organizations')
-  click_on("#{@organization.organization_form.name} #{@organization.name}")
+  click_on(@organization.name)
   find('#edit_organization').click
 end
 
@@ -36,4 +36,8 @@ end
 Then(/^I should behold only new activity for my organization/) do
   expect(page).to have_content @activity_type.name
   expect(page).to have_content @taxation_form.name
+end
+
+When(/^I click_link to my specific organization/) do
+  click_on(@organization.name)
 end
