@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
 
-      <li class="nav-link"><%= link_to('Edit', edit_user_registration_path) %></li>
-      <li class="nav-link"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+      <li class="nav-link"><%= link_to("#{t :edit}", edit_user_registration_path) %></li>
+      <li class="nav-link"><%= link_to("#{t :logout}", destroy_user_session_path, method: :delete) %></li>
 
 <% else %>
 
-      <li class="navbar-text">Already have an account?</li>
-      <li class="nav-link"><%= link_to('Login', new_user_session_path)  %></li>
-      <li class="nav-link"><%= link_to('Signup', new_user_registration_path)  %></li>
+      <li class="navbar-text"><%= t :have_account?%></li>
+      <li class="nav-link"><%= link_to("#{t :login}", new_user_session_path)  %></li>
+      <li class="nav-link"><%= link_to("#{t :signup}", new_user_registration_path)  %></li>
 
 <% end %>
