@@ -38,6 +38,9 @@ ru:
   gross_revenue: Валовая выручка
   amount_of_tax: Сумма налога к оплате
   get_organization: Получить организацию
+  tasks: Задачи
+  next: Вперед
+  previous: Назад
   activerecord:
     errors:
       messages:
