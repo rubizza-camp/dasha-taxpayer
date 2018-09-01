@@ -20,11 +20,12 @@
 
     <tbody>
       <% @taxes.each do |tax| %>
-        <tr>
-          <td class="col-md-3"><%= "c #{tax.payment_period.first.to_formatted_s(:rfc822)} по #{tax.payment_period.last.to_formatted_s(:rfc822)}" %></td>
+        <% if tax.uncompleted? %>
+          <tr>
+            <td class="col-md-3"><%= "c #{tax.payment_period.first.to_formatted_s(:rfc822)} по #{tax.payment_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= "c #{tax.declaration_period.first.to_formatted_s(:rfc822)} по #{tax.declaration_period.last.to_formatted_s(:rfc822)}" %></td>
             <td class="col-md-3"><%= tax.tax_name %>
-                <%= render 'hints/hint_form', hint_owner: identify_tax(tax.tax_name) %>
+              <%= render 'hints/hint_form', hint_owner: identify_tax(tax.tax_name) %>
             </td>
             <td class="col-md-3"><%= tax.rate %></td>
             <td class="col-md-3"><%= tax.organization_name %></td>
@@ -32,10 +33,11 @@
               <% if tax.sum_tax.blank? %>
                 <%= link_to 'Рассчитать', extract_new_path(tax.activity.organization_id), class: 'btn btn-sm btn-info calculate' %>
               <% else %>
-                <%= tax.sum_tax %>
+                  <%= tax.sum_tax %>
               <% end %>
             </td>
-        </tr>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
