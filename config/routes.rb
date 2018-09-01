@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     resources :organizations
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
 
     resources :taxes
     resources :survey, only: %i[new create]
+    resources :tasks, only: %i[index edit update]
 
     root 'pages#index'
   end
@@ -19,5 +22,7 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: 'user'
   get 'users', to: 'users#index', as: 'users'
 
-  get 'tasks', to: 'tasks#index', as: 'tasks'
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

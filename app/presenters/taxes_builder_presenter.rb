@@ -10,4 +10,8 @@ class TaxesBuilderPresenter < BasePresenter
   def rate
     calculation_forms.first.rate
   end
+
+  def uncompleted?
+    declaration_task.uncompleted? || payment_task.uncompleted?
+  end
 end
