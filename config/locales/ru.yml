@@ -48,6 +48,7 @@ ru:
   date_task: Дата
   calendar_task: Календарь задач
   name_of_task: Задачи
+  profile: Профиль
   activerecord:
     errors:
       messages:
