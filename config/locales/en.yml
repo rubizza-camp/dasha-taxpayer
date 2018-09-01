@@ -48,6 +48,7 @@ en:
   date_task: Дата задачи
   calendar_task: Task calendar
   name_of_task: Tasks
+  profile: Profile
   activerecord:
     errors:
       messages:
