@@ -12,6 +12,6 @@ class TaxesBuilderPresenter < BasePresenter
   end
 
   def uncompleted?
-    declaration_task.uncompleted? || payment_task.uncompleted?
+    declaration_task&.uncompleted? || payment_task&.uncompleted?
   end
 end
