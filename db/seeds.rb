@@ -126,5 +126,6 @@ Translate.create(text:    "The simplified taxation system (STS) is a special tax
 
 Task.create(type: Tasks::Payment, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: 'Test', activity_id: 3)
 Task.create(type: Tasks::Declaration, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: 'Test2', activity_id: 3)
+TaxesAndTasksGeneratorWorker.perform_async
 # rubocop:enable Style/NumericLiteralPrefix
 # rubocop:enable Metrics/LineLength
