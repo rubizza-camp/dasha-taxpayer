@@ -2,17 +2,17 @@
 
 <div class="container">
   <div class="col-md-12">
-    <h1 class="text-center">Organizations</h1>
+    <h1 class="text-center"><%= t :organizations %></h1>
   </div>
   <div class="col-md-12 text-center" id="div-new-organization">
-    <%= link_to 'New Organization', new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
-    <%= link_to 'Assistant to create organization', new_survey_path, class:'btn btn-primary' %>
+    <%= link_to "#{t :new_organization}", new_organization_path, class:'btn btn-primary', id: 'btn-new-organization' %>
+    <%= link_to "#{t :assistant}", new_survey_path, class:'btn btn-primary' %>
   </div>
   <% if @organizations.present? %>
       <% @organizations.each do |organization| %>
     <div class="organizations_table_form">
       <div class="text-left" id="organizations-table">
-        <h3><%= link_to "#{organization.name}", organization, title: 'Нажми для редактирования этой оганизации' %></h3>
+        <h3><%= link_to "#{organization.name}", organization, title: "#{t :enter_organization}" %></h3>
         <h6><%= "#{organization.organization_form.name}"%>
           <%= render 'hints/hint_form', hint_owner: organization.organization_form %>
         </h6>
@@ -21,8 +21,8 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-              <th>Вид деятельности</th>
-              <th>Форма налогообложения</th>
+              <th><%= t :activity_type %></th>
+              <th><%= t :form_of_taxation %></th>
             </tr>
           </thead>
         <% organization.activities.each do |activity|%>
