@@ -4,7 +4,7 @@ class TaxesController < ApplicationController
   before_action :authenticate_user!, only: %i[index]
 
   def index
-    @taxes = wrapped_taxes.sort_by(&:payment_period)
+    @taxes = wrapped_taxes
   end
 
   private
