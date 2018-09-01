@@ -19,6 +19,14 @@ organization_forms = [OrganizationForm.create(name: 'Физическое лиц
                       OrganizationForm.create(name: 'Унитарное предприятие'),
                       OrganizationForm.create(name: 'OOO')]
 
+Step.create(description: 'Подать документы в администрацию', organization_form: OrganizationForm.first)
+Step.create(description: 'Заплатить ГОС-пошлину', organization_form: OrganizationForm.first)
+Step.create(description: 'Зарегестрироваться в налоговой', organization_form: OrganizationForm.first)
+
+Step.create(description: 'Подать документы в администрацию', organization_form: OrganizationForm.second)
+Step.create(description: 'Заплатить ГОС-пошлину', organization_form: OrganizationForm.second)
+Step.create(description: 'Зарегестрироваться в налоговой', organization_form: OrganizationForm.second)
+
 ActivityType.create(name: 'Программирование', organization_forms: organization_forms)
 ActivityType.create(name: 'Выращивание тыкв', organization_forms: organization_forms)
 ActivityType.create(name: 'Страдания')
