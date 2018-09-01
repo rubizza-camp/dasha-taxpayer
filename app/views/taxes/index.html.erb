@@ -31,7 +31,7 @@
             <td class="col-md-3"><%= tax.organization_name %></td>
             <td class="col-md-3">
               <% if tax.sum_tax.blank? %>
-                  <%= link_to 'рассчитать', extract_new_path(tax.activity.organization_id), class: 'btn btn-sm btn-info calculate' %>
+                <%= link_to 'Calculate', extract_new_path(tax.activity.organization_id), class: 'btn btn-sm btn-info calculate' %>
               <% else %>
                   <%= tax.sum_tax %>
               <% end %>
@@ -41,26 +41,6 @@
       <% end %>
     </tbody>
   </table>
-
-  <%= month_calendar do |date| %>
-    <%= date %>
-      <% @taxes.each do |tax| %>
-        <% if date == tax.payment_period.last %>
-        <div style="padding-bottom: 2px">
-          <div class="p-1 bg-primary text-white">
-            <%= tax.organization_name %>
-          </div>
-        </div>
-        <% end %>
-        <% if date == tax.declaration_period.last %>
-        <div style="padding-bottom: 2px">
-          <div class="p-1 bg-warning text-white">
-            <%= tax.organization_name %>
-          </div>
-        </div>
-        <% end %>
-      <% end %>
-    <% end %>
   <% else %>
     <div class="col-md-12 text-center"><%= t :absence_of_taxes%></div>
   <% end %>
