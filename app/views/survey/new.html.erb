@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3">
-    <h1 class="text-center">Assistant to create organization</h1>
+    <h1 class="text-center"><%= t :assistant%></h1>
       <%= form_tag survey_index_path do %>
         <div class="form-group">
         <%= select_tag :activity_type_id, options_from_collection_for_select(ActivityType.all, :id, :name) %>
@@ -18,7 +18,7 @@
         </div>
 
         <div class="form-group">
-          <%= submit_tag 'Get organization'%>
+          <%= submit_tag "#{t :get_organization}"%>
         </div>
       <% end %>
   </div>

@@ -2,19 +2,19 @@
 
 <div class="container">
   <div class="col-md-12">
-    <h1 class="text-center">Immediate Taxes</h1>
+    <h1 class="text-center"><%= t :immediate_taxes %></h1>
   </div>
 
   <% if @taxes.present? %>
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
-            <th>Payment period</th>
-            <th>Declaration period</th>
-            <th>Name</th>
-            <th>Rate</th>
-            <th>Organization</th>
-            <th>Receipts</th>
+            <th><%= t :payment_period%></th>
+            <th><%= t :declaration_period%></th>
+            <th><%= t :name_of_tax%></th>
+            <th><%= t :rate%></th>
+            <th><%= t :name_of_organization%></th>
+            <th><%= t :receipts%></th>
           </tr>
         </thead>
 
@@ -62,6 +62,6 @@
       <% end %>
     <% end %>
   <% else %>
-    <div class="col-md-12 text-center">First you need to add an organization</div>
+    <div class="col-md-12 text-center"><%= t :absence_of_taxes%></div>
   <% end %>
 </div>

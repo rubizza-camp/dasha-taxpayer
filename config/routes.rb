@@ -12,17 +12,19 @@ Rails.application.routes.draw do
     resources :taxation_forms
     root to: 'users#index'
   end
-  resources :organizations
-  post 'organization/:id/extract/new', to: 'statement_loaders#extract_tax', as: 'extract_tax'
-  get 'organization/:id/extract/new', to: 'statement_loaders#new', as: 'extract_new'
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
+    resources :organizations
+    post 'organization/:id/extract/new', to: 'statement_loaders#extract_tax', as: 'extract_tax'
+    get 'organization/:id/extract/new', to: 'statement_loaders#new', as: 'extract_new'
 
-  get 'extract_tax/:id', to: 'statement_loaders#redirect_taxes'
+    get 'extract_tax/:id', to: 'statement_loaders#redirect_taxes'
 
-  resources :taxes
-  resources :survey, only: %i[new create]
-  resources :tasks, only: %i[index edit update]
+    resources :taxes
+    resources :survey, only: %i[new create]
+    resources :tasks, only: %i[index edit update]
 
-  root 'pages#index'
+    root 'pages#index'
+  end
 
   devise_for :users, controllers: {omniauth_callbacks: 'callbacks'}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

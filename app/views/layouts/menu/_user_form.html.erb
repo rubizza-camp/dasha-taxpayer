@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <li class='nav-link'><%= link_to('Organizations', organizations_path) %></li>
-  <li class='nav-link'><%= link_to('Taxes', taxes_path) %></li>
+  <li class='nav-link'><%= link_to("#{t :organizations}", organizations_path) %></li>
+  <li class='nav-link'><%= link_to("#{t :taxes}", taxes_path) %></li>
   <li class='nav-link'><%= link_to('Tasks', tasks_path) %></li>
 <% end %>
