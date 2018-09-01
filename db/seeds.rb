@@ -71,9 +71,6 @@ Constraints::WorkAbroad.create(value: true, taxation_form: TaxationForm.second)
 Constraints::WorkersNumber.create(value: 100, taxation_form: TaxationForm.second)
 Constraints::WorkersNumber.create(value: 4, organization_form: OrganizationForm.second)
 
-Tax.create(name: 'УСН', activity: Activity.first, payment_period: '01.06.2018'..'30.06.2018', declaration_period: '01.06.2018'..'30.06.2018')
-Tax.create(name: 'УСН', activity: Activity.second, payment_period: '01.06.2018'..'30.06.2018', declaration_period: '01.06.2018'..'30.06.2018')
-
 # Individual (self-employment)
 Hint.create(hint_owner_id: OrganizationForm.find(1).id, hint_owner_type: 'OrganizationForm')
 # Individual entrepreneur
@@ -125,8 +122,6 @@ Translate.create(text:    "The simplified taxation system (STS) is a special tax
                  locale:  'en',
                  hint_id: 6)
 
-Task.create(type: Tasks::Payment, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: 'Test', activity_id: 3)
-Task.create(type: Tasks::Declaration, period: Date.new(2018, 6, 01)..Date.new(2018, 6, 30), date: Date.new(2018, 6, 25), description: 'Test2', activity_id: 3)
-TaxesAndTasksGeneratorWorker.perform_async
+TaxesAndTasksGenerator.call
 # rubocop:enable Style/NumericLiteralPrefix
 # rubocop:enable Metrics/LineLength
